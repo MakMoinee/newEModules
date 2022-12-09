@@ -38,8 +38,8 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <img style="float: left;padding: 10px;margin-left: 50px;" src="/storage/images/favicon.ico" alt=""
+    <header class="header-area header-sticky background-header" style="background: #ff589e">
+        <img style="float: left;padding: 10px;margin-left: 10px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
             <div class="row">
@@ -52,7 +52,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/about">About</a></li>
-                            <li class="scroll-to-section"><a href="/strands" style="color:#f55858 !important;">Academic
+                            <li class="scroll-to-section"><a href="/strands" style="color: black !important;">Academic
                                     Strands</a>
                             </li>
                             <li class="scroll-to-section"><a href="/profile">My Profile</a></li>
@@ -69,7 +69,7 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    <section class="section" id="about" style="background: #ff589e;">
+    <section class="section" id="about" style="background: #EDEDED;">
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"

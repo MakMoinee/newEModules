@@ -34,7 +34,7 @@
 
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky" style="background: #ff589e;color:bisque;">
-        <img style="float: left;padding: 10px;margin-left: 50px;" src="/storage/images/favicon.ico" alt=""
+        <img style="float: left;padding: 10px;margin-left: 10px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
             <div class="row">

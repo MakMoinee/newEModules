@@ -28,7 +28,7 @@ class StrandController extends Controller
                 $profiles = json_decode($queryResult, true);
                 $pic = $profiles[0]['filePath'];
             }
-            return view('strand2', ['track' => $user[0]['track'], 'user' => $user[0]['username'], 'pic' => $pic]);
+            return view('new.strand2', ['track' => $user[0]['track'], 'user' => $user[0]['username'], 'pic' => $pic]);
         } else {
             return view('strand');
         }
