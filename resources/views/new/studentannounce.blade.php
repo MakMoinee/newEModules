@@ -81,7 +81,7 @@
                                 {{-- <span class="badge badge-sm bg-info ms-auto">NEW</span> --}}
                                 {{-- </li> --}}
                                 <li class="nav-title">Strands</li>
-                                <li class="nav-item"><a class="nav-link active" href="/course?category=CORE">
+                                <li class="nav-item"><a class="nav-link" href="/course?category=CORE">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-journal-text"
                                             viewBox="0 0 16 16">
@@ -198,9 +198,8 @@
                                 href="https://coreui.io/demos/bootstrap/4.2/free/#">
                                 <a class="dropdown-item" data-coreui-toggle="modal" data-coreui-target="#logOutModal"
                                     style="cursor: pointer;">
-                                    <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" class="bi bi-box-arrow-right"
-                                        viewBox="0 0 16 16">
+                                    <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
                                             d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
                                         <path fill-rule="evenodd"
@@ -215,7 +214,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>Modules</span>
+                            <span>Announcements</span>
                         </li>
                     </ol>
                 </nav>
@@ -223,180 +222,36 @@
         </header>
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
-                <div class="row"></div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-4">
-                            @if ($track == 'ABM')
-                                <div class="card-header">ACCOUNTANCY, BUSINESS AND MANAGEMENT </div>
-                            @endif
-
-                            @if ($track == 'GAS')
-                                <div class="card-header">GENERAL ACADEMIC STRAND</div>
-                            @endif
-                            @if ($track == 'TVL')
-                                <div class="card-header">TECHNOLOGY, VOCATIONAL, LIVELIHOOD</div>
-                            @endif
-                            @if ($track == 'HUMSS')
-                                <div class="card-header">HUMANITIES & SOCIAL SCIENCES</div>
-                            @endif
-                            @if ($track == 'STEM')
-                                <div class="card-header">SCIENCE, TECHNOLOGY, ENGINEERING AND
-                                    MATHEMATICS</div>
-                            @endif
-
-                            <div class="card-header">
-                                <ul
-                                    style="display: inline-block;list-style-type: none;margin-left: -30px;margin-bottom: -20px;">
-                                    @if ($category == 'CORE')
-                                        <li class="nav-item active" style="display: inline-block;">
-                                            <a class="nav-link" href="/course?category=CORE"><b>CORE</b>
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item " style="display: inline-block;">
-                                            <a class="nav-link" href="/course?category=CORE">CORE
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if ($category == 'APPLIED')
-                                        <li class="nav-item active" style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=APPLIED"><b>APPLIED</b>
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item " style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=APPLIED">APPLIED
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if ($category == 'SPECIALIZED')
-                                        <li class="nav-item active" style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=SPECIALIZED"><b>SPECIALIZED
-                                                    GAS</b>
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item " style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=SPECIALIZED">SPECIALIZED
-                                                GAS
-                                            </a>
-                                        </li>
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-
-                                    <div class="table-responsive">
-                                        <table class="table border mb-0">
-                                            <thead class="table-light fw-semibold">
-                                                <tr class="align-middle">
-                                                    <th>
-                                                        Subject
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($trackRes as $tr)
-                                                    <tr>
-                                                        <td>{{ $tr['description'] }}
-                                                            <button style="float: right;" class="btn btn-btn-primary"
-                                                                data-coreui-toggle="modal"
-                                                                data-coreui-target="#viewModal{{ $tr['trackID'] }}">...</button>
-                                                            <div class="modal fade" id="viewModal{{ $tr['trackID'] }}"
-                                                                tabindex="-1" role="dialog"
-                                                                aria-labelledby="viewModalLabel{{ $tr['trackID'] }}"
-                                                                aria-hidden="true">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <center>
-                                                                                <h5 class="modal-title"
-                                                                                    id="viewModalLabel{{ $tr['trackID'] }}">
-                                                                                    {{ $tr['description'] }}
-                                                                                </h5>
-                                                                            </center>
-                                                                        </div>
-                                                                        <form action="#" method="GET">
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label for="No. Of Hours"
-                                                                                        class="for">No. Of
-                                                                                        Hours:</label>
-                                                                                    <br>
-                                                                                    <input required type="number"
-                                                                                        name="hours" id=""
-                                                                                        value="{{ $tr['hours'] }}">
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="prerequisite"
-                                                                                        class="for">Pre-requisite:</label>
-                                                                                    <br>
-                                                                                    <input type="text"
-                                                                                        name="prerequisite"
-                                                                                        id=""
-                                                                                        value="{{ $tr['prerequisite'] }}">
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="emodules"
-                                                                                        class="for">E
-                                                                                        Modules:</label>
-                                                                                    <div class="card">
-                                                                                        <div class="card-body"
-                                                                                            style="margin-left: -45px;">
-                                                                                            @foreach ($moduleHelper as $mh)
-                                                                                                @if ($mh['trackID'] == $tr['trackID'])
-                                                                                                    @if ($mh['isAvailable'])
-                                                                                                        @foreach ($emodules as $em)
-                                                                                                            <ul
-                                                                                                                style="list-style-type: none">
-                                                                                                                @if ($em['trackID'] == $mh['trackID'])
-                                                                                                                    <li><a style="text-decoration: none"
-                                                                                                                            href="{{ route('viewer.show', ['viewer' => $em['filePath']]) }}"
-                                                                                                                            target="_blank">{{ $em['description'] }}</a>
-                                                                                                                    </li>
-                                                                                                                    <hr>
-                                                                                                                @endif
-                                                                                                            </ul>
-                                                                                                        @endforeach
-                                                                                                    @else
-                                                                                                        There are no
-                                                                                                        available e
-                                                                                                        modules.
-                                                                                                    @endif
-                                                                                                @endif
-                                                                                            @endforeach
-
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                {{-- <button type="submit"
-                                                                                    class="btn btn-primary">Yes,
-                                                                                    Proceed</button> --}}
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-coreui-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                    @if ($isAvailable == false)
+                        <label for="noavailable" class="for"
+                            style="padding:10px;color:white;background: #20202057">There are
+                            no
+                            announcements as of the moment</label>
+                    @else
+                        @foreach ($announce as $an)
+                            {{-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="margin-right: 60px;">
+                                <div class="card" style="width: 20rem;">
+                                    <img src="/storage/announcements/{{ $an['card'] }}" class="card-img-top"
+                                        alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $an['description'] }}</h5>
+                                        <p class="card-text">{{ $an['subtext'] }}</p>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            <div class="col-md-12">
+                                <div class="card mb-4" style="margin-right: 60px;width: 20rem;">
+                                    <img src="/storage/announcements/{{ $an['card'] }}"
+                                        class="card-img-top img-responsive" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $an['description'] }}</h5>
+                                        <p class="card-text">{{ $an['subtext'] }}</p>
                                     </div>
                                 </div>
                             </div>
-
-
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
 
                 </div>
 

@@ -81,7 +81,7 @@
                                 {{-- <span class="badge badge-sm bg-info ms-auto">NEW</span> --}}
                                 {{-- </li> --}}
                                 <li class="nav-title">Strands</li>
-                                <li class="nav-item"><a class="nav-link active" href="/course?category=CORE">
+                                <li class="nav-item"><a class="nav-link" href="/course?category=CORE">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-journal-text"
                                             viewBox="0 0 16 16">
@@ -174,11 +174,11 @@
                             <div class="avatar avatar-md">
                                 {{-- <img class="avatar-img" src="/Dashboard_files/8.jpg" alt="user@email.com"> --}}
                                 @if ($pic == '')
-                                    <img src="/images/user.png" alt="hugenerd"
-                                        style="width: 46px !important; height: 46px !important;" class="avatar-img">
+                                    <img src="/images/user.png" alt="hugenerd" width="30" height="30"
+                                        class="avatar-img">
                                 @else
-                                    <img src="/storage/profiles/{{ $pic }}" alt="hugenerd"
-                                        class="avatar-img" style="width: 46px !important; height: 46px !important;">
+                                    <img src="/storage/profiles/{{ $pic }}" alt="hugenerd" width="30"
+                                        height="30" class="avatar-img">
                                 @endif
                             </div>
                         </a>
@@ -215,7 +215,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>Modules</span>
+                            <span>Profile</span>
                         </li>
                     </ol>
                 </nav>
@@ -223,181 +223,66 @@
         </header>
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
-                <div class="row"></div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-4">
-                            @if ($track == 'ABM')
-                                <div class="card-header">ACCOUNTANCY, BUSINESS AND MANAGEMENT </div>
+                    <div class="mdiv-left" style="width: 30%; height: 500px;  background-color: #d5d5d5">
+                        <center>
+                            @if ($pic == '')
+                                <img src="/images/user.png" alt="hugenerd"
+                                    style="width: 46px !important; height: 46px !important;" class="avatar-img">
+                            @else
+                                <img src="/storage/profiles/{{ $pic }}" alt="hugenerd" class="avatar-img"
+                                    style="width: 46px !important; height: 46px !important;">
                             @endif
 
-                            @if ($track == 'GAS')
-                                <div class="card-header">GENERAL ACADEMIC STRAND</div>
-                            @endif
-                            @if ($track == 'TVL')
-                                <div class="card-header">TECHNOLOGY, VOCATIONAL, LIVELIHOOD</div>
-                            @endif
-                            @if ($track == 'HUMSS')
-                                <div class="card-header">HUMANITIES & SOCIAL SCIENCES</div>
-                            @endif
-                            @if ($track == 'STEM')
-                                <div class="card-header">SCIENCE, TECHNOLOGY, ENGINEERING AND
-                                    MATHEMATICS</div>
-                            @endif
-
-                            <div class="card-header">
-                                <ul
-                                    style="display: inline-block;list-style-type: none;margin-left: -30px;margin-bottom: -20px;">
-                                    @if ($category == 'CORE')
-                                        <li class="nav-item active" style="display: inline-block;">
-                                            <a class="nav-link" href="/course?category=CORE"><b>CORE</b>
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item " style="display: inline-block;">
-                                            <a class="nav-link" href="/course?category=CORE">CORE
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if ($category == 'APPLIED')
-                                        <li class="nav-item active" style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=APPLIED"><b>APPLIED</b>
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item " style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=APPLIED">APPLIED
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if ($category == 'SPECIALIZED')
-                                        <li class="nav-item active" style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=SPECIALIZED"><b>SPECIALIZED
-                                                    GAS</b>
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item " style="display: inline-block;margin-left: 10px;">
-                                            <a class="nav-link" href="/course?category=SPECIALIZED">SPECIALIZED
-                                                GAS
-                                            </a>
-                                        </li>
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-
-                                    <div class="table-responsive">
-                                        <table class="table border mb-0">
-                                            <thead class="table-light fw-semibold">
-                                                <tr class="align-middle">
-                                                    <th>
-                                                        Subject
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($trackRes as $tr)
-                                                    <tr>
-                                                        <td>{{ $tr['description'] }}
-                                                            <button style="float: right;" class="btn btn-btn-primary"
-                                                                data-coreui-toggle="modal"
-                                                                data-coreui-target="#viewModal{{ $tr['trackID'] }}">...</button>
-                                                            <div class="modal fade" id="viewModal{{ $tr['trackID'] }}"
-                                                                tabindex="-1" role="dialog"
-                                                                aria-labelledby="viewModalLabel{{ $tr['trackID'] }}"
-                                                                aria-hidden="true">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <center>
-                                                                                <h5 class="modal-title"
-                                                                                    id="viewModalLabel{{ $tr['trackID'] }}">
-                                                                                    {{ $tr['description'] }}
-                                                                                </h5>
-                                                                            </center>
-                                                                        </div>
-                                                                        <form action="#" method="GET">
-                                                                            <div class="modal-body">
-                                                                                <div class="form-group">
-                                                                                    <label for="No. Of Hours"
-                                                                                        class="for">No. Of
-                                                                                        Hours:</label>
-                                                                                    <br>
-                                                                                    <input required type="number"
-                                                                                        name="hours" id=""
-                                                                                        value="{{ $tr['hours'] }}">
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="prerequisite"
-                                                                                        class="for">Pre-requisite:</label>
-                                                                                    <br>
-                                                                                    <input type="text"
-                                                                                        name="prerequisite"
-                                                                                        id=""
-                                                                                        value="{{ $tr['prerequisite'] }}">
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label for="emodules"
-                                                                                        class="for">E
-                                                                                        Modules:</label>
-                                                                                    <div class="card">
-                                                                                        <div class="card-body"
-                                                                                            style="margin-left: -45px;">
-                                                                                            @foreach ($moduleHelper as $mh)
-                                                                                                @if ($mh['trackID'] == $tr['trackID'])
-                                                                                                    @if ($mh['isAvailable'])
-                                                                                                        @foreach ($emodules as $em)
-                                                                                                            <ul
-                                                                                                                style="list-style-type: none">
-                                                                                                                @if ($em['trackID'] == $mh['trackID'])
-                                                                                                                    <li><a style="text-decoration: none"
-                                                                                                                            href="{{ route('viewer.show', ['viewer' => $em['filePath']]) }}"
-                                                                                                                            target="_blank">{{ $em['description'] }}</a>
-                                                                                                                    </li>
-                                                                                                                    <hr>
-                                                                                                                @endif
-                                                                                                            </ul>
-                                                                                                        @endforeach
-                                                                                                    @else
-                                                                                                        There are no
-                                                                                                        available e
-                                                                                                        modules.
-                                                                                                    @endif
-                                                                                                @endif
-                                                                                            @endforeach
-
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                {{-- <button type="submit"
-                                                                                    class="btn btn-primary">Yes,
-                                                                                    Proceed</button> --}}
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-coreui-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
+                            <br>
+                            <br>
+                            <a href="#" data-coreui-toggle="modal"
+                                data-coreui-target="#uploadProfileModal">Edit Avatar</a>
+                            <br>
+                            <h4>{{ $user['lastname'] }}, {{ $user['firstname'] }} {{ $user['middlename'] }}</h4>
+                        </center>
                     </div>
+                    <div class="mdiv-right" style="width:70%;height: 500px;background-color: white">
+                        <h1 style="margin-left: 20px;">Hi {{ $user['firstname'] }}</h1>
 
+                        <form action="/profile" method="post" style="margin-left: 20px;" autocomplete="off">
+                            @csrf
+                            <div class="form-group">
+                                <label for="First Name" class="for">First Name</label>
+                                <label for="Middle Name" class="for" style="margin-left: 150px;">Middle
+                                    Name</label>
+                                <label for="Last Name" class="for" style="margin-left: 150px;">Last Name</label>
+                                <br>
+                                <input required type="text" name="firstname" id="" class="form-group"
+                                    value="{{ $user['firstname'] }}">
+                                <input required type="text" name="middlename" id="" class="form-group"
+                                    style="margin-left: 39px;" value="{{ $user['middlename'] }}">
+                                <input required type="text" name="lastname" id="" class="form-group"
+                                    style="margin-left: 55px;" value="{{ $user['lastname'] }}">
+                            </div>
+                            <div class="form-group">
+                                <label required for="Email" class="for">Email</label>
+                                <br>
+                                <input required type="email" name="email" id=""
+                                    value="{{ $user['email'] }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="for">Password</label>
+                                <label for="repassword" class="for" style="margin-left: 160px;">Confirm
+                                    Password</label>
+                                <br>
+                                <input disabled readonly type="password" name="password" id="password"
+                                    value="{{ $user['password'] }}" style="cursor: no-drop;">
+                                <input required type="password" name="repassword" id="repassword"
+                                    style="margin-left: 39px;">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="uid" value="{{ $user['userID'] }}">
+                                <button type="submit" class="btn btn-primary" style="background-color: #f55858"
+                                    name="btnUpdate" value="true">Update Profile</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
             </div>
@@ -426,6 +311,41 @@
                         <h5 class="modal-title" id="logOutModalLabel">Do you want to proceed logging out ?</h5>
                     </div>
                     <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Yes, Proceed</button>
+                        <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="uploadProfileModal" tabindex="-1" role="dialog"
+        aria-labelledby="uploadProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ route('userprofiles.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <br>
+                            <br>
+                            <div class="form-group" style="margin-left: 33px;">
+                                <label for="file" class="for"><b>Add Profile Picture</b></label>
+                                <br>
+                                @if ($pic == '')
+                                    <img style="margin-top: 20px;" src="/images/user.png" id="profilePic2"
+                                        alt="" srcset="" width="200px" height="200px">
+                                @else
+                                    <img style="margin-top: 20px;" src="/storage/profiles/{{ $pic }}"
+                                        id="profilePic2" alt="" srcset="" width="200px"
+                                        height="200px">
+                                @endif
+                                <br>
+                                <input type="file" name="files" id="" accept=".jpg, .png, .jpeg"
+                                    onchange="readURL(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border:none;">
                         <button type="submit" class="btn btn-primary">Yes, Proceed</button>
                         <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
                     </div>
@@ -471,6 +391,48 @@
             const toastLiveExample = document.getElementById('liveToast');
             const toast = new coreui.Toast(toastLiveExample);
             toast.show();
+        }
+
+        var password = document.getElementById("password"),
+            confirm_password = document.getElementById("repassword");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // $('.image-upload-wrap').hide();
+                    let profilePic = document.getElementById('profilePic2');
+
+                    profilePic.setAttribute("src", e.target.result);
+                    // $('.file-upload-content').show();
+
+                    // $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            let profilePic = document.getElementById('profilePic2');
+            profilePic.setAttribute("src", '/storage/images/user.png');
         }
     </script>
 </body>

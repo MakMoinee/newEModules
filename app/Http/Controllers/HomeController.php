@@ -29,7 +29,7 @@ class HomeController extends Controller
             if ($user[0]['userType'] == 0) {
                 return redirect("/superadmin");
             }
-            return redirect('/strands');
+            return redirect('/course?category=CORE');
         } else {
             $queryResult = DB::table('e_users')->where(['userType' => 0])->get();
             $userCount = count($queryResult);

@@ -41,7 +41,7 @@ class ProfileController extends Controller
 
             // dd(['query' => $queryResult, 'pic' => $pic]);
 
-            return view('profile', ['user' => $user[0], 'pic' => $pic]);
+            return view('new.studentprofile', ['user' => $user[0], 'pic' => $pic]);
         } else {
             return redirect("/");
         }

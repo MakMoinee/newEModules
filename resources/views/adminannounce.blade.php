@@ -95,8 +95,8 @@
                                         class="ms-1 d-none d-sm-inline">Users</span></a>
                             </li>
                             <li>
-                                <a href="https://dashboard.tawk.to/?lang=en#/admin/637fbe0adaff0e1306d944cd/chat-widget" target="_blank"
-                                    data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                <a href="https://dashboard.tawk.to/?lang=en#/admin/637fbe0adaff0e1306d944cd/chat-widget"
+                                    target="_blank" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
                                         class="ms-1 d-none d-sm-inline">Chat</span></a>
@@ -230,8 +230,77 @@
                                                 @endif
 
                                                 <br>
-                                                <button class="btn btn-success"
-                                                    style="font-size: 12px;">View/Edit</button>
+                                                <button class="btn btn-success" style="font-size: 12px;"
+                                                    data-toggle="modal"
+                                                    data-target="#viewModuleModal{{ $an['announceID'] }}">View/Edit</button>
+                                                <div class="modal fade " id="viewModuleModal{{ $an['announceID'] }}"
+                                                    tabindex="-1" role="dialog"
+                                                    aria-labelledby="viewModuleModalLabel{{ $an['announceID'] }}"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="viewModuleModalLabel{{ $an['announceID'] }}">
+                                                                    View/Edit
+                                                                    Announcement</h5>
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <form
+                                                                        action="{{ route('announcements.update', ['announcement' => $an['announceID']]) }}"
+                                                                        method="POST" enctype="multipart/form-data"
+                                                                        autocomplete="off">
+                                                                        @method('put')
+                                                                        @csrf
+                                                                        <div class="form-group"
+                                                                            style="margin-left: 35px">
+                                                                            <label for="description"
+                                                                                class="for"><b>Description</b></label>
+                                                                            <br>
+                                                                            <input required type="text"
+                                                                                style="width:350px;"
+                                                                                name="description" id="un"
+                                                                                value="{{ $an['description'] }}">
+                                                                        </div>
+                                                                        <div class="form-group"
+                                                                            style="margin-left: 35px">
+                                                                            <label for="emodule"
+                                                                                class="emodule"><b>Card
+                                                                                    Picture</b></label>
+                                                                            <br>
+                                                                            <input required type="file"
+                                                                                name="file" id=""
+                                                                                accept=".jpg, .png, .jpeg">
+                                                                        </div>
+                                                                        <div class="form-group"
+                                                                            style="margin-left: 35px">
+                                                                            <label for="subtext"
+                                                                                class="for"><b>Subtext</b></label>
+                                                                            <br>
+                                                                            <input required type="text"
+                                                                                name="subtext" style="width:350px;"
+                                                                                value="{{ $an['subtext'] }}">
+                                                                        </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary"
+                                                                    style="background-color: #ff589e" name="btnUpdate"
+                                                                    value="true">Update
+                                                                    Announcement</button>
+                                                            </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <br>
                                                 <button class="btn btn-danger" style="font-size: 12px;"
                                                     data-toggle="modal"

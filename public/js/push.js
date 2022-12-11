@@ -9,7 +9,6 @@ channel.bind("App\\Events\\PostAnnouncement", (post) => {
         return;
     }
 
-
     Notification.requestPermission((permission) => {
         let notification = new Notification("New Announcements", {
             body: post.title, // content for the alert
@@ -20,6 +19,11 @@ channel.bind("App\\Events\\PostAnnouncement", (post) => {
         notification.onclick = () => {
             window.open("/studentannounce");
         };
+
+        const announceBody = document.getElementById("announceBody");
+        announceBody.innerText = post.title;
+        const toastTrigger = document.getElementById("btnToast");
+        toastTrigger.click();
     });
 });
 

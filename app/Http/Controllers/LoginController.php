@@ -89,7 +89,7 @@ class LoginController extends Controller
                 if ($user[0]['userType'] == 0) {
                     return redirect("/superadmin");
                 }
-                return redirect('/strands');
+                return redirect('/course?category=CORE');
             }
         } else {
             return view('welcome');

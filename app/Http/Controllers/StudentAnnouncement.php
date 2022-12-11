@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcements;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentAnnouncement extends Controller
 {
@@ -20,7 +21,7 @@ class StudentAnnouncement extends Controller
             $announce = Announcements::where(['activated' => 1])->orderBy('created_at', 'desc')->get();
             $newAnnounce = array();
             $count = 0;
-            
+
             foreach ($announce as $a) {
                 $count++;
                 if ($count <= 3) {
@@ -28,11 +29,21 @@ class StudentAnnouncement extends Controller
                 }
             }
             $isAvailable = count($newAnnounce) != 0;
-            return view('studentannounce', [
+
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
+
+            return view('new.studentannounce', [
                 'track' => $user[0]['track'],
                 'user' => $user[0]['username'],
                 'announce' => $newAnnounce,
-                'isAvailable' => $isAvailable
+                'isAvailable' => $isAvailable,
+                'pic' => $pic
             ]);
         } else {
             return redirect("/");

@@ -73,7 +73,7 @@ class ABMController extends Controller
                 $pic = $profiles[0]['filePath'];
             }
 
-            return view('strandabm', [
+            return view('new.strand2', [
                 'track' => $user[0]['track'],
                 'user' => $user[0]['username'],
                 'trackRes' => $trackRes,

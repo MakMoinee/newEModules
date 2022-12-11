@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AboutController extends Controller
 {
@@ -16,13 +17,22 @@ class AboutController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
+
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
             if ($user[0]['userType'] == 2) {
-                return view('studentabout', [
+                return view('new.studentabout', [
                     'track' => $user[0]['track'],
-                    'user' => $user[0]['username']
+                    'user' => $user[0]['username'],
+                    'pic' => $pic
                 ]);
             }
-        
+
             if ($user[0]['userType'] == 1) {
                 return view('adminabout', [
                     'track' => $user[0]['track'],
