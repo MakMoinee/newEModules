@@ -57,10 +57,15 @@
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
         <div class="sidebar-brand d-none d-md-flex">
 
-            <img class="sidebar-brand-full" src="/storage/images/favicon.ico" width="56" height="56"
+            <img class="sidebar-brand-full" src="/storage/images/favicon.ico" width="36" height="36"
                 alt="" srcset="">
-            <img class="sidebar-brand-narrow" src="/storage/images/favicon.ico"width="56" height="56"
+            <img class="sidebar-brand-narrow" src="/storage/images/favicon.ico"width="36" height="36"
                 alt="" srcset="">
+
+            <p class="sidebar-brand-full" style="font-size: 12px;padding-top: 15px;padding-left: 5px;">Merr-C Society
+                Academy</p>
+            <p class="sidebar-brand-narrow" style="font-size: 12px;padding-top: 15px;padding-left: 5px;">Merr-C Society
+                Academy</p>
 
         </div>
         <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="init">
@@ -151,10 +156,14 @@
                         <path fill-rule="evenodd"
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
-                </button><a class="header-brand d-md-none" href="#">
+               </button><a class="header-brand d-md-none" href="/">
 
-                    <img src="/storage/images/favicon.ico"width="56" height="56" alt=""
+                    <img src="/storage/images/favicon.ico"width="46" height="46" alt=""
                         srcset=""></a>
+                <ul class="header-nav d-md-none d-md-flex">
+                    <li class="nav-item"><a class="nav-link" href="/" style="font-size: 12px;">Merr-C Society
+                            Academy</a></li>
+                </ul>
                 {{-- <ul class="header-nav d-none d-md-flex">
                     <li class="nav-item"><a class="nav-link" href="/strands">Home</a></li>
                     <li class="nav-item"><a class="nav-link"

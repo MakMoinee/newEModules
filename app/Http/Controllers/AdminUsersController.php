@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -132,7 +133,96 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (session()->exists("users")) {
+            $user = session()->pull("users");
+            session()->put('users', $user);
+
+            if ($user[0]['userType'] != 1) {
+                return redirect('/');
+            }
+
+
+            $file = $request->file('files');
+            $fileName = "";
+            if ($file) {
+                $mimetype =  $file->getMimeType();
+                if ($mimetype == "text/csv" || $mimetype == "text/plain" && $file->getClientOriginalExtension() == "csv") {
+
+                    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/storage/userfiles';
+                    try {
+                        $fileName = strtotime(now()) . "." . $file->getClientOriginalExtension();
+                        $isFile = $file->move($destinationPath,  $fileName);
+                        if ($isFile) {
+                            $usersss = [];
+                            $sIndex = 0;
+
+                            if (($open = fopen(public_path('storage\userfiles') . "/" . $fileName, "r")) !== FALSE) {
+
+                                while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+                                    $sIndex++;
+                                    if ($sIndex == 1) {
+                                        continue;
+                                    }
+                                    $usersss[] = $data;
+                                }
+
+                                fclose($open);
+                            }
+
+                            // dd($usersss);
+                            foreach ($usersss as $u) {
+
+                                if (count($u) >= 7) {
+                                    $queryResult = DB::table('e_users')->where([
+                                        'firstname' => $u[2],
+                                        'middlename' => $u[3],
+                                        'lastname' => $u[4],
+                                    ])->get();
+
+                                    if (count($queryResult) > 0) {
+                                        //existing user
+                                        continue;
+                                    } else {
+                                        $newProccessUser = new EUsers();
+                                        $newProccessUser->username = $u[0];
+                                        $newProccessUser->password = Hash::make($u[1]);
+                                        $newProccessUser->firstname = $u[2];
+                                        $newProccessUser->middlename = $u[3];
+                                        $newProccessUser->lastname = $u[4];
+                                        $newProccessUser->lrn = $u[5];
+                                        $newProccessUser->track = $u[6];
+                                        $newProccessUser->email = $u[7];
+                                        $newProccessUser->userType = 2;
+                                        $isSave = $newProccessUser->save();
+                                        if ($isSave) {
+                                            session()->put('successCreateUsersFromFile', true);
+                                        } else {
+                                            session()->put('errorCreateUsersFromFile', true);
+                                            break;
+                                        }
+                                    }
+                                } else {
+                                    continue;
+                                }
+                            }
+
+                            return redirect('/adminusers');
+                        } else {
+                            session()->put('errorUploadFile', true);
+                        }
+                    } catch (Exception $e) {
+
+                        session()->put('errorUploadFile', true);
+                    }
+                } else {
+                    session()->put('errorNotValidFile', true);
+                }
+            }
+
+            return redirect('/adminusers');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

@@ -70,13 +70,12 @@ class SignUpController extends Controller
 
             if ($isSave) {
                 session()->put("successCreate", true);
+                if ($request->btnSignup == "admin") {
+                    return redirect("/adminusers");
+                }
                 return redirect("/");
             }
             session()->put("errorCreate", true);
-
-            if ($request->btnSignup != "yes") {
-                return redirect("/adminusers");
-            }
             return redirect("/");
         } else if ($request->btnSignUpSuper) {
 

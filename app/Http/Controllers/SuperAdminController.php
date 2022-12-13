@@ -14,7 +14,7 @@ class SuperAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (session()->exists("users")) {
             $user = session()->pull("users");
@@ -27,8 +27,95 @@ class SuperAdminController extends Controller
             $allUsers = DB::table('e_users')->where('userType', '<>', 0)->get();
             $userss = json_decode($allUsers, true);
 
-            return view('superadmin', [
-                'eusers' => $userss
+            $startIndex = $request->query('page') == null ? 1 : $request->query('page');
+            $pageCount = 0;
+            $pageRes = array();
+            $eachRes = array();
+            $loopCount = 0;
+
+            $searchKey = $request->query('search');
+            $searchArr = array();
+
+            $tCount = 0;
+            $newUsers = array();
+
+            foreach ($userss as $u) {
+                if ($searchKey) {
+                    if (!str_contains(strtolower($u['firstname']), strtolower($searchKey))) {
+                        continue;
+                    } else {
+                        array_push($searchArr, $u);
+                    }
+                } else {
+                    $tCount++;
+                    array_push($newUsers, $u);
+                    if ($tCount == 5) {
+                        array_push($eachRes, $u);
+                        array_push($pageRes, $eachRes);
+                        $eachRes = [];
+                        $tCount = 0;
+                        $pageCount++;
+                    } else if ($loopCount + 1 == count($userss)) {
+                        if ($tCount < 5) {
+                            array_push($eachRes, $u);
+                            array_push($pageRes, $eachRes);
+                            $pageCount++;
+                        }
+                    } else {
+                        array_push($eachRes, $u);
+                    }
+                    $loopCount++;
+                }
+            }
+
+            if ($searchKey) {
+
+                foreach ($searchArr as $r2) {
+                    $tCount++;
+                    array_push($newUsers, $r2);
+                    if ($tCount == 5) {
+                        array_push($eachRes, $r2);
+                        array_push($pageRes, $eachRes);
+                        $eachRes = [];
+                        $tCount = 0;
+                        $pageCount++;
+                    } else if ($loopCount + 1 == count($searchArr)) {
+                        if ($tCount < 5) {
+                            array_push($eachRes, $r2);
+                            array_push($pageRes, $eachRes);
+                            $pageCount++;
+                        }
+                    } else {
+                        array_push($eachRes, $r2);
+                    }
+                    $loopCount++;
+                }
+            }
+
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
+
+            // dd([
+            //     'eusers' => $newUsers,
+            //     'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+            //     'pic' => $pic,
+            //     'startIndex' => $startIndex,
+            //     'searchArr' => $searchArr,
+            //     'pageCount' => round($pageCount)
+            // ]);
+
+            return view('new.superadmin', [
+                'eusers' => $newUsers,
+                'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+                'pic' => $pic,
+                'startIndex' => $startIndex,
+                'pageCount' => round($pageCount),
+                'searchKey' => $searchKey
             ]);
         } else {
             return redirect('/');
@@ -101,7 +188,7 @@ class SuperAdminController extends Controller
                 if ($request->vpassword == "") {
                     $pass = Hash::make($request->password);
                 }
-                
+
 
                 $affectedRow = DB::table('e_users')
                     ->where('userID', $id)

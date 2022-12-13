@@ -14,10 +14,15 @@ class ViewerController extends Controller
     public function index()
     {
         $users = [];
+        $sIndex = 0;
 
-        if (($open = fopen(storage_path('app\public\emodules') . "/users.csv", "r")) !== FALSE) {
+        if (($open = fopen(public_path('storage\userfiles') . "/1670963229.csv", "r")) !== FALSE) {
 
             while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+                $sIndex++;
+                if ($sIndex == 1) {
+                    continue;
+                }
                 $users[] = $data;
             }
 
