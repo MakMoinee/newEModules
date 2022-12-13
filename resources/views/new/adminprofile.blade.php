@@ -33,7 +33,6 @@
     <script type="text/javascript" async="" src="/Dashboard_files/fbevents.js.download"></script>
     <script type="text/javascript" async="" src="/Dashboard_files/analytics.js.download"></script>
     <script async="" src="/Dashboard_files/gtm.js.download"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -51,6 +50,7 @@
         })(window, document, 'script', 'dataLayer', 'GTM-KX4JH47');
     </script>
     <link href="/Dashboard_files/coreui-chartjs.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -73,15 +73,19 @@
                         <div class="simplebar-content-wrapper" tabindex="0" role="region"
                             aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
                             <div class="simplebar-content" style="padding: 0px;">
-                                {{-- <li class="nav-item"><a class="nav-link active"
-                                        href="https://coreui.io/demos/bootstrap/4.2/free/index.html">
-                                        <svg class="nav-icon">
-                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
-                                        </svg> Home</a> --}}
-                                {{-- <span class="badge badge-sm bg-info ms-auto">NEW</span> --}}
-                                {{-- </li> --}}
-                                <li class="nav-title">Strands</li>
-                                <li class="nav-item"><a class="nav-link" href="/course?category=CORE">
+                                <li class="nav-item"><a class="nav-link" href="/">
+                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-speedometer2"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                                            <path fill-rule="evenodd"
+                                                d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+                                        </svg>Dashboard</a>
+                                    {{-- <span class="badge badge-sm bg-info ms-auto">NEW</span> --}}
+                                </li>
+                                <li class="nav-title">Strand Mgt.</li>
+                                <li class="nav-item"><a class="nav-link" href="/adminstrands">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-journal-text"
                                             viewBox="0 0 16 16">
@@ -93,30 +97,34 @@
                                                 d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                         </svg> Subjects</a></li>
                                 <li class="nav-title">Others</li>
-                                <li class="nav-item"><a class="nav-link" href="/studentannounce" target="_top">
+                                <li class="nav-item"><a class="nav-link" href="/announcements" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-megaphone"
                                             viewBox="0 0 16 16">
                                             <path
                                                 d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49a68.14 68.14 0 0 0-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 74.663 74.663 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199V2.5zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0zm-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233c.18.01.359.022.537.036 2.568.189 5.093.744 7.463 1.993V3.85zm-9 6.215v-4.13a95.09 95.09 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A60.49 60.49 0 0 1 4 10.065zm-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68.019 68.019 0 0 0-1.722-.082z" />
                                         </svg> Announcements</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="/about" target="_top">
+                                <li class="nav-item"><a class="nav-link" href="/adminusers" target="_top">
+                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-people"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+                                        </svg> Users</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/reports" target="_top">
+                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-graph-down"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z" />
+                                        </svg> Reports</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/about" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-file-earmark-person-fill"
                                             viewBox="0 0 16 16">
                                             <path
                                                 d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z" />
                                         </svg> About</a></li>
-
-                                <li class="nav-item"><a class="nav-link" href="/contactus" target="_top">
-                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-chat-left-dots"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                            <path
-                                                d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg> Contact US</a></li>
                             </div>
                         </div>
                     </div>
@@ -216,7 +224,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>About</span>
+                            <span>Profile</span>
                         </li>
                     </ol>
                 </nav>
@@ -225,42 +233,67 @@
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="mdiv-left"
+                        style="width: 30%; height: 500px; padding-top: 40px;background-color: #d5d5d5">
                         <center>
-                            <h1 style="margin-left: -150px;">About US</h1>
+                            @if ($pic == '')
+                                <img src="/images/user.png" alt="hugenerd" class="avatar-img img-responsive"
+                                    style="width: 86px !important; height: 86px !important;">
+                            @else
+                                <img src="/storage/profiles/{{ $pic }}" alt="hugenerd" class="avatar-img"
+                                    style="width: 86px !important; height: 86px !important;">
+                            @endif
+
+                            <br>
+                            <br>
+                            <a href="#" data-coreui-toggle="modal"
+                                data-coreui-target="#uploadProfileModal">Edit Avatar</a>
+                            <br>
+                            <h4>{{ $user['lastname'] }}, {{ $user['firstname'] }} {{ $user['middlename'] }}</h4>
                         </center>
                     </div>
-                </div>
-                <br>
-                <div class="col-md-12">
-                    <div class="card mb-4" style="background: #f9efa8;">
-                        <div class="card-body">
-                            <div class="row">
-                                <h5 class="card-title">Mission</h5>
-                                <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
-                                    environmental, skillful,
-                                    and intellectual learner.
-                                </p>
+                    <div class="mdiv-right" style="width:70%;height: 500px;padding-top: 40px;background-color: white">
+                        <h1 style="margin-left: 20px;">Hi {{ $user['firstname'] }}</h1>
+
+                        <form action="/profile" method="post" style="margin-left: 20px;" autocomplete="off">
+                            @csrf
+                            <div class="form-group">
+                                <label for="First Name" class="for">First Name</label>
+                                <label for="Middle Name" class="for" style="margin-left: 150px;">Middle
+                                    Name</label>
+                                <label for="Last Name" class="for" style="margin-left: 150px;">Last Name</label>
+                                <br>
+                                <input required type="text" name="firstname" id="" class="form-group"
+                                    value="{{ $user['firstname'] }}">
+                                <input required type="text" name="middlename" id="" class="form-group"
+                                    style="margin-left: 39px;" value="{{ $user['middlename'] }}">
+                                <input required type="text" name="lastname" id="" class="form-group"
+                                    style="margin-left: 55px;" value="{{ $user['lastname'] }}">
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label required for="Email" class="for">Email</label>
+                                <br>
+                                <input required type="email" name="email" id=""
+                                    value="{{ $user['email'] }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="for">Password</label>
+                                <label for="repassword" class="for" style="margin-left: 160px;">Confirm
+                                    Password</label>
+                                <br>
+                                <input disabled readonly type="password" name="password" id="password"
+                                    value="{{ $user['password'] }}" style="cursor: no-drop;">
+                                <input required type="password" name="repassword" id="repassword"
+                                    style="margin-left: 39px;">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="uid" value="{{ $user['userID'] }}">
+                                <button type="submit" class="btn btn-primary" style="background-color: #f55858"
+                                    name="btnUpdate" value="true">Update Profile</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <br>
-                <div class="col-md-12">
-                    <div class="card mb-4" style="background: #f9efa8;">
-                        <div class="card-body">
-                            <div class="row">
-                                <h5 class="card-title">Vision</h5>
-                                <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
-                                    the light of Christ through a
-                                    well-rounded educational program and holistic learning experience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
 
             </div>
         </div>
@@ -279,6 +312,41 @@
     <script src="/Dashboard_files/coreui-utils.js.download"></script>
     <script src="/Dashboard_files/main.js.download"></script>
     <script></script>
+    <div class="modal fade" id="uploadProfileModal" tabindex="-1" role="dialog"
+        aria-labelledby="uploadProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ route('userprofiles.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <br>
+                            <br>
+                            <div class="form-group" style="margin-left: 33px;">
+                                <label for="file" class="for"><b>Add Profile Picture</b></label>
+                                <br>
+                                @if ($pic == '')
+                                    <img style="margin-top: 20px;" src="/images/user.png" id="profilePic2"
+                                        alt="" srcset="" width="200px" height="200px">
+                                @else
+                                    <img style="margin-top: 20px;" src="/storage/profiles/{{ $pic }}"
+                                        id="profilePic2" alt="" srcset="" width="200px"
+                                        height="200px">
+                                @endif
+                                <br>
+                                <input type="file" name="files" id="" accept=".jpg, .png, .jpeg"
+                                    onchange="readURL(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border:none;">
+                        <button type="submit" class="btn btn-primary">Yes, Proceed</button>
+                        <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -295,20 +363,6 @@
             </div>
         </div>
     </div>
-    @if (session()->pull('successLogin'))
-        <script>
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Successfully Login',
-                    showConfirmButton: false,
-                    timer: 500
-                });
-            }, 1500);
-        </script>
-        {{ session()->forget('successLogin') }}
-    @endif
     <div>
         <button class="btn btn-primary" id="btnToast" style="visibility: hidden" onclick="clickToast()"></button>
     </div>
@@ -334,7 +388,62 @@
             const toast = new coreui.Toast(toastLiveExample);
             toast.show();
         }
+        var password = document.getElementById("password"),
+            confirm_password = document.getElementById("repassword");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // $('.image-upload-wrap').hide();
+                    let profilePic = document.getElementById('profilePic2');
+
+                    profilePic.setAttribute("src", e.target.result);
+                    // $('.file-upload-content').show();
+
+                    // $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            let profilePic = document.getElementById('profilePic2');
+            profilePic.setAttribute("src", '/storage/images/user.png');
+        }
     </script>
+    @if (session()->pull('successLogin'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Login',
+                    showConfirmButton: false,
+                    timer: 500
+                });
+            }, 1500);
+        </script>
+        {{ session()->forget('successLogin') }}
+    @endif
 </body>
 
 </html>

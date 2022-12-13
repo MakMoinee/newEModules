@@ -73,7 +73,7 @@
                         <div class="simplebar-content-wrapper" tabindex="0" role="region"
                             aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
                             <div class="simplebar-content" style="padding: 0px;">
-                                <li class="nav-item"><a class="nav-link active" href="/">
+                                <li class="nav-item"><a class="nav-link" href="/">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-speedometer2"
                                             viewBox="0 0 16 16">
@@ -85,7 +85,7 @@
                                     {{-- <span class="badge badge-sm bg-info ms-auto">NEW</span> --}}
                                 </li>
                                 <li class="nav-title">Strand Mgt.</li>
-                                <li class="nav-item"><a class="nav-link" href="/adminstrands">
+                                <li class="nav-item"><a class="nav-link active" href="/adminstrands">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-journal-text"
                                             viewBox="0 0 16 16">
@@ -224,7 +224,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>Home</span>
+                            <span>Subjects</span>
                         </li>
                     </ol>
                 </nav>
@@ -232,76 +232,179 @@
         </header>
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
-
-
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-4">
+                            <div class="card-header">
+                                <a href="/adminstrands" class="btn btn-success" style="margin-right: 10px;">Go
+                                    Back</a>
+                                <button class="btn btn-primary" data-coreui-toggle="modal"
+                                    data-coreui-target="#addModuleModal">Add
+                                    E-Module</button>
+                            </div>
+                            <div class="card-header">
+                                <form action="/modules/{{ $id }}" method="get">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Search E Module"
+                                            aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                            name="search">
+                                        <button type="submit" class="input-group-text"
+                                            id="basic-addon2">Search</button>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="border-start border-start-4 border-start-info px-3 mb-3">
-                                            <small class="text-medium-emphasis">Total Users</small>
-                                            <div class="fs-5 fw-semibold">{{ $totalUsers }}</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <div class="border-start border-start-4 border-start-danger px-3 mb-3">
-                                            <small class="text-medium-emphasis">Total New Users</small>
-                                            <div class="fs-5 fw-semibold">{{ $totalNewUsers }}</div>
-                                        </div>
-                                    </div>
-
-                                </div>
                                 <br>
                                 <div class="table-responsive">
                                     <table class="table border mb-0">
                                         <thead class="table-light fw-semibold">
                                             <tr class="align-middle">
-                                                <th class="text-center">
-                                                    <svg class="icon">
-                                                        <use
-                                                            xlink:href="vendors/@coreui/icons/svg/free.svg#cil-people">
-                                                        </use>
-                                                    </svg>
+                                                <th>
+                                                    E Module ID
                                                 </th>
-                                                <th>User</th>
-                                                <th class="text-center">Academic Track</th>
-                                                <th></th>
+                                                <th>
+                                                    E Module Description
+                                                </th>
+                                                <th>
+                                                    Sequence
+                                                </th>
+                                                <th>
+                                                    E Module File
+                                                </th>
+                                                <th>
+                                                    Action
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($pageRes as $item)
+                                            @foreach ($pageRes as $e)
                                                 <tr>
-                                                    <td class="text-center">
-                                                        @foreach ($allPics as $ppics)
-                                                            @if ($ppics['userID'] == $item['userID'])
-                                                                <div class="avatar avatar-md"><img class="avatar-img"
-                                                                        src="/storage/profiles/{{ $ppics['filePath'] }}"
-                                                                        alt="user@email.com"><span
-                                                                        class="avatar-status bg-success"></span></div>
-                                                            @endif
-                                                        @endforeach
+                                                    <td>
+                                                        {{ $e['moduleID'] }}
                                                     </td>
                                                     <td>
-                                                        <div>
-                                                            {{ $item['firstname'] . ' ' . $item['middlename'] . ' ' . $item['lastname'] }}
-                                                        </div>
-                                                        <div class="small text-medium-emphasis">
-                                                            {{-- <span>New</span> | --}}
-                                                            Registered:
-                                                            {{ date('M d,Y', strtotime($item['created_at'])) }}
-                                                        </div>
+                                                        {{ $e['description'] }}
                                                     </td>
-                                                    <td class="text-center">
-                                                        {{ $item['track'] }}
+                                                    <td>
+                                                        {{ $e['sequence'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $e['filePath'] }}
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-success" data-coreui-toggle="modal"
+                                                            data-coreui-target="#viewModuleModal{{ $e['moduleID'] }}"
+                                                            style="color: white;">View/Edit</button>
+                                                        <div class="modal fade "
+                                                            id="viewModuleModal{{ $e['moduleID'] }}" tabindex="-1"
+                                                            role="dialog"
+                                                            aria-labelledby="viewModuleModalLabel{{ $e['moduleID'] }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="viewModuleModalLabel{{ $e['moduleID'] }}">
+                                                                            View/Edit
+                                                                            E-Module</h5>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <form
+                                                                                action="{{ route('modules.update', ['module' => $e['moduleID']]) }}"
+                                                                                method="POST"
+                                                                                enctype="multipart/form-data"
+                                                                                autocomplete="off">
+                                                                                @method('put')
+                                                                                @csrf
+                                                                                <div class="form-group">
+                                                                                    <input required type="text"
+                                                                                        style="width:350px;margin-left: 35px;margin-bottom: 10px;"
+                                                                                        name="description"
+                                                                                        id="un"
+                                                                                        placeholder="E Module Description"
+                                                                                        value="{{ $e['description'] }}">
+                                                                                </div>
+                                                                                <div class="form-group"
+                                                                                    style="margin-left: 35px;margin-bottom: 10px;">
+                                                                                    <input required type="number"
+                                                                                        name="sequence" id=""
+                                                                                        placeholder="Sequence Number"
+                                                                                        value="{{ $e['sequence'] }}">
+                                                                                </div>
+                                                                                <div class="form-group"
+                                                                                    style="margin-left: 35px;margin-bottom: 10px;">
+                                                                                    <label for="emodule"
+                                                                                        class="emodule"><b>E
+                                                                                            Module Docs</b></label>
+                                                                                    <br>
+                                                                                    <input type="file"
+                                                                                        name="files" id=""
+                                                                                        accept=".pdf, .docx, .xlsx">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <input type="hidden"
+                                                                                        name="tid"
+                                                                                        value="{{ $id }}">
+                                                                                    <input type="hidden"
+                                                                                        name="formType"
+                                                                                        value="upload">
+                                                                                </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-coreui-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            style="background-color: #ff589e"
+                                                                            name="btnUpdate"
+                                                                            value="{{ $e['moduleID'] }}">Update
+                                                                            E-Module</button>
+                                                                    </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-danger" data-coreui-toggle="modal"
+                                                            data-coreui-target="#deleteModuleModal{{ $e['moduleID'] }}"
+                                                            style="color: white;">Delete</button>
+                                                        <div class="modal fade"
+                                                            id="deleteModuleModal{{ $e['moduleID'] }}" tabindex="-1"
+                                                            role="dialog" aria-labelledby="deleteModuleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <form
+                                                                        action="{{ route('modules.destroy', ['module' => $e['moduleID']]) }}"
+                                                                        method="POST">
+                                                                        @method('delete')
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <h5 class="modal-title"
+                                                                                id="deleteModuleModalLabel{{ $e['moduleID'] }}">
+                                                                                Do
+                                                                                you want to delete this e module record
+                                                                                ?</h5>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary"
+                                                                                name="btnDelete"
+                                                                                value="{{ $id }}">Yes,
+                                                                                Proceed</button>
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -312,7 +415,7 @@
                                         @if ($startIndex > 1)
                                             <li class="page-item">
                                                 <a class="page-link"
-                                                    href="/admin?page={{ $startIndex - 1 }}">Previous</a>
+                                                    href="/modules/{{ $id }}?page={{ $startIndex - 1 }}">Previous</a>
                                             </li>
                                         @else
                                             <li class="page-item disabled">
@@ -323,18 +426,19 @@
                                         @for ($i = 0; $i < $pageCount; $i++)
                                             {{-- @if ($startIndex == 5) --}}
                                             @if ($startIndex == $i + 1)
-                                                <li class="page-item active"><a class="page-link"
-                                                        href="#">{{ $i + 1 }}</a></li>
+                                                <li class="page-item active"><a class="page-link" href="#"
+                                                        style="background-color: #ff589e !important;">{{ $i + 1 }}</a>
+                                                </li>
                                             @else
                                                 <li class="page-item"><a class="page-link"
-                                                        href="/admin?page={{ $i + 1 }}">{{ $i + 1 }}</a>
+                                                        href="/modules/{{ $id }}?page={{ $i + 1 }}">{{ $i + 1 }}</a>
                                                 </li>
                                             @endif
 
 
                                             {{-- @endif --}}
                                         @endfor
-                                        @if (count($allUsers) == 0)
+                                        @if (count($emodules) == 0)
                                             <li class="page-item disabled">
                                                 <a class="page-link" href="#">Next</a>
                                             </li>
@@ -346,7 +450,7 @@
                                             @else
                                                 <li class="page-item">
                                                     <a class="page-link"
-                                                        href="/admin?page={{ $startIndex + 1 }}">Next</a>
+                                                        href="/adminstrands?page={{ $startIndex + 1 }}">Next</a>
                                                 </li>
                                             @endif
 
@@ -358,7 +462,6 @@
                     </div>
 
                 </div>
-
             </div>
         </div>
         <footer class="footer">
@@ -376,6 +479,52 @@
     <script src="/Dashboard_files/coreui-utils.js.download"></script>
     <script src="/Dashboard_files/main.js.download"></script>
     <script></script>
+    <div class="modal fade " id="addModuleModal" tabindex="-1" role="dialog"
+        aria-labelledby="addModuleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModuleModalLabel">Add E-Module</h5>
+                    <button type="button" style="border:none;" class="close" data-coreui-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form action="{{ route('modules.store') }}?id={{ $id }}" method="POST"
+                            enctype="multipart/form-data" autocomplete="off">
+                            @csrf
+                            <div class="form-group">
+                                <input required type="text" style="width:350px;margin-left: 35px;"
+                                    name="description" id="un" placeholder="E Module Description">
+                            </div>
+                            <div class="form-group" style="margin-left: 35px;">
+                                <input required type="number" name="sequence" id=""
+                                    placeholder="Sequence Number">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="tid" value="{{ $id }}">
+                                <input type="hidden" name="formType" value="upload">
+                                <input type="hidden" name="title" value="{{ $title }}">
+                            </div>
+                            <div class="form-group" style="margin-left: 35px">
+                                <label for="emodule" class="emodule"><b>E
+                                        Module Docs</b></label>
+                                <br>
+                                <input type="file" name="files" id="" accept=".pdf">
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #ff589e" name="btnAdd"
+                        value="true">Add E-Module</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -418,19 +567,131 @@
             toast.show();
         }
     </script>
-    @if (session()->pull('successLogin'))
+    @if (session()->pull('successUpdateEModule'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Login',
+                    title: 'Successfully Updated E Module',
                     showConfirmButton: false,
-                    timer: 500
+                    timer: 1300
                 });
             }, 1500);
-        </script>
-        {{ session()->forget('successLogin') }}
+        </script>;
+        {{ session()->forget('successUpdateEModule') }}
+    @endif
+    @if (session()->pull('successDeleteModule'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Deleted E Module',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('successDeleteModule') }}
+    @endif
+    @if (session()->pull('successAddEModule'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Added E Module',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('successAddEModule') }}
+    @endif
+    @if (session()->pull('errorMimeTypeNotValid'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'File not valid, Please try valid file',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorMimeTypeNotValid') }}
+    @endif
+    @if (session()->pull('errorDeleteModule'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed to delete e module, Please Try Again!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorDeleteModule') }}
+    @endif
+    @if (session()->pull('errorUpdateEModule'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed to update e module, Please Try Again!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorUpdateEModule') }}
+    @endif
+    @if (session()->pull('errorAddEModule'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed to add e module, Please Try Again!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorAddEModule') }}
+    @endif
+    @if (session()->pull('errorFileNotValid'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'File Not Valid, Please Try Again!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorFileNotValid') }}
+    @endif
+    @if (session()->pull('errorExistingSequence'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed to add module, Existing Sequence, Please Try Again!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorExistingSequence') }}
     @endif
 </body>
 

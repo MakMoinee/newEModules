@@ -18,9 +18,26 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        @media screen and (max-width: 600px) {
+            #header {
+                padding-top: 70px !important;
+            }
+
+            #logoText {
+                padding-top: 10px !important;
+                line-height: 20px !important;
+            }
+
+            #ribbon {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body style="background: #ff00e1">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -43,7 +60,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
 
-                        <a href="/" class="logo">MERR-C Society Academy</a>
+                        <a href="/" class="logo" id="logoText">MERR-C Society Academy</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -51,8 +68,8 @@
                             <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
-                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
-                                    data-target="#signUpModal">Signup</a></li>
+                            {{-- <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
+                                    data-target="#signUpModal">Signup</a></li> --}}
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -70,20 +87,20 @@
     <div class="welcome-area" id="welcome">
 
         <!-- ***** Header Text Start ***** -->
-        <div class="header-text">
+        <div class="header-text header-sticky" id="header">
             <div class="container">
                 <div class="row">
                     <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h1>MERR-C Society Academy </h1>
                         <p>High quality education for all Junior and Senior High School</p>
-                        <a href="/about" class="main-button-slider" data-toggle="modal"
-                            data-target="#signUpModal">Signup</a>
+                        {{-- <a href="/about" class="main-button-slider" data-toggle="modal"
+                            data-target="#signUpModal">Signup</a> --}}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                         <img src="images/ribbon.png" class="rounded img-fluid d-block mx-auto img-responsive"
-                            alt="First Vector Graphic">
+                            alt="First Vector Graphic" style="margin-left: 50px !important" id="ribbon">
                     </div>
                 </div>
             </div>

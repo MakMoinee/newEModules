@@ -91,7 +91,7 @@
                                                 d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
                                             <path
                                                 d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
-                                        </svg> Modules</a></li>
+                                        </svg> Subjects</a></li>
                                 <li class="nav-title">Others</li>
                                 <li class="nav-item"><a class="nav-link" href="/studentannounce" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
@@ -100,15 +100,6 @@
                                             <path
                                                 d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49a68.14 68.14 0 0 0-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 74.663 74.663 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199V2.5zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0zm-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233c.18.01.359.022.537.036 2.568.189 5.093.744 7.463 1.993V3.85zm-9 6.215v-4.13a95.09 95.09 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A60.49 60.49 0 0 1 4 10.065zm-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68.019 68.019 0 0 0-1.722-.082z" />
                                         </svg> Announcements</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/chats" target="_top">
-                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-chat-left-dots"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                            <path
-                                                d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg> Contact Admin</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/about" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-file-earmark-person-fill"
@@ -116,6 +107,16 @@
                                             <path
                                                 d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z" />
                                         </svg> About</a></li>
+
+                                <li class="nav-item"><a class="nav-link" href="/contactus" target="_top">
+                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-chat-left-dots"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                            <path
+                                                d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg> Contact US</a></li>
                             </div>
                         </div>
                     </div>
@@ -215,7 +216,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>Modules</span>
+                            <span>Subjects</span>
                         </li>
                     </ol>
                 </nav>
@@ -273,17 +274,29 @@
                                     @if ($category == 'SPECIALIZED')
                                         <li class="nav-item active" style="display: inline-block;margin-left: 10px;">
                                             <a class="nav-link" href="/course?category=SPECIALIZED"><b>SPECIALIZED
-                                                    GAS</b>
+                                                    {{ $track }}</b>
                                             </a>
                                         </li>
                                     @else
                                         <li class="nav-item " style="display: inline-block;margin-left: 10px;">
                                             <a class="nav-link" href="/course?category=SPECIALIZED">SPECIALIZED
-                                                GAS
+                                                {{ $track }}
                                             </a>
                                         </li>
                                     @endif
                                 </ul>
+                            </div>
+                            <div class="card-header">
+                                <form action="/course" method="get">
+                                    <div class="input-group mb-3">
+                                        <input type="hidden" name="category" value="{{ $category }}">
+                                        <input type="text" class="form-control" placeholder="Search Subject"
+                                            aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                            name="search">
+                                        <button type="submit" class="input-group-text"
+                                            id="basic-addon2">Search</button>
+                                    </div>
+                                </form>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -298,7 +311,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($trackRes as $tr)
+                                                @foreach ($pageRes as $tr)
                                                     <tr>
                                                         <td>{{ $tr['description'] }}
                                                             <button style="float: right;" class="btn btn-btn-primary"
@@ -343,11 +356,12 @@
                                                                                         class="for">E
                                                                                         Modules:</label>
                                                                                     <div class="card">
-                                                                                        <div class="card-body"
-                                                                                            style="margin-left: -45px;">
-                                                                                            @foreach ($moduleHelper as $mh)
-                                                                                                @if ($mh['trackID'] == $tr['trackID'])
-                                                                                                    @if ($mh['isAvailable'])
+
+                                                                                        @foreach ($moduleHelper as $mh)
+                                                                                            @if ($mh['trackID'] == $tr['trackID'])
+                                                                                                @if ($mh['isAvailable'])
+                                                                                                    <div class="card-body"
+                                                                                                        style="margin-left: -45px;">
                                                                                                         @foreach ($emodules as $em)
                                                                                                             <ul
                                                                                                                 style="list-style-type: none">
@@ -361,52 +375,103 @@
                                                                                                             </ul>
                                                                                                         @endforeach
                                                                                                     @else
-                                                                                                        There are no
-                                                                                                        available e
-                                                                                                        modules.
-                                                                                                    @endif
+                                                                                                        <div
+                                                                                                            class="card-body">
+                                                                                                            <p> There
+                                                                                                                are no
+                                                                                                                available
+                                                                                                                e
+                                                                                                                modules.
+                                                                                                            </p>
                                                                                                 @endif
-                                                                                            @endforeach
+                                                                                            @endif
+                                                                                        @endforeach
 
-                                                                                        </div>
                                                                                     </div>
-
                                                                                 </div>
+
                                                                             </div>
-                                                                            <div class="modal-footer">
-                                                                                {{-- <button type="submit"
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        {{-- <button type="submit"
                                                                                     class="btn btn-primary">Yes,
                                                                                     Proceed</button> --}}
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-coreui-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </form>
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-coreui-dismiss="modal">Close</button>
                                                                     </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
                                     </div>
+                                    </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                    </table>
                                 </div>
                             </div>
-
-
                         </div>
-                    </div>
+                        <div class="card-footer">
+                            <nav aria-label="...">
+                                <ul class="pagination">
+                                    @if ($startIndex > 1)
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                                href="/course?category={{ $category }}&page={{ $startIndex - 1 }}">Previous</a>
+                                        </li>
+                                    @else
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Previous</a>
+                                        </li>
+                                    @endif
 
+                                    @for ($i = 0; $i < $pageCount; $i++)
+                                        {{-- @if ($startIndex == 5) --}}
+                                        @if ($startIndex == $i + 1)
+                                            <li class="page-item active"><a class="page-link"
+                                                    href="#">{{ $i + 1 }}</a></li>
+                                        @else
+                                            <li class="page-item"><a class="page-link"
+                                                    href="/course?category={{ $category }}&page={{ $i + 1 }}">{{ $i + 1 }}</a>
+                                            </li>
+                                        @endif
+
+
+                                        {{-- @endif --}}
+                                    @endfor
+                                    @if (count($trackRes) == 0)
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    @else
+                                        @if ($pageCount - $startIndex <= 0)
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">Next</a>
+                                            </li>
+                                        @else
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                    href="/course?category={{ $category }}&page={{ $startIndex + 1 }}">Next</a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
+
         </div>
-        <footer class="footer">
-            <div><a href="https://coreui.io/">CoreUI </a><a href="https://coreui.io/">Bootstrap Admin Template</a> ©
-                2022 creativeLabs.</div>
-            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
-        </footer>
+    </div>
+    <footer class="footer">
+        <div><a href="https://coreui.io/">CoreUI </a><a href="https://coreui.io/">Bootstrap Admin Template</a> ©
+            2022 creativeLabs.</div>
+        <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
+    </footer>
     </div>
 
     <script src="/Dashboard_files/coreui.bundle.min.js.download"></script>

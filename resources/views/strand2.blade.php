@@ -94,7 +94,7 @@
                                         class="ms-1 d-none d-sm-inline">Notifications</span></a>
                             </li>
                             <li>
-                                <a href="/chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                <a href="/contactus" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
                                         class="ms-1 d-none d-sm-inline">Chat</span></a>
@@ -150,7 +150,7 @@
                                             </a>
                                         </div>
                                         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                                            <a href="/chats">
+                                            <a href="/contactus">
                                                 <div class="card">
                                                     <div class="card-body p-3">
                                                         <div class="row">

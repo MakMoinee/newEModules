@@ -34,9 +34,10 @@ class AboutController extends Controller
             }
 
             if ($user[0]['userType'] == 1) {
-                return view('adminabout', [
+                return view('new.adminabout', [
                     'track' => $user[0]['track'],
-                    'nem' => $user[0]['username']
+                    'nem' => $user[0]['username'],
+                    'pic' => $pic
                 ]);
             }
         } else {

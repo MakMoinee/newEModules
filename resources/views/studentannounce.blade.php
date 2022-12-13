@@ -106,7 +106,7 @@
                                         class="ms-1 d-none d-sm-inline">Notifications</span></a>
                             </li>
                             <li>
-                                <a href="/chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
+                                <a href="/contactus" data-bs-toggle="collapse" class="nav-link px-0 align-middle "
                                     style="color:whitesmoke">
                                     <i class="fs-4 bi-bootstrap" style="color:whitesmoke"></i> <span
                                         class="ms-1 d-none d-sm-inline">Chat</span></a>

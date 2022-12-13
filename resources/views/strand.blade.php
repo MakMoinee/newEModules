@@ -51,12 +51,10 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/">Home</a></li>
                             <li class="scroll-to-section"><a href="/about">About</a></li>
-                            <li class="scroll-to-section "><a style="color:#f55858 !important; "
+                            <li class="scroll-to-section "><a style="color:black !important; "
                                     href="#services">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
-                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
-                                    data-target="#signUpModal">Signup</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

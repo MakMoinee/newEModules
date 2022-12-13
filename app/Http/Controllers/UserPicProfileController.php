@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserPicProfile;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserPicProfileController extends Controller
 {
@@ -40,9 +41,10 @@ class UserPicProfileController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 2) {
+            if ($user[0]['userType'] == 0) {
                 return redirect('/');
             }
+
 
 
             $uid = $user[0]['userID'];
@@ -53,16 +55,31 @@ class UserPicProfileController extends Controller
                 if ($mimetype == "image/jpg" || $mimetype == "image/png" || $mimetype == "image/jpeg") {
                     $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/storage/profiles';
                     try {
-                        $fileName = $request->description . "" . date('ymd', strtotime(now())) . "." . $file->getClientOriginalExtension();
+                        $fileName = $request->description . "" .  strtotime(now()) . "." . $file->getClientOriginalExtension();
                         $isFile = $file->move($destinationPath,  $fileName);
-                        $newPic = new UserPicProfile();
-                        $newPic->userID =  $uid;
-                        $newPic->filePath = $fileName;
-                        $isSave = $newPic->save();
-                        if ($isSave) {
-                            session()->put('successUploadPic', true);
-                        }else{
-                            session()->put('errorUploadPic', true);
+
+                        $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+                        $dUser = json_decode($queryResult, true);
+                        if (count($queryResult) > 0) {
+                            $affectedRows = DB::table('user_pic_profiles')->where(['userID' => $dUser[0]['userID']])
+                                ->update([
+                                    'filePath' => $fileName
+                                ]);
+                            if ($affectedRows > 0) {
+                                session()->put('successUploadPic', true);
+                            } else {
+                                session()->put('errorUploadPic', true);
+                            }
+                        } else {
+                            $newPic = new UserPicProfile();
+                            $newPic->userID =  $uid;
+                            $newPic->filePath = $fileName;
+                            $isSave = $newPic->save();
+                            if ($isSave) {
+                                session()->put('successUploadPic', true);
+                            } else {
+                                session()->put('errorUploadPic', true);
+                            }
                         }
                     } catch (Exception $e) {
                         session()->put('errorUploadPic', true);

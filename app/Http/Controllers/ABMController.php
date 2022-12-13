@@ -37,6 +37,18 @@ class ABMController extends Controller
             $trackRes = json_decode($queryResult, true);
             $availableEMod = array();
             $moduleHelper = array();
+            $startIndex = $request->query('page') == null ? 1 : $request->query('page');
+            $pageCount = 0;
+            $pageRes = array();
+            $eachRes = array();
+            $loopCount = 0;
+
+            $searchKey = $request->query('search');
+            $searchArr = array();
+            $newTracks = array();
+
+            $tCount = 0;
+
             foreach ($trackRes as $tr) {
                 $queryResult2 = DB::table('modules')
                     ->where(['trackID' => $tr['trackID']])
@@ -55,15 +67,59 @@ class ABMController extends Controller
                 array_push($moduleHelper, $tmpMod);
             }
 
-            // dd([
-            //     'track' => $user[0]['track'],
-            //     'user' => $user[0]['username'],
-            //     'trackRes' => $trackRes,
-            //     'category' => $request['category'],
-            //     'moduleHelper' => $moduleHelper,
-            //     'emodules' => $availableEMod,
-            //     'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/'
-            // ]);
+            foreach ($trackRes as $tr) {
+                if ($searchKey) {
+                    if (!str_contains(strtolower($tr['description']), $searchKey)) {
+                        continue;
+                    } else {
+                        array_push($searchArr, $tr);
+                    }
+                } else {
+                    $tCount++;
+                    array_push($newTracks, $tr);
+                    if ($tCount == 5) {
+                        array_push($eachRes, $tr);
+                        array_push($pageRes, $eachRes);
+                        $eachRes = [];
+                        $tCount = 0;
+                        $pageCount++;
+                    } else if ($loopCount + 1 == count($trackRes)) {
+                        if ($tCount < 5) {
+                            array_push($eachRes, $tr);
+                            array_push($pageRes, $eachRes);
+                            $pageCount++;
+                        }
+                    } else {
+                        array_push($eachRes, $tr);
+                    }
+                    $loopCount++;
+                }
+            }
+
+            if ($searchKey) {
+
+                foreach ($searchArr as $r2) {
+                    $tCount++;
+                    array_push($newTracks, $r2);
+                    if ($tCount == 5) {
+                        array_push($eachRes, $r2);
+                        array_push($pageRes, $eachRes);
+                        $eachRes = [];
+                        $tCount = 0;
+                        $pageCount++;
+                    } else if ($loopCount + 1 == count($searchArr)) {
+                        if ($tCount < 5) {
+                            array_push($eachRes, $r2);
+                            array_push($pageRes, $eachRes);
+                            $pageCount++;
+                        }
+                    } else {
+                        array_push($eachRes, $r2);
+                    }
+                    $loopCount++;
+                }
+            }
+
 
             $uid = $user[0]['userID'];
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
@@ -73,15 +129,36 @@ class ABMController extends Controller
                 $pic = $profiles[0]['filePath'];
             }
 
+            // dd([
+            //     'track' => $user[0]['track'],
+            //     'user' => $user[0]['username'],
+            //     'trackRes' => $newTracks,
+            //     'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+            //     'category' => $request['category'],
+            //     'moduleHelper' => $moduleHelper,
+            //     'emodules' => $availableEMod,
+            //     'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/',
+            //     'pic' => $pic,
+            //     'startIndex' => $startIndex,
+            //     'pageCount' => round($pageCount)
+            // ]);
+
+
+
+
+
             return view('new.strand2', [
                 'track' => $user[0]['track'],
                 'user' => $user[0]['username'],
-                'trackRes' => $trackRes,
+                'trackRes' => $newTracks,
+                'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
                 'category' => $request['category'],
                 'moduleHelper' => $moduleHelper,
                 'emodules' => $availableEMod,
                 'baseURL' => $_SERVER['DOCUMENT_ROOT'] . '/storage/emodules/',
-                'pic' => $pic
+                'pic' => $pic,
+                'startIndex' => $startIndex,
+                'pageCount' => round($pageCount)
             ]);
         } else {
             if ($request['category'] && $request['strand']) {

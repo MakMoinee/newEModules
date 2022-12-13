@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ViewerController extends Controller
+class ContactUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,18 +14,28 @@ class ViewerController extends Controller
      */
     public function index()
     {
-        $users = [];
-
-        if (($open = fopen(storage_path('app\public\emodules') . "/users.csv", "r")) !== FALSE) {
-
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
-                $users[] = $data;
+        if (session()->exists("users")) {
+            $user = session()->pull("users");
+            session()->put('users', $user);
+            if ($user[0]['userType'] != 2) {
+                return redirect('/');
+            }
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
             }
 
-            fclose($open);
+            return view('new.contactus', [
+                'track' => $user[0]['track'],
+                'user' => $user[0]['username'],
+                'pic' => $pic
+            ]);
+        } else {
+            return redirect('/');
         }
-
-        dd($users);
     }
 
     /**
@@ -54,21 +65,9 @@ class ViewerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($file, Request $request)
+    public function show($id)
     {
-        if (session()->exists("users")) {
-            $user = session()->pull("users");
-            session()->put('users', $user);
-
-            return response()
-                ->view('viewfile', ['mfile' => $file])
-                ->header('X-Frame-Options', 'DENY');
-            // return view('viewfile', [
-            //     'mfile' => $file
-            // ]);
-        } else {
-            return redirect('/');
-        }
+        //
     }
 
     /**

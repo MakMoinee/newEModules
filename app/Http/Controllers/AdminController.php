@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use App\Models\UserPicProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +14,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (session()->exists("users")) {
             $user = session()->pull("users");
@@ -26,7 +27,62 @@ class AdminController extends Controller
             $total = count($nUsers);
             $newUsers = DB::table('vwtotalnewusers')->first();
             $totalNewUsers = $newUsers->TotalNewUsers;
-            return view('admin', ['nem' => $nem, 'totalNewUsers' => $totalNewUsers, 'totalUsers' => $total]);
+
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
+            $allPics = UserPicProfile::all();
+            $allPics = json_decode($allPics, true);
+            $allUsers = DB::table('e_users')->where(['userType' => 2])->get();
+            $allUsers = json_decode($allUsers, true);
+
+            $startIndex = $request->query('page') == null ? 1 : $request->query('page');
+            $pageCount = count($allUsers) / 5;
+            $pageRes = array();
+            $eachRes = array();
+            $loopCount = 0;
+
+            $tCount = 0;
+            foreach ($allUsers as $ur) {
+                $tCount++;
+                if ($tCount == 5) {
+                    array_push($eachRes, $ur);
+                    array_push($pageRes, $eachRes);
+                    $eachRes = [];
+                    $tCount = 0;
+                } else if ($loopCount + 1 == count($allUsers)) {
+                    if ($tCount < 5) {
+                        array_push($eachRes, $ur);
+                        array_push($pageRes, $eachRes);
+                    }
+                } else {
+                    array_push($eachRes, $ur);
+                }
+                $loopCount++;
+            }
+            // dd([
+            //     'nem' => $nem,
+            //     'totalNewUsers' => $totalNewUsers,
+            //     'totalUsers' => $total,
+            //     'allUsers' => $allUsers,
+            //     'allPics' => $allPics,
+            //     'pic' => $pic
+            // ]);
+            return view('new.admin', [
+                'nem' => $nem,
+                'totalNewUsers' => $totalNewUsers,
+                'totalUsers' => $total,
+                'allUsers' => $allUsers,
+                'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+                'allPics' => $allPics,
+                'pic' => $pic,
+                'startIndex' => $startIndex,
+                'pageCount' => $pageCount
+            ]);
         } else {
             return redirect("/");
         }

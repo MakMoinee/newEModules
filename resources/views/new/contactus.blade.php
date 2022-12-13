@@ -100,7 +100,7 @@
                                             <path
                                                 d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49a68.14 68.14 0 0 0-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 74.663 74.663 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199V2.5zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0zm-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233c.18.01.359.022.537.036 2.568.189 5.093.744 7.463 1.993V3.85zm-9 6.215v-4.13a95.09 95.09 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A60.49 60.49 0 0 1 4 10.065zm-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68.019 68.019 0 0 0-1.722-.082z" />
                                         </svg> Announcements</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="/about" target="_top">
+                                <li class="nav-item"><a class="nav-link" href="/about" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-file-earmark-person-fill"
                                             viewBox="0 0 16 16">
@@ -108,7 +108,7 @@
                                                 d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z" />
                                         </svg> About</a></li>
 
-                                <li class="nav-item"><a class="nav-link" href="/contactus" target="_top">
+                                <li class="nav-item"><a class="nav-link active" href="/contactus" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-chat-left-dots"
                                             viewBox="0 0 16 16">
@@ -216,7 +216,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>About</span>
+                            <span>Contact Us</span>
                         </li>
                     </ol>
                 </nav>
@@ -225,43 +225,61 @@
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <center>
-                            <h1 style="margin-left: -150px;">About US</h1>
-                        </center>
-                    </div>
-                </div>
-                <br>
-                <div class="col-md-12">
-                    <div class="card mb-4" style="background: #f9efa8;">
-                        <div class="card-body">
-                            <div class="row">
-                                <h5 class="card-title">Mission</h5>
-                                <p class="card-text" style="color: black">Academy builds a Godly, patriotic,
-                                    environmental, skillful,
-                                    and intellectual learner.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="col-md-12">
-                    <div class="card mb-4" style="background: #f9efa8;">
-                        <div class="card-body">
-                            <div class="row">
-                                <h5 class="card-title">Vision</h5>
-                                <p class="card-text" style="color: black">MERR- C Society Academy as vessel of
-                                    the light of Christ through a
-                                    well-rounded educational program and holistic learning experience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
+                    <div class="col-md-12">
+                        <div class="card mb-4" style="background: #ff00e1">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <center>
+                                            <h1 style="color: white;">Contact US</h1>
+                                        </center>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-4 justify-content-center text-center" style="color: white">
+                                        <img src="/images/phone.png" class="img-responsive" width="46px"
+                                            height="46px" alt="" srcset="" style="margin-left: 20px;">
+                                        <br>
+                                        <h2 style="margin-bottom: 20px;">Phone</h2>
+                                        <h3>(044) 791 2768</h3>
+                                    </div>
+                                    <div class="col-sm-4 justify-content-center text-center" style="color: white">
+                                        <img src="/images/address.png" class="img-responsive" width="36px"
+                                            height="46px" alt="" srcset="" style="margin-left: 10px;">
+                                        <br>
+                                        <h2 style="margin-bottom: 20px;">Address</h2>
+                                        <h3>Villa Rosalinda, 24 de Agosto Street, Malolos, Philippines, 3000</h3>
+                                    </div>
+                                    <div class="col-sm-4 justify-content-center text-center" style="color: white">
+                                        <img src="/images/email.png" class="img-responsive" width="46px"
+                                            height="46px" alt="" srcset="" style="margin-left: 10px;">
+                                        <br>
+                                        <h2 style="margin-bottom: 20px;">Email</h2>
+                                        <h3>msa.500014@gmail.com</h3>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-12 justify-content-center text-center">
+                                        <center>
+                                            <img src="/images/facebook.png" class="img-responsive" width="46px"
+                                                height="46px" alt="" srcset=""
+                                                style="margin-left: 10px;background:white;border-radius: 8px;">
+                                            <h3 style="color: white;"><a
+                                                    href="https://www.facebook.com/profile.php?id=100063760759938"
+                                                    style="display: inline-block;color:white;list-style-type: none;text-decoration: none;margin-top: 15px;">MERR-C
+                                                    Society Academy</a></h3>
+                                        </center>
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
         <footer class="footer">

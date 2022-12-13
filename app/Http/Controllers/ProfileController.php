@@ -23,13 +23,6 @@ class ProfileController extends Controller
         if ($has) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 1) {
-                return redirect("/");
-            }
-            if ($user[0]['userType'] != 2) {
-                return redirect('/');
-            }
-
             $uid = $user[0]['userID'];
 
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
@@ -38,6 +31,14 @@ class ProfileController extends Controller
                 $profiles = json_decode($queryResult, true);
                 $pic = $profiles[0]['filePath'];
             }
+            if ($user[0]['userType'] == 1) {
+                return view('new.adminprofile', ['user' => $user[0], 'pic' => $pic]);
+            }
+            if ($user[0]['userType'] != 2) {
+                return redirect('/');
+            }
+
+
 
             // dd(['query' => $queryResult, 'pic' => $pic]);
 
@@ -69,7 +70,7 @@ class ProfileController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 2) {
+            if ($user[0]['userType'] == 0) {
                 return redirect('/');
             }
 

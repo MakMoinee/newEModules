@@ -29,12 +29,89 @@ class AnnouncementsController extends Controller
             $strandsAvailable = AcademicStrands::all();
             $announce = Announcements::all();
             $announce = count($announce) == 0 ? [] : $announce;
+            $newAnnounce = [];
+            $startIndex = $request->query('page') == null ? 1 : $request->query('page');
+            $pageCount = 0;
+            $pageRes = array();
+            $eachRes = array();
+            $loopCount = 0;
+
+            $searchKey = $request->query('search');
+            $searchArr = array();
+
+            $tCount = 0;
+
+            foreach ($announce as $a) {
+                if ($searchKey) {
+                    if ($a['description'] != $searchKey) {
+                        continue;
+                    } else {
+                        array_push($searchArr, $a);
+                    }
+                } else {
+                    $tCount++;
+                    array_push($newAnnounce, $a);
+                    if ($tCount == 5) {
+                        array_push($eachRes, $a);
+                        array_push($pageRes, $eachRes);
+                        $eachRes = [];
+                        $tCount = 0;
+                        $pageCount++;
+                    } else if ($loopCount + 1 == count($announce)) {
+                        if ($tCount < 5) {
+                            array_push($eachRes, $a);
+                            array_push($pageRes, $eachRes);
+                            $pageCount++;
+                        }
+                    } else {
+                        array_push($eachRes, $a);
+                    }
+                    $loopCount++;
+                }
+            }
+
+            if ($searchKey) {
+
+                foreach ($searchArr as $r2) {
+                    $tCount++;
+                    array_push($newAnnounce, $r2);
+                    if ($tCount == 5) {
+                        array_push($eachRes, $r2);
+                        array_push($pageRes, $eachRes);
+                        $eachRes = [];
+                        $tCount = 0;
+                        $pageCount++;
+                    } else if ($loopCount + 1 == count($searchArr)) {
+                        if ($tCount < 5) {
+                            array_push($eachRes, $r2);
+                            array_push($pageRes, $eachRes);
+                            $pageCount++;
+                        }
+                    } else {
+                        array_push($eachRes, $r2);
+                    }
+                    $loopCount++;
+                }
+            }
+
+            $uid = $user[0]['userID'];
+            $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
+            $pic = "";
+
+            if (count($queryResult) > 0) {
+                $profiles = json_decode($queryResult, true);
+                $pic = $profiles[0]['filePath'];
+            }
             return view(
-                'adminannounce',
+                'new.adminannounce',
                 [
                     'nem' => $nem,
                     'availableStrands' => $strandsAvailable,
-                    'announce' => $announce
+                    'announce' => $announce,
+                    'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+                    'pic' => $pic,
+                    'startIndex' => $startIndex,
+                    'pageCount' => round($pageCount)
                 ]
             );
         } else {
@@ -153,7 +230,7 @@ class AnnouncementsController extends Controller
                 if ($affectedRows > 0) {
                     session()->put('successUpdateAnnounce', true);
                     // $announce = DB::table('announcements')->where(['announceID' => $id])->get();
-                    
+
                     $announce = Announcements::where(['announceID' => $id])->get();
                     // dd($announce[0]);
                     // PostAnnouncement::dispatch($announce[0]);

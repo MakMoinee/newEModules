@@ -50,13 +50,11 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/">Home</a></li>
-                            <li class="scroll-to-section"><a href="/about" style="color:#f55858 !important; ">About</a>
+                            <li class="scroll-to-section"><a href="/about" style="color:black !important; ">About</a>
                             </li>
                             <li class="scroll-to-section "><a href="/strands">Academic Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
-                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
-                                    data-target="#signUpModal">Signup</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
