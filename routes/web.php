@@ -14,6 +14,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModulesController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SignOutController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\StrandController;
@@ -66,3 +67,7 @@ Route::get('/messages', [ChatsController::class, 'fetchMessages']);
 Route::post('/messages', [ChatsController::class, 'sendMessage']);
 Route::resource('/userprofiles', UserPicProfileController::class);
 Route::resource('/contactus', ContactUsController::class);
+Route::resource('/reports', ReportsController::class);
+Route::get('/chartjs', function () {
+    return view('chartjs');
+});

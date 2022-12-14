@@ -123,13 +123,6 @@
                                             <path fill-rule="evenodd"
                                                 d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z" />
                                         </svg> Reports</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/about" target="_top">
-                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-file-earmark-person-fill"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z" />
-                                        </svg> About</a></li>
                             </div>
                         </div>
                     </div>

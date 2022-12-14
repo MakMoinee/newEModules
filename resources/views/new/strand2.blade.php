@@ -148,7 +148,7 @@
                         <path fill-rule="evenodd"
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
-               </button><a class="header-brand d-md-none" href="/">
+                </button><a class="header-brand d-md-none" href="/">
 
                     <img src="/storage/images/favicon.ico"width="46" height="46" alt=""
                         srcset=""></a>
@@ -375,9 +375,16 @@
                                                                                                             <ul
                                                                                                                 style="list-style-type: none">
                                                                                                                 @if ($em['trackID'] == $mh['trackID'])
-                                                                                                                    <li><a style="text-decoration: none"
+                                                                                                                    <li>
+                                                                                                                        <p style="text-decoration: none;color: teal;cursor: pointer;"
+                                                                                                                            onclick="openViewer('{{ $em['filePath'] }}')"
+                                                                                                                            value="{{ $em['filePath'] }}"
+                                                                                                                            data-coreui-dismiss="modal">
+                                                                                                                            {{ $em['description'] }}
+                                                                                                                        </p>
+                                                                                                                        {{-- <a style="text-decoration: none"
                                                                                                                             href="{{ route('viewer.show', ['viewer' => $em['filePath']]) }}"
-                                                                                                                            target="_blank">{{ $em['description'] }}</a>
+                                                                                                                            target="_blank">{{ $em['description'] }}</a> --}}
                                                                                                                     </li>
                                                                                                                     <hr>
                                                                                                                 @endif
@@ -482,6 +489,10 @@
         <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
     </footer>
     </div>
+    <div>
+        <button style="visibility: hidden" data-coreui-target="#previewModal" data-coreui-toggle="modal"
+            id="btnShowPreview"></button>
+    </div>
 
     <script src="/Dashboard_files/coreui.bundle.min.js.download"></script>
     <script src="/Dashboard_files/simplebar.min.js.download"></script>
@@ -507,46 +518,132 @@
             </div>
         </div>
     </div>
-    @if (session()->pull('successLogin'))
-        <script>
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Successfully Login',
-                    showConfirmButton: false,
-                    timer: 500
-                });
-            }, 1500);
-        </script>
-        {{ session()->forget('successLogin') }}
-    @endif
-    <div>
-        <button class="btn btn-primary" id="btnToast" style="visibility: hidden" onclick="clickToast()"></button>
-    </div>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="/storage/images/favicon.ico" width="36px" height="36px" class="rounded me-2"
-                    alt="...">
-                <strong class="me-auto">E Modules New Announcement</strong>
-                {{-- <small>11 mins ago</small> --}}
-                <button type="button" class="btn-close" data-coreui-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" id="announceBody">
-                Hello, world! This is a toast message.
+    <div class="modal fade " id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="previewModalLabel">Preview E Module</h5>
+                    <button type="button" style="border:none;background:transparent;" class="close"
+                        data-coreui-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        {{-- <div id="showCanvas"></div> --}}
+                        <iframe src="http://localhost:8443/storage/emodules/Unit 1221213.pdf#toolbar=0" width="100%"
+                            height="500px">
+                        </iframe>
+                        {{-- <embed src="" type="application/pdf" id="showCanvas" height="400px"> --}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
-    <script src="js/push.js"></script>
-    <script>
-        function clickToast() {
-            const toastLiveExample = document.getElementById('liveToast');
-            const toast = new coreui.Toast(toastLiveExample);
-            toast.show();
-        }
-    </script>
+        @if (session()->pull('successLogin'))
+            <script>
+                setTimeout(() => {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Successfully Login',
+                        showConfirmButton: false,
+                        timer: 500
+                    });
+                }, 1500);
+            </script>
+            {{ session()->forget('successLogin') }}
+        @endif
+        <div>
+            <button class="btn btn-primary" id="btnToast" style="visibility: hidden"
+                onclick="clickToast()"></button>
+        </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="/storage/images/favicon.ico" width="36px" height="36px" class="rounded me-2"
+                        alt="...">
+                    <strong class="me-auto">E Modules New Announcement</strong>
+                    {{-- <small>11 mins ago</small> --}}
+                    <button type="button" class="btn-close" data-coreui-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+                <div class="toast-body" id="announceBody">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
+        <script src="https://js.pusher.com/7.2.0/pusher.min.js"></script>
+        <script src="js/push.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.js"
+            integrity="sha512-aqpxRD4NwJUXN742KSiIr4zARkh+WTeaWwx0DYuy+9eARX/glcCFtHSeETrIc6V+1BwYfMwvPz5KWlVtRyXikQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.1.81/pdf.min.js"
+            integrity="sha512-RV+l/3iMDTmIt64ztJmriqLRZl2IwGHcG+655gFxUa20Uq9GljEsY3wibq5BZkGzRlMbYFHUPelVQvWvZxP38w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            function clickToast() {
+                const toastLiveExample = document.getElementById('liveToast');
+                const toast = new coreui.Toast(toastLiveExample);
+                toast.show();
+            }
+
+            function openViewer(e) {
+
+                // var month = {!! json_encode(public_path("\\storage\\emodules\\"), true) !!};
+                var options = {
+                    pdfOpenParams: {
+                        pagemode: "thumbs",
+                        navpanes: 0,
+                        toolbar: 0,
+                        statusbar: 0,
+                        view: "FitV"
+                    }
+                };
+                var loadingTask = pdfjsLib.getDocument("/storage/emodules/" + e + "#toolbar=0");
+                loadingTask.promise.then(function(pdf) {
+                    pdf.getPage(1).then(function(page) {
+                        var canvas = document.getElementById('showCanvas');
+                        var context = canvas.getContext('2d');
+                        var outputScale = window.devicePixelRatio || 1;
+                        var desiredWidth = 576;
+                        var viewport = page.getViewport({
+                            scale: 1,
+                        });
+                        var scale = desiredWidth / viewport.width;
+                        canvas.width = Math.floor(viewport.width * outputScale);
+                        canvas.height = Math.floor(viewport.height * outputScale);
+                        canvas.style.width = Math.floor(viewport.width) + "px";
+                        canvas.style.height = Math.floor(viewport.height) + "px";
+
+                        var transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] :
+                            null;
+
+                        var renderContext = {
+                            canvasContext: context,
+                            transform: transform,
+                            viewport: viewport
+                        };
+                        page.render(renderContext);
+                    });
+                }).catch(function(err) {
+                    console.log(err);
+                });
+
+                // PDFObject.embed("http://localhost:8443/storage/emodules/" + e + "#toolbar=0", "#showCanvas", options);
+
+                // var showCanvas = document.getElementById('showCanvas');
+                // showCanvas.setAttribute("src", "http://localhost:8443/storage/emodules/" + e);
+                setTimeout(function() {
+                    var btnShowPreview = document.getElementById('btnShowPreview');
+                    btnShowPreview.click();
+                }, 100);
+            }
+        </script>
 </body>
 
 </html>
