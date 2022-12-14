@@ -334,7 +334,7 @@
                                                                                 @method('put')
                                                                                 @csrf
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;">
+                                                                                    style="margin-left: 60px;margin-bottom: 20px;">
                                                                                     <label for="Username"
                                                                                         class="for">Username<span
                                                                                             style="color:red">*</span></label>
@@ -345,7 +345,7 @@
                                                                                             style="color:red">*</span></label>
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -20px;">
+                                                                                    style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <input required type="text"
                                                                                         name="username" id=""
                                                                                         style="width:150px;"
@@ -357,7 +357,7 @@
                                                                                         value="{{ $item['firstname'] }}">
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -12px;">
+                                                                                    style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                                                                     <label for="Middlename"
                                                                                         class="for">Middle Name<span
                                                                                             style="color:red">*</span></label>
@@ -368,7 +368,7 @@
                                                                                             style="color:red">*</span></label>
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -20px;">
+                                                                                    style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <input required type="text"
                                                                                         name="middlename"
                                                                                         id=""
@@ -380,7 +380,7 @@
                                                                                         value="{{ $item['lastname'] }}">
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -12px;">
+                                                                                    style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                                                                     <label for="lrn"
                                                                                         class="for">LRN</label>
                                                                                     <label for="Track"
@@ -389,14 +389,14 @@
                                                                                             style="color:red">*</span></label>
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -20px;">
+                                                                                    style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <input type="text"
                                                                                         name="lrn" id=""
                                                                                         style="width:150px;"
                                                                                         value="{{ $item['lrn'] }}">
                                                                                     <select name="track"
                                                                                         id="civilstat"
-                                                                                        style="width:150px;margin-left: 33px;">
+                                                                                        style="width:150px;margin-left: 33px;margin-bottom: 20px;">
                                                                                         @if ($item['track'] == 'ABM')
                                                                                             <option value="ABM"
                                                                                                 selected>ABM
@@ -448,7 +448,7 @@
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -12px;">
+                                                                                    style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                                                                     <label for="password"
                                                                                         class="for">Password</label>
                                                                                     <label for="Email"
@@ -457,7 +457,7 @@
                                                                                             style="color:red">*</span></label>
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -20px;">
+                                                                                    style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <input type="password"
                                                                                         name="password" id="vpassword"
                                                                                         style="width:150px;">
@@ -467,13 +467,13 @@
                                                                                         value="{{ $item['email'] }}">
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -12px;">
+                                                                                    style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                                                                     <label for="password"
                                                                                         class="for">Retype
                                                                                         Password</label>
                                                                                 </div>
                                                                                 <div class="form-group"
-                                                                                    style="margin-left: 60px;margin-top: -20px;">
+                                                                                    style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <input type="password"
                                                                                         name="repassword"
                                                                                         id="vrepassword"
