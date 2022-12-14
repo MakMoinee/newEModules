@@ -572,6 +572,20 @@
             const toast = new coreui.Toast(toastLiveExample);
             toast.show();
         }
+        const urlParams = new URLSearchParams(window.location.search);
+        const errParam = urlParams.get('err');
+        if (errParam == 1) {
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed to add e module, File Too Large',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+                window.history.pushState({}, document.title, window.location.pathname);
+            }, 1500);
+        }
     </script>
     @if (session()->pull('successUpdateEModule'))
         <script>
