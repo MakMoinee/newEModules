@@ -471,6 +471,11 @@
                                                                                     <label for="password"
                                                                                         class="for">Retype
                                                                                         Password</label>
+                                                                                    <label for="gradelevel"
+                                                                                        class="for"
+                                                                                        style="margin-left: 55px;">Grade
+                                                                                        Level<span
+                                                                                            style="color:red">*</span></label>
                                                                                 </div>
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
@@ -478,6 +483,10 @@
                                                                                         name="repassword"
                                                                                         id="vrepassword"
                                                                                         style="width:150px;">
+                                                                                    <input type="text"
+                                                                                        name="gradelevel"
+                                                                                        id=""
+                                                                                        value="{{ $item['gradelevel'] }}">
 
                                                                                 </div>
 
@@ -707,13 +716,14 @@
                             <div class="form-group" style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                 <label for="password" class="for">Retype Password<span
                                         style="color:red">*</span></label>
-                                <label for="password" class="for">Grade Level<span
+                                <label for="gradelevel" class="for" style="margin-left: 55px;">Grade Level<span
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;">
-                                <input required type="text" name="grade" id="">
+                                <input required type="text" name="gradelevel" id=""
+                                    style="width:150px;margin-left: 33px;">
                             </div>
 
 

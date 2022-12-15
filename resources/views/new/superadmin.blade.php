@@ -186,13 +186,13 @@
                                                     Email
                                                 </th>
                                                 <th>
+                                                    Grade Level
+                                                </th>
+                                                <th>
                                                     User Type
                                                 </th>
                                                 <th>
                                                     User Date Created
-                                                </th>
-                                                <th>
-                                                    User Date Last Updated
                                                 </th>
                                                 <th>
                                                     Action
@@ -209,6 +209,7 @@
                                                     <td>{{ $item['lrn'] }}</td>
                                                     <td>{{ $item['track'] }}</td>
                                                     <td>{{ $item['email'] }}</td>
+                                                    <td>{{ $item['gradelevel'] }}</td>
                                                     <td>
                                                         @if ($item['userType'] == 0)
                                                             Super Admin
@@ -222,9 +223,6 @@
                                                     </td>
                                                     <td>
                                                         {{ $item['created_at'] }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item['updated_at'] }}
                                                     </td>
                                                     <td>
                                                         <button class="btn btn-success"
@@ -413,10 +411,10 @@
                                                                                     <label for="password"
                                                                                         class="for">Retype
                                                                                         Password</label>
-                                                                                    <label for="userrole"
+                                                                                    <label for="gradelevel"
                                                                                         class="for"
-                                                                                        style="margin-left: 59px;">User
-                                                                                        Role<span
+                                                                                        style="margin-left: 55px;">Grade
+                                                                                        Level<span
                                                                                             style="color:red">*</span></label>
                                                                                 </div>
                                                                                 <div class="form-group"
@@ -425,6 +423,22 @@
                                                                                         name="repassword"
                                                                                         id="vrepassword"
                                                                                         style="width:150px;">
+                                                                                    <input type="text"
+                                                                                        name="gradelevel"
+                                                                                        id=""
+                                                                                        value="{{ $item['gradelevel'] }}" style="width:150px;margin-left: 33px">
+                                                                                </div>
+
+                                                                                <div class="form-group"
+                                                                                    style="margin-left: 5px;margin-top: -12px;margin-bottom: 20px;">
+                                                                                    <label for="userrole"
+                                                                                        class="for"
+                                                                                        style="margin-left: 35px;">User
+                                                                                        Role<span
+                                                                                            style="color:red">*</span></label>
+                                                                                </div>
+                                                                                <div class="form-group"
+                                                                                    style="margin-left: 5px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <select name="userrole"
                                                                                         id="userrole"
                                                                                         style="width:150px;margin-left: 33px;">
@@ -804,6 +818,55 @@
             toast.show();
         }
     </script>
+
+    <div class="modal fade" id="signUpByCSVModal" tabindex="-1" role="dialog"
+        aria-labelledby="signUpByCSVModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 450px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signUpByCSVModalLabel">Add User</h5>
+                    <button type="button" style="border:none;background: white;" class="close"
+                        data-coreui-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form action="/superadmin" method="POST" enctype="multipart/form-data" autocomplete="off">
+                            @csrf
+                            <div class="form-group" style="margin-left: 30px;margin-bottom: 20px;">
+                                <label for="browse" class="for">Browse CSV File<span
+                                        style="color:red">*</span></label>
+                                <input type="file" name="files" id="" accept=".csv">
+                            </div>
+                            <a href="/file/users.csv"
+                                style="margin-left: 30px;list-style-type: none;color:teal;text-decoration: none;">
+                                Get CSV Sample</a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="btnSignup"
+                        style="background-color: #ff589e" value="admin">Add User By CSV</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @if (session()->pull('successCreateUsersFromFile'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Added User From CSV File',
+                    showConfirmButton: false,
+                    timer: 800
+                });
+            }, 500);
+        </script>;
+        {{ session()->forget('successCreateUsersFromFile') }}
+    @endif
     @if (session()->pull('successUpdateUser'))
         <script>
             setTimeout(() => {

@@ -192,6 +192,7 @@ class AdminUsersController extends Controller
                                         $newProccessUser->lrn = $u[5];
                                         $newProccessUser->track = $u[6];
                                         $newProccessUser->email = $u[7];
+                                        $newProccessUser->gradelevel = $u[8];
                                         $newProccessUser->userType = 2;
                                         $isSave = $newProccessUser->save();
                                         if ($isSave) {
@@ -282,6 +283,7 @@ class AdminUsersController extends Controller
                         'email' => $request->email,
                         'lrn' => $request->lrn,
                         'track' => $request->track,
+                        'gradelevel' => $request->gradelevel,
                         'userType' => 2,
                         'password' => $pass,
                         'updated_at' => date('Y-m-d H:i:s', strtotime(now()))

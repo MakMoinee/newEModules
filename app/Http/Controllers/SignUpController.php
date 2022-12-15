@@ -64,6 +64,7 @@ class SignUpController extends Controller
             $euser->lrn = $request->lrn;
             $euser->track = $request->track;
             $euser->email = $request->email;
+            $euser->gradelevel = $request->gradelevel;
             $euser->userType = 2;
             $isSave = $euser->save();
 
@@ -98,6 +99,7 @@ class SignUpController extends Controller
             $euser->lrn = $request->lrn;
             $euser->track = $request->track;
             $euser->email = $request->email;
+            $euser->gradelevel = $request->gradelevel;
             $euser->userType =  $request->userrole;
             $isSave = $euser->save();
 
