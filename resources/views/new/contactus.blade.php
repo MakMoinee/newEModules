@@ -148,7 +148,7 @@
                         <path fill-rule="evenodd"
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
-               </button><a class="header-brand d-md-none" href="/">
+                </button><a class="header-brand d-md-none" href="/">
 
                     <img src="/storage/images/favicon.ico"width="46" height="46" alt=""
                         srcset=""></a>
@@ -235,37 +235,37 @@
             <div class="container-lg">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card mb-4" style="background: #ff00e1">
+                        <div class="card mb-4" style="background: #3c4b64">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <center>
-                                            <h1 style="color: white;">Contact US</h1>
+                                            <h4 style="color: white;">Contact US</h4>
                                         </center>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-4 justify-content-center text-center" style="color: white">
-                                        <img src="/images/phone.png" class="img-responsive" width="46px"
-                                            height="46px" alt="" srcset="" style="margin-left: 20px;">
+                                        <img src="/images/phone.png" class="img-responsive" width="24px"
+                                            height="24px" alt="" srcset="" style="margin-left: 20px;">
                                         <br>
-                                        <h2 style="margin-bottom: 20px;">Phone</h2>
-                                        <h3>(044) 791 2768</h3>
+                                        <h4 style="margin-bottom: 20px;">Phone</h4>
+                                        <h5>(044) 791 2768</h5>
                                     </div>
                                     <div class="col-sm-4 justify-content-center text-center" style="color: white">
-                                        <img src="/images/address.png" class="img-responsive" width="36px"
-                                            height="46px" alt="" srcset="" style="margin-left: 10px;">
+                                        <img src="/images/address.png" class="img-responsive" width="34px"
+                                            height="24px" alt="" srcset="" style="margin-left: 10px;">
                                         <br>
-                                        <h2 style="margin-bottom: 20px;">Address</h2>
-                                        <h3>Villa Rosalinda, 24 de Agosto Street, Malolos, Philippines, 3000</h3>
+                                        <h4 style="margin-bottom: 20px;">Address</h4>
+                                        <h5>Villa Rosalinda, 24 de Agosto Street, Malolos, Philippines, 3000</h5>
                                     </div>
                                     <div class="col-sm-4 justify-content-center text-center" style="color: white">
-                                        <img src="/images/email.png" class="img-responsive" width="46px"
-                                            height="46px" alt="" srcset="" style="margin-left: 10px;">
+                                        <img src="/images/email.png" class="img-responsive" width="34px"
+                                            height="24px" alt="" srcset="" style="margin-left: 10px;">
                                         <br>
-                                        <h2 style="margin-bottom: 20px;">Email</h2>
-                                        <h3>msa.500014@gmail.com</h3>
+                                        <h4 style="margin-bottom: 20px;">Email</h4>
+                                        <h5>msa.500014@gmail.com</h5>
                                     </div>
                                 </div>
                                 <br>
@@ -273,13 +273,15 @@
                                 <div class="row">
                                     <div class="col-sm-12 justify-content-center text-center">
                                         <center>
-                                            <img src="/images/facebook.png" class="img-responsive" width="46px"
-                                                height="46px" alt="" srcset=""
-                                                style="margin-left: 10px;background:white;border-radius: 8px;">
-                                            <h3 style="color: white;"><a
-                                                    href="https://www.facebook.com/profile.php?id=100063760759938"
-                                                    style="display: inline-block;color:white;list-style-type: none;text-decoration: none;margin-top: 15px;">MERR-C
-                                                    Society Academy</a></h3>
+                                            <div class="col-sm-3">
+                                                <img src="/images/facebook.png" class="img-responsive" width="46px"
+                                                    height="46px" alt="" srcset=""
+                                                    style="margin-left: 10px;background:white;border-radius: 8px;">
+                                                <h6 style="color: white;"><a
+                                                        href="https://www.facebook.com/profile.php?id=100063760759938"
+                                                        style="display: inline-block;color:white;list-style-type: none;text-decoration: none;margin-top: 15px;">MERR-C
+                                                        Society Academy</a></h6>
+                                            </div>
                                         </center>
 
                                     </div>

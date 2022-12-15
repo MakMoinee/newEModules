@@ -426,7 +426,8 @@
                                                                                     <input type="text"
                                                                                         name="gradelevel"
                                                                                         id=""
-                                                                                        value="{{ $item['gradelevel'] }}" style="width:150px;margin-left: 33px">
+                                                                                        value="{{ $item['gradelevel'] }}"
+                                                                                        style="width:150px;margin-left: 33px">
                                                                                 </div>
 
                                                                                 <div class="form-group"
@@ -769,10 +770,14 @@
                             <div class="form-group" style="margin-left: 40px;margin-bottom: 20px;margin-top: -12px;">
                                 <label for="password" class="for">Retype Password<span
                                         style="color:red">*</span></label>
+                                <label for="gradelevel" class="for" style="margin-left: 55px;">Grade Level<span
+                                        style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 40px;margin-bottom: 20px;margin-top: -20px;">
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;">
+                                <input required type="text" name="gradelevel" id=""
+                                    style="width:150px;margin-left: 33px;">
                                 <input type="hidden" name="userrole" id="auserrole">
                             </div>
 
