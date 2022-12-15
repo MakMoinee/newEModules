@@ -294,8 +294,8 @@
                                                     </td>
                                                     <td>
                                                         @if ($an['activated'] == 0)
-                                                            <button class="btn btn-primary" data-toggle="modal"
-                                                                data-target="#activateModal{{ $an['announceID'] }}"
+                                                            <button class="btn btn-primary" data-coreui-toggle="modal"
+                                                                data-coreui-target="#activateModal{{ $an['announceID'] }}"
                                                                 style="font-size: 12px;color:white">Activate</button>
                                                             <div class="modal fade"
                                                                 id="activateModal{{ $an['announceID'] }}"
@@ -325,7 +325,7 @@
                                                                                     Proceed</button>
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
-                                                                                    data-dismiss="modal">Close</button>
+                                                                                    data-coreui-dismiss="modal">Close</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
