@@ -148,7 +148,7 @@
                         <path fill-rule="evenodd"
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
-               </button><a class="header-brand d-md-none" href="/">
+                </button><a class="header-brand d-md-none" href="/">
 
                     <img src="/storage/images/favicon.ico"width="46" height="46" alt=""
                         srcset=""></a>
@@ -252,13 +252,19 @@
                             <br>
                             <h4>{{ $user['lastname'] }}, {{ $user['firstname'] }} {{ $user['middlename'] }}</h4>
                         </center>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p>Grade Level: {{$user['gradelevel']}}</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="mdiv-right" style="width:70%;height: 500px;padding-top: 40px;background-color: white">
                         <h1 style="margin-left: 20px;">Hi {{ $user['firstname'] }}</h1>
 
                         <form action="/profile" method="post" style="margin-left: 20px;" autocomplete="off">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 10px;">
                                 <label for="First Name" class="for">First Name</label>
                                 <label for="Middle Name" class="for" style="margin-left: 150px;">Middle
                                     Name</label>
@@ -271,13 +277,13 @@
                                 <input required type="text" name="lastname" id="" class="form-group"
                                     style="margin-left: 55px;" value="{{ $user['lastname'] }}">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 10px;">
                                 <label required for="Email" class="for">Email</label>
                                 <br>
                                 <input required type="email" name="email" id=""
                                     value="{{ $user['email'] }}">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 10px;">
                                 <label for="password" class="for">Password</label>
                                 <label for="repassword" class="for" style="margin-left: 160px;">Confirm
                                     Password</label>
@@ -287,7 +293,7 @@
                                 <input required type="password" name="repassword" id="repassword"
                                     style="margin-left: 39px;">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 10px;">
                                 <input type="hidden" name="uid" value="{{ $user['userID'] }}">
                                 <button type="submit" class="btn btn-primary" style="background-color: #f55858"
                                     name="btnUpdate" value="true">Update Profile</button>
@@ -339,7 +345,7 @@
                         <div class="row">
                             <br>
                             <br>
-                            <div class="form-group" style="margin-left: 33px;">
+                            <div class="form-group" style="margin-left: 33px;margin-bottom: 10px;">
                                 <label for="file" class="for"><b>Add Profile Picture</b></label>
                                 <br>
                                 @if ($pic == '')

@@ -27,6 +27,7 @@ class EUsers extends Model
         "lrn",
         "track",
         "email",
+        "gradelevel"
     ];
 
     public function messages()

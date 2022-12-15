@@ -23,6 +23,7 @@ class CreateEUsersTable extends Migration
             $table->string('lrn')->nullable(true);
             $table->string('track')->nullable(true);
             $table->string('email')->nullable(true);
+            $table->string('gradelevel')->nullable(true);
             $table->integer('userType');
             $table->timestamps();
         });

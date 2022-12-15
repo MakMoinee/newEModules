@@ -261,13 +261,13 @@
                                         <thead class="table-light fw-semibold">
                                             <tr class="align-middle">
                                                 <th>
-                                                    Description
+                                                    Title
                                                 </th>
                                                 <th>
                                                     Card Picture
                                                 </th>
                                                 <th>
-                                                    Subtext
+                                                    Description
                                                 </th>
                                                 <th>
                                                     Activated
@@ -407,7 +407,7 @@
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 35px">
                                                                                     <label for="description"
-                                                                                        class="for"><b>Description</b></label>
+                                                                                        class="for"><b>Title</b></label>
                                                                                     <br>
                                                                                     <input required type="text"
                                                                                         style="width:350px;"
@@ -428,7 +428,7 @@
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 35px">
                                                                                     <label for="subtext"
-                                                                                        class="for"><b>Subtext</b></label>
+                                                                                        class="for"><b>Description</b></label>
                                                                                     <br>
                                                                                     <input required type="text"
                                                                                         name="subtext"
@@ -581,20 +581,20 @@
                         <form action="{{ route('announcements.store') }}" method="POST"
                             enctype="multipart/form-data" autocomplete="off">
                             @csrf
-                            <div class="form-group" style="margin-left: 35px">
-                                <label for="description" class="for"><b>Description</b></label>
+                            <div class="form-group" style="margin-left: 35px;margin-bottom: 10px;">
+                                <label for="description" class="for"><b>Title</b></label>
                                 <br>
                                 <input required type="text" style="width:350px;" name="description"
                                     id="un">
                             </div>
-                            <div class="form-group" style="margin-left: 35px">
+                            <div class="form-group" style="margin-left: 35px;margin-bottom: 10px;">
                                 <label for="emodule" class="emodule"><b>Card Picture</b></label>
                                 <br>
                                 <input required type="file" name="file" id=""
                                     accept=".jpg, .png, .jpeg">
                             </div>
-                            <div class="form-group" style="margin-left: 35px">
-                                <label for="subtext" class="for"><b>Subtext</b></label>
+                            <div class="form-group" style="margin-left: 35px;margin-bottom: 10px;">
+                                <label for="subtext" class="for"><b>Description</b></label>
                                 <br>
                                 <input required type="text" name="subtext" style="width:350px;">
                             </div>

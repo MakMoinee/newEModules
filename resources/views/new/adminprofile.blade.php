@@ -259,7 +259,7 @@
 
                         <form action="/profile" method="post" style="margin-left: 20px;" autocomplete="off">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 20px;">
                                 <label for="First Name" class="for">First Name</label>
                                 <label for="Middle Name" class="for" style="margin-left: 150px;">Middle
                                     Name</label>
@@ -272,13 +272,13 @@
                                 <input required type="text" name="lastname" id="" class="form-group"
                                     style="margin-left: 55px;" value="{{ $user['lastname'] }}">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 20px;">
                                 <label required for="Email" class="for">Email</label>
                                 <br>
                                 <input required type="email" name="email" id=""
                                     value="{{ $user['email'] }}">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 20px;">
                                 <label for="password" class="for">Password</label>
                                 <label for="repassword" class="for" style="margin-left: 160px;">Confirm
                                     Password</label>
@@ -288,7 +288,7 @@
                                 <input required type="password" name="repassword" id="repassword"
                                     style="margin-left: 39px;">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 20px;">
                                 <input type="hidden" name="uid" value="{{ $user['userID'] }}">
                                 <button type="submit" class="btn btn-primary" style="background-color: #f55858"
                                     name="btnUpdate" value="true">Update Profile</button>
@@ -324,7 +324,7 @@
                         <div class="row">
                             <br>
                             <br>
-                            <div class="form-group" style="margin-left: 33px;">
+                            <div class="form-group" style="margin-left: 33px;margin-bottom: 10px;">
                                 <label for="file" class="for"><b>Add Profile Picture</b></label>
                                 <br>
                                 @if ($pic == '')

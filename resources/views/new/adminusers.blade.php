@@ -707,10 +707,13 @@
                             <div class="form-group" style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                 <label for="password" class="for">Retype Password<span
                                         style="color:red">*</span></label>
+                                <label for="password" class="for">Grade Level<span
+                                        style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;">
+                                <input required type="text" name="grade" id="">
                             </div>
 
 
@@ -850,7 +853,7 @@
             }, 500);
         </script>;
         {{ session()->forget('successCreate') }}
-    @endif 
+    @endif
 
     @if (session()->pull('errorCreateUsersFromFile'))
         <script>

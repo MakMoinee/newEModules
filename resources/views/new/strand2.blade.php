@@ -347,7 +347,7 @@
                                                                                         class="for">No. Of
                                                                                         Hours:</label>
                                                                                     <br>
-                                                                                    <input required type="number"
+                                                                                    <input required readonly type="number"
                                                                                         name="hours" id=""
                                                                                         value="{{ $tr['hours'] }}">
                                                                                 </div>
@@ -355,7 +355,7 @@
                                                                                     <label for="prerequisite"
                                                                                         class="for">Pre-requisite:</label>
                                                                                     <br>
-                                                                                    <input type="text"
+                                                                                    <input readonly type="text"
                                                                                         name="prerequisite"
                                                                                         id=""
                                                                                         value="{{ $tr['prerequisite'] }}">
