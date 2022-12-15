@@ -236,16 +236,23 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="border-start border-start-4 border-start-info px-3 mb-3">
                                             <small class="text-medium-emphasis">Total Users</small>
                                             <div class="fs-5 fw-semibold">{{ $totalUsers }}</div>
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="border-start border-start-4 border-start-danger px-3 mb-3">
                                             <small class="text-medium-emphasis">Total New Users</small>
+                                            <div class="fs-5 fw-semibold">{{ $totalNewUsers }}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="border-start border-start-4 border-start-primary px-3 mb-3">
+                                            <small class="text-medium-emphasis">Total Modules</small>
                                             <div class="fs-5 fw-semibold">{{ $totalNewUsers }}</div>
                                         </div>
                                     </div>

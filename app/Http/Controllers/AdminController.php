@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use App\Models\Modules;
 use App\Models\UserPicProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +47,8 @@ class AdminController extends Controller
             $eachRes = array();
             $loopCount = 0;
 
+            $allModules = Modules::all();
+
             $tCount = 0;
             foreach ($allUsers as $ur) {
                 $tCount++;
@@ -81,7 +84,8 @@ class AdminController extends Controller
                 'allPics' => $allPics,
                 'pic' => $pic,
                 'startIndex' => $startIndex,
-                'pageCount' => $pageCount
+                'pageCount' => $pageCount,
+                'allModules' => $allModules
             ]);
         } else {
             return redirect("/");
