@@ -532,7 +532,7 @@
                 <div class="modal-body">
                     <div class="row">
                         {{-- <div id="showCanvas"></div> --}}
-                        <iframe src="http://localhost:8443/storage/emodules/Unit 1221213.pdf#toolbar=0" width="100%"
+                        <iframe  id="showCanvas" src="http://localhost:8443/storage/emodules/Unit 1221213.pdf#toolbar=0" width="100%"
                             height="500px">
                         </iframe>
                         {{-- <embed src="" type="application/pdf" id="showCanvas" height="400px"> --}}
@@ -595,49 +595,49 @@
             function openViewer(e) {
 
                 // var month = {!! json_encode(public_path("\\storage\\emodules\\"), true) !!};
-                var options = {
-                    pdfOpenParams: {
-                        pagemode: "thumbs",
-                        navpanes: 0,
-                        toolbar: 0,
-                        statusbar: 0,
-                        view: "FitV"
-                    }
-                };
-                var loadingTask = pdfjsLib.getDocument("/storage/emodules/" + e + "#toolbar=0");
-                loadingTask.promise.then(function(pdf) {
-                    pdf.getPage(1).then(function(page) {
-                        var canvas = document.getElementById('showCanvas');
-                        var context = canvas.getContext('2d');
-                        var outputScale = window.devicePixelRatio || 1;
-                        var desiredWidth = 576;
-                        var viewport = page.getViewport({
-                            scale: 1,
-                        });
-                        var scale = desiredWidth / viewport.width;
-                        canvas.width = Math.floor(viewport.width * outputScale);
-                        canvas.height = Math.floor(viewport.height * outputScale);
-                        canvas.style.width = Math.floor(viewport.width) + "px";
-                        canvas.style.height = Math.floor(viewport.height) + "px";
+                // var options = {
+                //     pdfOpenParams: {
+                //         pagemode: "thumbs",
+                //         navpanes: 0,
+                //         toolbar: 0,
+                //         statusbar: 0,
+                //         view: "FitV"
+                //     }
+                // };
+                // var loadingTask = pdfjsLib.getDocument("/storage/emodules/" + e + "#toolbar=0");
+                // loadingTask.promise.then(function(pdf) {
+                //     pdf.getPage(1).then(function(page) {
+                //         var canvas = document.getElementById('showCanvas');
+                //         var context = canvas.getContext('2d');
+                //         var outputScale = window.devicePixelRatio || 1;
+                //         var desiredWidth = 576;
+                //         var viewport = page.getViewport({
+                //             scale: 1,
+                //         });
+                //         var scale = desiredWidth / viewport.width;
+                //         canvas.width = Math.floor(viewport.width * outputScale);
+                //         canvas.height = Math.floor(viewport.height * outputScale);
+                //         canvas.style.width = Math.floor(viewport.width) + "px";
+                //         canvas.style.height = Math.floor(viewport.height) + "px";
 
-                        var transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] :
-                            null;
+                //         var transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] :
+                //             null;
 
-                        var renderContext = {
-                            canvasContext: context,
-                            transform: transform,
-                            viewport: viewport
-                        };
-                        page.render(renderContext);
-                    });
-                }).catch(function(err) {
-                    console.log(err);
-                });
+                //         var renderContext = {
+                //             canvasContext: context,
+                //             transform: transform,
+                //             viewport: viewport
+                //         };
+                //         page.render(renderContext);
+                //     });
+                // }).catch(function(err) {
+                //     console.log(err);
+                // });
 
                 // PDFObject.embed("http://localhost:8443/storage/emodules/" + e + "#toolbar=0", "#showCanvas", options);
 
-                // var showCanvas = document.getElementById('showCanvas');
-                // showCanvas.setAttribute("src", "http://localhost:8443/storage/emodules/" + e);
+                var showCanvas = document.getElementById('showCanvas');
+                showCanvas.setAttribute("src", "http://localhost:8443/storage/emodules/" + e);
                 setTimeout(function() {
                     var btnShowPreview = document.getElementById('btnShowPreview');
                     btnShowPreview.click();
