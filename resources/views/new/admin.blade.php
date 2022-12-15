@@ -273,24 +273,28 @@
                                                 <tr>
                                                     <td class="text-center">
                                                         @if ($allPics)
+                                                            @foreach ($allPics as $ppics)
+                                                                @if ($ppics['userID'] == $item['userID'])
+                                                                    <div class="avatar avatar-md"><img
+                                                                            class="avatar-img"
+                                                                            src="/storage/profiles/{{ $ppics['filePath'] }}"
+                                                                            alt="user@email.com"><span
+                                                                            class="avatar-status bg-success"></span>
+                                                                    </div>
+                                                                @else
+                                                                    <div class="avatar avatar-md"><img
+                                                                            class="avatar-img" src="/images/user.png"
+                                                                            alt="user@email.com"><span
+                                                                            class="avatar-status bg-success"></span>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
                                                         @else
                                                             <div class="avatar avatar-md"><img class="avatar-img"
                                                                     src="/images/user.png" alt="user@email.com"><span
                                                                     class="avatar-status bg-success"></span></div>
                                                         @endif
-                                                        @foreach ($allPics as $ppics)
-                                                            @if ($ppics['userID'] == $item['userID'])
-                                                                <div class="avatar avatar-md"><img class="avatar-img"
-                                                                        src="/storage/profiles/{{ $ppics['filePath'] }}"
-                                                                        alt="user@email.com"><span
-                                                                        class="avatar-status bg-success"></span></div>
-                                                            @else
-                                                                <div class="avatar avatar-md"><img class="avatar-img"
-                                                                        src="/images/user.png"
-                                                                        alt="user@email.com"><span
-                                                                        class="avatar-status bg-success"></span></div>
-                                                            @endif
-                                                        @endforeach
+
                                                     </td>
                                                     <td>
                                                         <div>
