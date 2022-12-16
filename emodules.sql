@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 16/12/2022 10:06:44
+ Date: 16/12/2022 17:19:44
 */
 
 SET NAMES utf8mb4;
@@ -54,12 +54,13 @@ CREATE TABLE `academic_tracks`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`trackID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of academic_tracks
 -- ----------------------------
-INSERT INTO `academic_tracks` VALUES (1, 1, 1, 'Mapeh', '80', NULL, NULL, 'CORE', '2022-12-16 00:08:58', '2022-12-16 00:08:58');
+INSERT INTO `academic_tracks` VALUES (2, 1, 2, 'Physical Education', '80', NULL, NULL, 'CORE', '2022-12-16 02:58:08', '2022-12-16 02:58:08');
+INSERT INTO `academic_tracks` VALUES (3, 1, 1, 'Mapeh', '80', NULL, NULL, 'CORE', '2022-12-16 02:58:24', '2022-12-16 02:58:24');
 
 -- ----------------------------
 -- Table structure for announcements
@@ -120,7 +121,7 @@ CREATE TABLE `e_users`  (
 -- ----------------------------
 INSERT INTO `e_users` VALUES (1, 'superadmin', '$2y$10$sUdl8v5qSyfyvv/r7bT5UuLcHYbVH2F/y/B4tRa4WPbzlvvhKxmBe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2022-12-15 11:30:47', '2022-12-15 11:30:47');
 INSERT INTO `e_users` VALUES (3, 'admin', '$2y$10$Az0XqnoJEfyXO/Dd/RxrF.HwY5OVw1n2QC/dDdg2xCDl5ZHnhID3m', 'admin', 'admin', 'admin', NULL, NULL, NULL, NULL, 1, '2022-12-16 00:08:30', '2022-12-16 00:08:30');
-INSERT INTO `e_users` VALUES (4, 'sample', '$2y$10$Fz/f1uOgcwrFMLJFoN1dFuLdwjk7FwIDY3P0FHeUjXpBEBQtizUly', 'Juan', 'X', 'Dela Cruz', '12312312312', 'ABM', 'sample@gmail.com', '11', 2, '2022-12-16 00:25:21', '2022-12-16 00:25:21');
+INSERT INTO `e_users` VALUES (4, 'sample', '$2y$10$Fz/f1uOgcwrFMLJFoN1dFuLdwjk7FwIDY3P0FHeUjXpBEBQtizUly', 'Juans', 'X', 'Dela Cruz', '12312312312', 'ABM', 'sample@gmail.com', '11', 2, '2022-12-16 00:25:21', '2022-12-16 00:25:21');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -306,6 +307,18 @@ DROP VIEW IF EXISTS `vwallstrands`;
 CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vwallstrands` AS select `academic_tracks`.`trackID` AS `trackID`,`academic_strands`.`description` AS `Strand`,`academic_tracks`.`sequence` AS `sequence`,`academic_tracks`.`description` AS `SubjectName`,`academic_tracks`.`hours` AS `hours`,`academic_tracks`.`prerequisite` AS `prerequisite`,`academic_tracks`.`status` AS `status`,`academic_tracks`.`category` AS `category`,`academic_tracks`.`created_at` AS `created_at`,`academic_strands`.`strandID` AS `strandID` from (`academic_strands` join `academic_tracks` on((`academic_strands`.`strandID` = `academic_tracks`.`strandID`)));
 
 -- ----------------------------
+-- View structure for vwlistmodules
+-- ----------------------------
+DROP VIEW IF EXISTS `vwlistmodules`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vwlistmodules` AS select `modules`.`moduleID` AS `moduleID`,`academic_tracks`.`description` AS `SubjectName`,`modules`.`description` AS `description` from (`modules` join `academic_tracks` on((`modules`.`trackID` = `academic_tracks`.`trackID`))) where (cast(`modules`.`created_at` as date) = cast(now() as date));
+
+-- ----------------------------
+-- View structure for vwnewusers
+-- ----------------------------
+DROP VIEW IF EXISTS `vwnewusers`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vwnewusers` AS select `e_users`.`userID` AS `userID`,`e_users`.`username` AS `username`,`e_users`.`password` AS `password`,`e_users`.`firstname` AS `firstname`,`e_users`.`middlename` AS `middlename`,`e_users`.`lastname` AS `lastname`,`e_users`.`lrn` AS `lrn`,`e_users`.`track` AS `track`,`e_users`.`email` AS `email`,`e_users`.`gradelevel` AS `gradelevel`,`e_users`.`userType` AS `userType`,`e_users`.`created_at` AS `created_at`,`e_users`.`updated_at` AS `updated_at` from `e_users` where ((cast(`e_users`.`created_at` as date) = cast(now() as date)) and (`e_users`.`userType` = 2));
+
+-- ----------------------------
 -- View structure for vwtotalnewmodules
 -- ----------------------------
 DROP VIEW IF EXISTS `vwtotalnewmodules`;
@@ -315,6 +328,6 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vwtotalnewmodules` AS se
 -- View structure for vwtotalnewusers
 -- ----------------------------
 DROP VIEW IF EXISTS `vwtotalnewusers`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vwtotalnewusers` AS select count(`e_users`.`userID`) AS `TotalNewUsers` from `e_users` where ((month(`e_users`.`created_at`) = month(now())) and (`e_users`.`userType` <> 1));
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vwtotalnewusers` AS select count(`e_users`.`userID`) AS `TotalNewUsers` from `e_users` where ((month(`e_users`.`created_at`) = month(now())) and (`e_users`.`userType` <> 1) and (`e_users`.`userType` <> 0));
 
 SET FOREIGN_KEY_CHECKS = 1;
