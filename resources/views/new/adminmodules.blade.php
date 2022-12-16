@@ -278,9 +278,6 @@
                                                     Pre-requisite
                                                 </th>
                                                 <th>
-                                                    Status
-                                                </th>
-                                                <th>
                                                     E-Modules
                                                 </th>
                                                 <th>
@@ -308,9 +305,6 @@
                                                     </td>
                                                     <td>
                                                         {{ $mod['prerequisite'] }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $mod['status'] }}
                                                     </td>
                                                     <td>
                                                         <form
