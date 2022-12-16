@@ -483,10 +483,26 @@
                                                                                         name="repassword"
                                                                                         id="vrepassword"
                                                                                         style="width:150px;">
-                                                                                    <input type="text"
-                                                                                        name="gradelevel"
-                                                                                        id=""
-                                                                                        value="{{ $item['gradelevel'] }}">
+
+                                                                                    <select required name="gradelevel"
+                                                                                        style="width:150px;margin-left: 33px;"
+                                                                                        id="">
+                                                                                        @if ($item['gradelevel'] == '11')
+                                                                                            <option value="11"
+                                                                                                selected>11</option>
+                                                                                        @else
+                                                                                            <option value="11">11
+                                                                                            </option>
+                                                                                        @endif
+
+                                                                                        @if ($item['gradelevel'] == '12')
+                                                                                            <option value="12"
+                                                                                                selected>12</option>
+                                                                                        @else
+                                                                                            <option value="12">12
+                                                                                            </option>
+                                                                                        @endif
+                                                                                    </select>
 
                                                                                 </div>
 
@@ -722,8 +738,11 @@
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;">
-                                <input required type="text" name="gradelevel" id=""
+                                <select required name="gradelevel" id=""
                                     style="width:150px;margin-left: 33px;">
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
                             </div>
 
 

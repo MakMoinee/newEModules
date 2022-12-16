@@ -462,22 +462,6 @@
                                                                                         value="{{ $mod['prerequisite'] }}">
                                                                                 </div>
                                                                                 <br>
-                                                                                <div class="form-group"
-                                                                                    style="margin-left: 35px">
-                                                                                    <label for="emodule"
-                                                                                        class="emodule"><b>E
-                                                                                            Module Docs</b></label>
-                                                                                    <br>
-                                                                                    <input type="file"
-                                                                                        name="file" id="">
-                                                                                </div>
-                                                                                <br>
-                                                                                <div class="form-group">
-                                                                                    <input type="hidden"
-                                                                                        name="trackID"
-                                                                                        value="{{ $mod['trackID'] }}">
-                                                                                </div>
-                                                                                <br>
 
                                                                         </div>
                                                                     </div>

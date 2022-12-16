@@ -254,8 +254,10 @@
                         </center>
                         <br>
                         <div class="row">
-                            <div class="col-sm-4">
-                                <p>Grade Level: {{$user['gradelevel']}}</p>
+                            <div class="col-md-12 justify-content-center text-center" style="margin-top: -30px;">
+                                <p>{{ $user['lrn'] }}</p>
+                                <p style="margin-top: -20px;">Grade: {{ $user['gradelevel'] }}, {{ $user['track'] }}
+                                </p>
                             </div>
                         </div>
                     </div>
