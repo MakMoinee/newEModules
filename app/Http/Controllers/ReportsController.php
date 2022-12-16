@@ -75,7 +75,7 @@ class ReportsController extends Controller
             return view('new.adminreport', [
                 'pic' => $pic,
                 'totalNewUsers' => $totalNewUsers,
-                'percentage' => $totalNewUsers / $total * 100,
+                'percentage' => $totalNewUsers == 0 ? 0 : $totalNewUsers / $total * 100,
                 'totalModules' => $nModules,
                 'modulePercentage' => $nModules == 0 ? 0 : $nModules / count($allMods) * 100,
                 'totalUsers' => $total,
