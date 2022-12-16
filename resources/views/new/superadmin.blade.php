@@ -411,11 +411,14 @@
                                                                                     <label for="password"
                                                                                         class="for">Retype
                                                                                         Password</label>
-                                                                                    <label for="gradelevel"
-                                                                                        class="for"
-                                                                                        style="margin-left: 55px;">Grade
-                                                                                        Level<span
-                                                                                            style="color:red">*</span></label>
+                                                                                    @if ($item['userType'] == 2)
+                                                                                        <label for="gradelevel"
+                                                                                            class="for"
+                                                                                            style="margin-left: 55px;">Grade
+                                                                                            Level<span
+                                                                                                style="color:red">*</span></label>
+                                                                                    @endif
+
                                                                                 </div>
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 40px;margin-top: -20px;margin-bottom: 20px;">
@@ -423,25 +426,30 @@
                                                                                         name="repassword"
                                                                                         id="vrepassword"
                                                                                         style="width:150px;">
-                                                                                    <select name="gradelevel"
-                                                                                        id=""
-                                                                                        style="width:150px;margin-left: 33px">
-                                                                                        @if ($item['gradelevel'] == '11')
-                                                                                            <option value="11"
-                                                                                                selected>11</option>
-                                                                                        @else
-                                                                                            <option value="11">11
-                                                                                            </option>
-                                                                                        @endif
+                                                                                    @if ($item['userType'] == 1)
+                                                                                    @else
+                                                                                        <select name="gradelevel"
+                                                                                            id=""
+                                                                                            style="width:150px;margin-left: 33px">
+                                                                                            @if ($item['gradelevel'] == '11')
+                                                                                                <option value="11"
+                                                                                                    selected>11</option>
+                                                                                            @else
+                                                                                                <option value="11">
+                                                                                                    11
+                                                                                                </option>
+                                                                                            @endif
 
-                                                                                        @if ($item['gradelevel'] == '12')
-                                                                                            <option value="12"
-                                                                                                selected>12</option>
-                                                                                        @else
-                                                                                            <option value="12">12
-                                                                                            </option>
-                                                                                        @endif
-                                                                                    </select>
+                                                                                            @if ($item['gradelevel'] == '12')
+                                                                                                <option value="12"
+                                                                                                    selected>12</option>
+                                                                                            @else
+                                                                                                <option value="12">
+                                                                                                    12
+                                                                                                </option>
+                                                                                            @endif
+                                                                                        </select>
+                                                                                    @endif
                                                                                 </div>
 
                                                                                 <div class="form-group"
