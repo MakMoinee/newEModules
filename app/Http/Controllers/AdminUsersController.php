@@ -41,7 +41,7 @@ class AdminUsersController extends Controller
 
             foreach ($userss as $u) {
                 if ($searchKey) {
-                    if (!str_contains($u['firstname'], $searchKey) || !str_contains($u['middlename'], $searchKey) || !str_contains($u['lastname'], $searchKey)) {
+                    if (!str_contains(strtolower($u['firstname']), strtolower($searchKey))) {
                         continue;
                     } else {
                         array_push($searchArr, $u);

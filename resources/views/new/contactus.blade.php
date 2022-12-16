@@ -247,22 +247,22 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-4 justify-content-center text-center" style="color: white">
-                                        <img src="/images/phone.png" class="img-responsive" width="24px"
-                                            height="24px" alt="" srcset="" style="margin-left: 20px;">
+                                        <img src="/images/phone.png" class="img-responsive" width="34px"
+                                            height="auto" alt="" srcset="" style="margin-left: 20px;">
                                         <br>
                                         <h4 style="margin-bottom: 20px;">Phone</h4>
                                         <h5>(044) 791 2768</h5>
                                     </div>
                                     <div class="col-sm-4 justify-content-center text-center" style="color: white">
                                         <img src="/images/address.png" class="img-responsive" width="34px"
-                                            height="24px" alt="" srcset="" style="margin-left: 10px;">
+                                            height="auto" alt="" srcset="" style="margin-left: 10px;">
                                         <br>
                                         <h4 style="margin-bottom: 20px;">Address</h4>
                                         <h5>Villa Rosalinda, 24 de Agosto Street, Malolos, Philippines, 3000</h5>
                                     </div>
                                     <div class="col-sm-4 justify-content-center text-center" style="color: white">
                                         <img src="/images/email.png" class="img-responsive" width="34px"
-                                            height="24px" alt="" srcset="" style="margin-left: 10px;">
+                                            height="auto" alt="" srcset="" style="margin-left: 10px;">
                                         <br>
                                         <h4 style="margin-bottom: 20px;">Email</h4>
                                         <h5>msa.500014@gmail.com</h5>
@@ -275,7 +275,7 @@
                                         <center>
                                             <div class="col-sm-3">
                                                 <img src="/images/facebook.png" class="img-responsive" width="46px"
-                                                    height="46px" alt="" srcset=""
+                                                    height="auto" alt="" srcset=""
                                                     style="margin-left: 10px;background:white;border-radius: 8px;">
                                                 <h6 style="color: white;"><a
                                                         href="https://www.facebook.com/profile.php?id=100063760759938"

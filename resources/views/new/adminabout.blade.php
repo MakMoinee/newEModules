@@ -339,7 +339,7 @@
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                <input type="text" name="lrn" id="" style="width:150px;">
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" name="lrn" id="" style="width:150px;">
                                 <select name="track" id="civilstat" style="width:150px;margin-left: 33px;">
                                     <option value="ABM" selected>ABM</option>
                                     <option value="GAS">GAS</option>

@@ -263,19 +263,22 @@
                                         <thead class="table-light fw-semibold">
                                             <tr class="align-middle">
                                                 <th>
+                                                    LRN
+                                                </th>
+                                                <th>
                                                     Username
                                                 </th>
                                                 <th>
                                                     Full Name
                                                 </th>
                                                 <th>
-                                                    LRN
-                                                </th>
-                                                <th>
                                                     Track
                                                 </th>
                                                 <th>
                                                     Email
+                                                </th>
+                                                <th>
+                                                    Grade Level
                                                 </th>
                                                 <th>
                                                     User Type
@@ -288,14 +291,16 @@
                                         <tbody>
                                             @foreach ($pageRes as $item)
                                                 <tr>
+
+                                                    <td>{{ $item['lrn'] }}</td>
                                                     <td>{{ $item['username'] }}</td>
                                                     <td>
                                                         {{ $item['lastname'] }}, {{ $item['firstname'] }}
                                                         {{ $item['middlename'] }}
                                                     </td>
-                                                    <td>{{ $item['lrn'] }}</td>
                                                     <td>{{ $item['track'] }}</td>
                                                     <td>{{ $item['email'] }}</td>
+                                                    <td>{{ $item['gradelevel'] }}</td>
                                                     <td>
                                                         @if ($item['userType'] == 0)
                                                             Super Admin
@@ -390,8 +395,10 @@
                                                                                 </div>
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                                                                    <input type="text"
-                                                                                        name="lrn" id=""
+                                                                                    <input type="number"
+                                                                                        pattern="/^-?\d+\.?\d*$/"
+                                                                                        onKeyPress="if(this.value.length==12) return false;" name="lrn"
+                                                                                        id=""
                                                                                         style="width:150px;"
                                                                                         value="{{ $item['lrn'] }}">
                                                                                     <select name="track"
@@ -709,7 +716,8 @@
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                <input type="text" name="lrn" id="" style="width:150px;">
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==12) return false;" name="lrn" id=""
+                                    style="width:150px;">
                                 <select name="track" id="civilstat" style="width:150px;margin-left: 33px;">
                                     <option value="ABM" selected>ABM</option>
                                     <option value="GAS">GAS</option>

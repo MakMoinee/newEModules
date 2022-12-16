@@ -249,8 +249,8 @@
                                             autocomplete="off">
                                         <label class="btn btn-outline-secondary"> Year</label>
                                     </div>
-                                    <button class="btn btn-primary" type="button"
-                                        onclick="createUserFile({{ $totalNewUsers }})">
+                                    <button class="btn btn-primary" type="button" data-coreui-toggle="modal"
+                                        data-coreui-target="#showUserModal" onclick="printUserData()">
                                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-arrow-down-square"
                                             viewBox="0 0 16 16">
@@ -301,7 +301,7 @@
                                         <label class="btn btn-outline-secondary"> Year</label>
                                     </div>
                                     <button class="btn btn-primary" type="button"
-                                        onclick="createModuleFile({{ $totalModules }})">
+                                        data-coreui-toggle="modal" data-coreui-target="#showModuleModal" onclick="printModuleData()">
                                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-arrow-down-square"
                                             viewBox="0 0 16 16">
@@ -320,7 +320,8 @@
                             <div class="row row-cols-1 row-cols-md-5 text-center">
                                 <div class="col mb-sm-2 mb-0">
                                     <div class="text-medium-emphasis">New Modules</div>
-                                    <div class="fw-semibold">{{ $totalModules }} Modules ({{ $modulePercentage }}%)</div>
+                                    <div class="fw-semibold">{{ $totalModules }} Modules ({{ $modulePercentage }}%)
+                                    </div>
                                     <div class="progress progress-thin mt-2">
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
@@ -347,6 +348,129 @@
     <script src="/Dashboard_files/coreui-utils.js.download"></script>
     <script src="/Dashboard_files/main.js.download"></script>
     <script></script>
+    <div class="modal fade" id="showUserModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signUpModalLabel">Users</h5>
+                    <button type="button" style="border:none;background: white;" class="close"
+                        data-coreui-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table border mb-0" id="userTable">
+                                <thead class="table-light fw-semibold">
+                                    <tr class="align-middle">
+                                        <th>
+                                            LRN
+                                        </th>
+                                        <th>
+                                            Username
+                                        </th>
+                                        <th>
+                                            Full Name
+                                        </th>
+                                        <th>
+                                            Track
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Grade Level
+                                        </th>
+                                        <th>
+                                            User Type
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($listUsers as $lstuser)
+                                        <tr>
+                                            <td>{{ $lstuser['lrn'] }}</td>
+                                            <td>{{ $lstuser['username'] }}</td>
+                                            <td>
+                                                {{ $lstuser['lastname'] }}, {{ $lstuser['firstname'] }}
+                                                {{ $lstuser['middlename'] }}
+                                            </td>
+                                            <td>{{ $lstuser['track'] }}</td>
+                                            <td>{{ $lstuser['email'] }}</td>
+                                            <td>{{ $lstuser['gradelevel'] }}</td>
+                                            <td>
+                                                @if ($lstuser['userType'] == 0)
+                                                    Super Admin
+                                                @endif
+                                                @if ($lstuser['userType'] == 1)
+                                                    Admin
+                                                @endif
+                                                @if ($lstuser['userType'] == 2)
+                                                    User
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="printUserData()">Print</button>
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="showModuleModal" tabindex="-1" role="dialog" aria-labelledby="showModuleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showModuleModalLabel">Users</h5>
+                <button type="button" style="border:none;background: white;" class="close"
+                    data-coreui-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table border mb-0" id="moduleTable">
+                            <thead class="table-light fw-semibold">
+                                <tr class="align-middle">
+                                    <th class="text-center">
+                                        Subject
+                                    </th class="text-center">
+                                    <th>
+                                        E Module Description
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($listModules as $lstmod)
+                                    <tr>
+                                        <td class="text-center">{{ $lstuser['SubjectName'] }}</td>
+                                        <td class="text-center">{{ $lstuser['description'] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="printUserData()">Print</button>
+                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
     <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -525,6 +649,21 @@
             element.click();
 
             document.body.removeChild(element);
+        }
+
+        function printUserData() {
+            var divToPrint = document.getElementById("userTable");
+            newWin = window.open("");
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.print();
+            newWin.close();
+        }
+        function printModuleData(){
+            var divToPrint = document.getElementById("moduleTable");
+            newWin = window.open("");
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.print();
+            newWin.close();
         }
     </script>
     @if (session()->pull('successLogin'))

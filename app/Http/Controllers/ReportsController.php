@@ -34,6 +34,8 @@ class ReportsController extends Controller
             $nUsers = EUsers::all();
             $total = count($nUsers);
             $newUsers = DB::table('vwtotalnewusers')->first();
+            $queryResultsss = DB::table('vwnewusers')->get();
+            $listUsers = json_decode($queryResultsss, true);
             $totalNewUsers = $newUsers->TotalNewUsers;
             $monthArr = array();
 
@@ -70,6 +72,9 @@ class ReportsController extends Controller
                 }
             }
 
+            $query = DB::table('vwlistmodules')->get();
+            $listModules = json_decode($query, true);
+
 
 
             return view('new.adminreport', [
@@ -80,7 +85,9 @@ class ReportsController extends Controller
                 'modulePercentage' => $nModules == 0 ? 0 : $nModules / count($allMods) * 100,
                 'totalUsers' => $total,
                 'monthArr' => count($monthArr) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $monthArr,
-                'modulesArr' => count($nMonth) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $nMonth
+                'modulesArr' => count($nMonth) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $nMonth,
+                'listUsers' => $listUsers,
+                'listModules' => count($listModules) == 0 ? [] : $listModules
             ]);
         } else {
             return redirect('/');
