@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EUsers;
+use App\Models\Modules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -50,13 +51,36 @@ class ReportsController extends Controller
                 }
             }
 
+            $allMods = Modules::all();
+            $query = DB::table('vwtotalnewmodules')->first();
+            $nModules = $query->TotalCount;
+            $nMonth = array();
+            foreach ($allMods as $n) {
+                $year = date('Y', strtotime($n['created_at']));
+                $currentYear = date('Y', strtotime(now()));
+                if ($year != $currentYear) {
+                    continue;
+                }
+
+                $month = date('m', strtotime($n['created_at']));
+                if (array_key_exists($month, $nMonth)) {
+                    $nMonth[(int)$month] += 1;
+                } else {
+                    $nMonth[(int)$month] = 1;
+                }
+            }
+
+
 
             return view('new.adminreport', [
                 'pic' => $pic,
                 'totalNewUsers' => $totalNewUsers,
                 'percentage' => $totalNewUsers / $total * 100,
+                'totalModules' => $nModules,
+                'modulePercentage' => $nModules == 0 ? 0 : $nModules / count($allMods) * 100,
                 'totalUsers' => $total,
-                'monthArr' => $monthArr
+                'monthArr' => count($monthArr) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $monthArr,
+                'modulesArr' => count($nMonth) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $nMonth
             ]);
         } else {
             return redirect('/');

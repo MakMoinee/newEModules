@@ -249,7 +249,8 @@
                                             autocomplete="off">
                                         <label class="btn btn-outline-secondary"> Year</label>
                                     </div>
-                                    <button class="btn btn-primary" type="button">
+                                    <button class="btn btn-primary" type="button"
+                                        onclick="createUserFile({{ $totalNewUsers }})">
                                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-arrow-down-square"
                                             viewBox="0 0 16 16">
@@ -269,6 +270,57 @@
                                 <div class="col mb-sm-2 mb-0">
                                     <div class="text-medium-emphasis">New Users</div>
                                     <div class="fw-semibold">{{ $totalNewUsers }} Users ({{ $percentage }}%)</div>
+                                    <div class="progress progress-thin mt-2">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 class="card-title mb-0">Modules</h4>
+                                    <div class="small text-medium-emphasis">January - December
+                                        {{ date('Y', strtotime(now())) }}</div>
+                                </div>
+                                <div class="btn-toolbar d-none d-md-block" role="toolbar"
+                                    aria-label="Toolbar with buttons">
+                                    <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
+                                        <input class="btn-check" id="option1" type="radio" name="options"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-secondary"> Day</label>
+                                        <input class="btn-check" id="option2" type="radio" name="options"
+                                            autocomplete="off" checked="">
+                                        <label class="btn btn-outline-secondary active"> Month</label>
+                                        <input class="btn-check" id="option3" type="radio" name="options"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-secondary"> Year</label>
+                                    </div>
+                                    <button class="btn btn-primary" type="button"
+                                        onclick="createModuleFile({{ $totalModules }})">
+                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" class="bi bi-arrow-down-square"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
+                                <canvas class="chart" id="main-chart2" height="300" width="1003"
+                                    style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row row-cols-1 row-cols-md-5 text-center">
+                                <div class="col mb-sm-2 mb-0">
+                                    <div class="text-medium-emphasis">New Modules</div>
+                                    <div class="fw-semibold">{{ $totalModules }} Modules ({{ $modulePercentage }}%)</div>
                                     <div class="progress progress-thin mt-2">
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
@@ -340,7 +392,9 @@
     <script src="{{ mix('js/app.js') }}"></script>
     <script>
         var month = {!! json_encode($monthArr, true) !!};
+        var moduleMonth = {!! json_encode($modulesArr, true) !!};
         let monthData = [];
+        let moduleMonthData = [];
         if (month) {
             for (let i = 0; i < 12; i++) {
                 let key = i + 1;
@@ -348,6 +402,16 @@
                     monthData.push(key);
                 } else {
                     monthData.push(0);
+                }
+            }
+        }
+        if (moduleMonth) {
+            for (let i = 0; i < 12; i++) {
+                let key = i + 1;
+                if (moduleMonthData.hasOwnProperty(key.toString())) {
+                    moduleMonthData.push(key);
+                } else {
+                    moduleMonthData.push(0);
                 }
             }
         }
@@ -385,6 +449,83 @@
             document.getElementById('main-chart'),
             config
         );
+
+        const data2 = {
+            labels: labels,
+            datasets: [{
+                label: 'Modules',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: moduleMonthData,
+            }]
+        };
+
+        const config2 = {
+            type: 'line',
+            data: data2,
+            options: {}
+        };
+
+        new Chart(
+            document.getElementById('main-chart2'),
+            config2
+        );
+
+        function createModuleFile(e) {
+            var element = document.createElement('a');
+
+            var newUser = {
+                'Jan': moduleMonthData[0],
+                'Feb': moduleMonthData[1],
+                'Mar': moduleMonthData[2],
+                'Apr': moduleMonthData[3],
+                'May': moduleMonthData[4],
+                'Jun': moduleMonthData[5],
+                'Jul': moduleMonthData[6],
+                'Aug': moduleMonthData[7],
+                'Sep': moduleMonthData[8],
+                'Oct': moduleMonthData[9],
+                'Nov': moduleMonthData[10],
+                'Dec': moduleMonthData[11]
+            }
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(newUser)));
+            element.setAttribute('download', 'Total Modules');
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        function createUserFile(e) {
+            var element = document.createElement('a');
+
+            var newUser = {
+                'Jan': monthData[0],
+                'Feb': monthData[1],
+                'Mar': monthData[2],
+                'Apr': monthData[3],
+                'May': monthData[4],
+                'Jun': monthData[5],
+                'Jul': monthData[6],
+                'Aug': monthData[7],
+                'Sep': monthData[8],
+                'Oct': monthData[9],
+                'Nov': monthData[10],
+                'Dec': monthData[11]
+            }
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(newUser)));
+            element.setAttribute('download', 'Total Users');
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
     </script>
     @if (session()->pull('successLogin'))
         <script>
