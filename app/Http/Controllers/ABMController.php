@@ -32,6 +32,7 @@ class ABMController extends Controller
 
             $queryResult = DB::table('academic_tracks')
                 ->where(['strandID' => $strandID, 'category' => $request['category']])
+                ->orderBy('sequence')
                 ->get();
 
             $trackRes = json_decode($queryResult, true);
@@ -52,6 +53,7 @@ class ABMController extends Controller
             foreach ($trackRes as $tr) {
                 $queryResult2 = DB::table('modules')
                     ->where(['trackID' => $tr['trackID']])
+                    ->orderBy('sequence')
                     ->get();
                 $tmpMod = new ModuleHelper();
                 $tmpMod->trackID = $tr['trackID'];
