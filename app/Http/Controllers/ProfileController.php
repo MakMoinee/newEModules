@@ -94,7 +94,7 @@ class ProfileController extends Controller
             } else {
                 session()->put("errorUpdate", true);
             }
-            return view('profile', ['user' => $user[0]]);
+            return redirect("/profile");
         } else {
             return redirect("/");
         }

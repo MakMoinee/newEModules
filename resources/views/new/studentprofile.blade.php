@@ -372,6 +372,21 @@
             </div>
         </div>
     </div>
+    @if (session()->pull('successUpdate'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Updated Profile',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('successUpdate') }}
+    @endif
+
     @if (session()->pull('successUploadPic'))
         <script>
             setTimeout(() => {
@@ -400,6 +415,37 @@
             }, 1500);
         </script>;
         {{ session()->forget('errorUploadPic') }}
+    @endif
+
+
+    @if (session()->pull('errorNotValidFilePic'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Not Valid Profile Pic File Format',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorNotValidFilePic') }}
+    @endif
+
+    @if (session()->pull('errorUpdate'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed To Update Profile',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorUpdate') }}
     @endif
     <div>
         <button class="btn btn-primary" id="btnToast" style="visibility: hidden" onclick="clickToast()"></button>
