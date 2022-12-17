@@ -398,6 +398,7 @@
                                                                                     <input type="text"
                                                                                         maxlength="12"
                                                                                         pattern="\d{12}"
+                                                                                        name="lrn"
                                                                                         id=""
                                                                                         style="width:150px;"
                                                                                         value="{{ $item['lrn'] }}">
