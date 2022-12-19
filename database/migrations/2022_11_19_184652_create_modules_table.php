@@ -16,7 +16,7 @@ class CreateModulesTable extends Migration
         Schema::create('modules', function (Blueprint $table) {
             $table->id('moduleID')->autoIncrement();
             $table->integer('trackID');
-            $table->integer('sequence');
+            $table->integer('sequence')->nullable(true);
             $table->string('description');
             $table->integer('status')->default(1);
             $table->string('filePath')->nullable(true);

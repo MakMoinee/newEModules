@@ -483,11 +483,6 @@
 
         </div>
     </div>
-    <footer class="footer">
-        <div><a href="https://coreui.io/">CoreUI </a><a href="https://coreui.io/">Bootstrap Admin Template</a> ©
-            2022 creativeLabs.</div>
-        <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
-    </footer>
     </div>
     <div>
         <button style="visibility: hidden" data-coreui-target="#previewModal" data-coreui-toggle="modal"
@@ -532,7 +527,7 @@
                 <div class="modal-body">
                     <div class="row">
                         {{-- <div id="showCanvas"></div> --}}
-                        <iframe  id="showCanvas" src="http://localhost:8443/storage/emodules/Unit 1221213.pdf#toolbar=0" width="100%"
+                        <iframe  id="showCanvas" src="#" width="100%"
                             height="500px">
                         </iframe>
                         {{-- <embed src="" type="application/pdf" id="showCanvas" height="400px"> --}}

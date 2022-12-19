@@ -265,9 +265,9 @@
                                                 <th>
                                                     Category
                                                 </th>
-                                                <th>
+                                                {{-- <th>
                                                     Sequence
-                                                </th>
+                                                </th> --}}
                                                 <th>
                                                     No. of Hours
                                                 </th>
@@ -291,9 +291,9 @@
                                                     <td>
                                                         {{ $mod['category'] }}
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         {{ $mod['sequence'] }}
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         {{ $mod['hours'] }}
                                                     </td>

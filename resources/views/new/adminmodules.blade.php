@@ -277,9 +277,9 @@
                                                 <th>
                                                     Category
                                                 </th>
-                                                <th>
+                                                {{-- <th>
                                                     Sequence
-                                                </th>
+                                                </th> --}}
                                                 <th>
                                                     No. of Hours
                                                 </th>
@@ -306,9 +306,9 @@
                                                     <td>
                                                         {{ $mod['category'] }}
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         {{ $mod['sequence'] }}
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         {{ $mod['hours'] }}
                                                     </td>
@@ -442,15 +442,15 @@
 
                                                                                     </select>
                                                                                 </div>
-                                                                                <br>
-                                                                                <div class="form-group"
+                                                                                {{-- <br> --}}
+                                                                                {{-- <div class="form-group"
                                                                                     style="margin-left: 35px;">
                                                                                     <input readonly type="number"
                                                                                         style="cursor: not-allowed;"
                                                                                         name="sequence" id=""
                                                                                         placeholder="Sequence Number"
                                                                                         value="{{ $mod['sequence'] }}">
-                                                                                </div>
+                                                                                </div> --}}
                                                                                 <br>
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 35px;">
@@ -628,11 +628,11 @@
                                     </option>
                                 </select>
                             </div>
-                            <br>
-                            <div class="form-group" style="margin-left: 35px;">
+                            {{-- <br> --}}
+                            {{-- <div class="form-group" style="margin-left: 35px;">
                                 <input required type="number" name="sequence" id=""
                                     placeholder="Sequence Number">
-                            </div>
+                            </div> --}}
                             <br>
                             <div class="form-group" style="margin-left: 35px;">
                                 <input type="number" name="hours" id="" placeholder="No. Of Hours">

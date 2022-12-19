@@ -16,7 +16,7 @@ class CreateAcademicTracksTable extends Migration
         Schema::create('academic_tracks', function (Blueprint $table) {
             $table->id('trackID')->autoIncrement();
             $table->integer('strandID');
-            $table->integer('sequence');
+            $table->integer('sequence')->nullable(true);
             $table->string('description');
             $table->string('hours')->nullable(true);
             $table->string('prerequisite')->nullable(true);

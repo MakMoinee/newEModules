@@ -106,6 +106,7 @@ class AdminStrandController extends Controller
                 $pic = $profiles[0]['filePath'];
             }
 
+
             // dd([
             //     'nem' => $nem,
             //     'totalNewUsers' => $totalNewUsers,
@@ -168,8 +169,7 @@ class AdminStrandController extends Controller
                 $queryResult = DB::table('vwallstrands')->where(
                     [
                         'strandID' => $request->strand,
-                        'category' => $request->category,
-                        'sequence' => $request->sequence
+                        'category' => $request->category
                     ]
                 )->get();
                 $count = count($queryResult);
