@@ -72,10 +72,31 @@ class ReportsController extends Controller
                 }
             }
 
+            for ($ii = 0; $ii < 12; $ii++) {
+                if (array_key_exists($ii + 1, $nMonth)) {
+                    continue;
+                } else {
+                    $nMonth[$ii + 1] = 0;
+                }
+            }
+
+
+
             $query = DB::table('vwlistmodules')->get();
             $listModules = json_decode($query, true);
 
-
+            // dd([
+            //     'pic' => $pic,
+            //     'totalNewUsers' => $totalNewUsers,
+            //     'percentage' => $totalNewUsers == 0 ? 0 : $totalNewUsers / $total * 100,
+            //     'totalModules' => $nModules,
+            //     'modulePercentage' => $nModules == 0 ? 0 : $nModules / count($allMods) * 100,
+            //     'totalUsers' => $total,
+            //     'monthArr' => count($monthArr) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $monthArr,
+            //     'modulesArr' => count($nMonth) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $nMonth,
+            //     'listUsers' => $listUsers,
+            //     'listModules' => count($listModules) == 0 ? [] : $listModules
+            // ]);
 
             return view('new.adminreport', [
                 'pic' => $pic,

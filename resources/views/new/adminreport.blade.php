@@ -461,8 +461,8 @@
                                 <tbody>
                                     @foreach ($listModules as $lstmod)
                                         <tr>
-                                            <td class="text-center">{{ $lstuser['SubjectName'] }}</td>
-                                            <td class="text-center">{{ $lstuser['description'] }}</td>
+                                            <td class="text-center">{{ $lstmod['SubjectName'] }}</td>
+                                            <td class="text-center">{{ $lstmod['description'] }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -545,6 +545,8 @@
                     moduleMonthData.push(0);
                 }
             }
+
+            console.log(moduleMonth)
         }
         const labels = [
             'Jan',
@@ -587,7 +589,7 @@
                 label: 'Modules',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: moduleMonthData,
+                data: moduleMonth,
             }]
         };
 
