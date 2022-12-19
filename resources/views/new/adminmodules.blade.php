@@ -714,7 +714,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Deleted Subject',
+                    title: 'Successfully Archived Subject',
                     showConfirmButton: false,
                     timer: 1300
                 });
