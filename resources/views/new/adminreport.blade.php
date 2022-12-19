@@ -537,16 +537,17 @@
             }
         }
         if (moduleMonth) {
+            
             for (let i = 0; i < 12; i++) {
                 let key = i + 1;
-                if (moduleMonthData.hasOwnProperty(key.toString())) {
-                    moduleMonthData.push(key);
+                if (moduleMonth.hasOwnProperty(key.toString())) {
+                    moduleMonthData.push(moduleMonth[key]);
                 } else {
                     moduleMonthData.push(0);
                 }
             }
 
-            console.log(moduleMonth)
+            console.log(moduleMonthData)
         }
         const labels = [
             'Jan',
@@ -589,7 +590,7 @@
                 label: 'Modules',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: moduleMonth,
+                data: moduleMonthData,
             }]
         };
 
@@ -608,18 +609,18 @@
             var element = document.createElement('a');
 
             var newUser = {
-                'Jan': moduleMonthData[0],
-                'Feb': moduleMonthData[1],
-                'Mar': moduleMonthData[2],
-                'Apr': moduleMonthData[3],
-                'May': moduleMonthData[4],
-                'Jun': moduleMonthData[5],
-                'Jul': moduleMonthData[6],
-                'Aug': moduleMonthData[7],
-                'Sep': moduleMonthData[8],
-                'Oct': moduleMonthData[9],
-                'Nov': moduleMonthData[10],
-                'Dec': moduleMonthData[11]
+                'Jan': moduleMonthData[1],
+                'Feb': moduleMonthData[2],
+                'Mar': moduleMonthData[3],
+                'Apr': moduleMonthData[4],
+                'May': moduleMonthData[5],
+                'Jun': moduleMonthData[6],
+                'Jul': moduleMonthData[7],
+                'Aug': moduleMonthData[8],
+                'Sep': moduleMonthData[9],
+                'Oct': moduleMonthData[10],
+                'Nov': moduleMonthData[11],
+                'Dec': moduleMonthData[12]
             }
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(newUser)));
             element.setAttribute('download', 'Total Modules');
