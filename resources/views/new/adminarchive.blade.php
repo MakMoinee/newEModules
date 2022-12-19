@@ -498,6 +498,34 @@
             toast.show();
         }
     </script>
+    @if (session()->pull('successDeletingArchivedModule'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully Deleted Archived Subject',
+                    showConfirmButton: false,
+                    timer: 500
+                });
+            }, 800);
+        </script>
+        {{ session()->forget('successDeletingArchivedModule') }}
+    @endif
+    @if (session()->pull('errorDeletinArchivedgModule'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed To Delete Archived Subject',
+                    showConfirmButton: false,
+                    timer: 500
+                });
+            }, 800);
+        </script>
+        {{ session()->forget('errorDeletinArchivedgModule') }}
+    @endif
     @if (session()->pull('successRestoreSubject'))
         <script>
             setTimeout(() => {

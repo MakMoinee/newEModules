@@ -309,9 +309,9 @@ class AdminStrandController extends Controller
                     $affectedRows2 = DB::table('modules')
                         ->where(['trackID' => $id])
                         ->delete();
-                    session()->put('successDeletingModule', true);
+                    session()->put('successDeletingArchivedModule', true);
                 } else {
-                    session()->put('errorDeletingModule', true);
+                    session()->put('errorDeletinArchivedgModule', true);
                 }
                 return redirect('/archive');
             }
