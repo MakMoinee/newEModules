@@ -18,6 +18,7 @@ class Modules extends Model
         'trackID',
         'sequence',
         'description',
+        'default',
         'filePath'
     ];
 }

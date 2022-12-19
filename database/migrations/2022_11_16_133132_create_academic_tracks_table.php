@@ -20,7 +20,7 @@ class CreateAcademicTracksTable extends Migration
             $table->string('description');
             $table->string('hours')->nullable(true);
             $table->string('prerequisite')->nullable(true);
-            $table->string('status')->nullable(true);
+            $table->integer('status')->default(1);
             $table->string('category');
             $table->timestamps();
         });

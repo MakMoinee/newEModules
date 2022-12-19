@@ -158,7 +158,7 @@
                         <path fill-rule="evenodd"
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
-               </button><a class="header-brand d-md-none" href="/">
+                </button><a class="header-brand d-md-none" href="/">
 
                     <img src="/storage/images/favicon.ico"width="46" height="46" alt=""
                         srcset=""></a>
@@ -483,7 +483,7 @@
                                                         </div>
                                                         <button class="btn btn-danger fs-6"
                                                             style="font-size: 12px;color:white"data-coreui-toggle="modal"
-                                                            data-coreui-target="#deleteModal{{ $mod['trackID'] }}">Delete</button>
+                                                            data-coreui-target="#deleteModal{{ $mod['trackID'] }}">Archive</button>
                                                         <div class="modal fade" id="deleteModal{{ $mod['trackID'] }}"
                                                             tabindex="-1" role="dialog"
                                                             aria-labelledby="deleteModalLabel{{ $mod['trackID'] }}"
@@ -502,12 +502,12 @@
                                                                         <div class="modal-body">
                                                                             <h5 class="modal-title"
                                                                                 id="deleteModalLabel{{ $mod['trackID'] }}">
-                                                                                Do you want to
-                                                                                proceed Deleting Subject ?</h5>
+                                                                                This Subject will be moved to archived,
+                                                                                Do you still want to proceed?</h5>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="submit"
-                                                                                class="btn btn-primary">Yes,
+                                                                                class="btn btn-primary" name="btnArchive" value="true">Yes,
                                                                                 Proceed</button>
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
@@ -579,7 +579,7 @@
                 </div>
             </div>
         </div>
-        <footer class="footer"> 
+        <footer class="footer">
             <div class="ms-auto">Copyright &copy; 2022</a></div>
         </footer>
     </div>

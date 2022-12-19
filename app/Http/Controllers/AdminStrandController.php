@@ -30,7 +30,7 @@ class AdminStrandController extends Controller
             $newUsers = DB::table('vwtotalnewusers')->first();
             $totalNewUsers = $newUsers->TotalNewUsers;
 
-            $queryResult = DB::table('vwallstrands')->get();
+            $queryResult = DB::table('vwallstrands')->where([['status', '<>', 2]])->get();
             $result = json_decode($queryResult, true);
             $modules = [];
             $startIndex = $request->query('page') == null ? 1 : $request->query('page');
@@ -279,7 +279,7 @@ class AdminStrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         if (session()->exists("users")) {
             $user = session()->pull("users");
@@ -289,16 +289,32 @@ class AdminStrandController extends Controller
                 return redirect('/');
             }
 
-            $affectedRows = DB::table('academic_tracks')
-                ->where(['trackID' => $id])
-                ->delete();
+            if ($request->btnArchive) {
+                $affectedRows = DB::table('academic_tracks')
+                    ->where(['trackID' => $id])
+                    ->update(['status' => 2]);
 
-            if ($affectedRows > 0) {
-                session()->put('successDeletingModule', true);
+                if ($affectedRows > 0) {
+                    session()->put('successDeletingModule', true);
+                } else {
+                    session()->put('errorDeletingModule', true);
+                }
+                return redirect('/adminstrands');
             } else {
-                session()->put('errorDeletingModule', true);
+                $affectedRows = DB::table('academic_tracks')
+                    ->where(['trackID' => $id])
+                    ->delete();
+
+                if ($affectedRows > 0) {
+                    $affectedRows2 = DB::table('modules')
+                        ->where(['trackID' => $id])
+                        ->delete();
+                    session()->put('successDeletingModule', true);
+                } else {
+                    session()->put('errorDeletingModule', true);
+                }
+                return redirect('/archive');
             }
-            return redirect('/adminstrands');
         }
         return redirect('/');
     }

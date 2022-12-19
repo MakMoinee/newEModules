@@ -720,8 +720,12 @@
                             </div>
                             <div class="form-group" style="margin-left: 40px;margin-bottom: 20px;margin-top: -20px;">
                                 <input required type="password" name="password" id="apassword" style="width:150px;">
+                                <i class="far fa-eye" id="togglePassword"
+                                    style="margin-left: -30px; cursor: pointer;"></i>
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;margin-left: 32px;">
+                                <i class="far fa-eye" id="toggleRePassword"
+                                    style="margin-left: -30px; cursor: pointer;"></i>
                             </div>
                             <div class="form-group" style="margin-left: 40px;margin-bottom: 20px;margin-top: -20px;">
                                 <input type="hidden" name="userrole" id="auserrole">
@@ -1026,7 +1030,6 @@
         {{ session()->forget('errorExistingSequence') }}
     @endif
     <script>
-        
         const togglePassword = document.querySelector('#togglePassword');
         const toggleRePassword = document.querySelector('#toggleRePassword');
 

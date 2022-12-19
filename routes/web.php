@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminStrandController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AnnouncementsController;
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
@@ -68,6 +69,7 @@ Route::post('/messages', [ChatsController::class, 'sendMessage']);
 Route::resource('/userprofiles', UserPicProfileController::class);
 Route::resource('/contactus', ContactUsController::class);
 Route::resource('/reports', ReportsController::class);
+Route::resource('/archive', ArchiveController::class);
 Route::get('/chartjs', function () {
     return view('chartjs');
 });

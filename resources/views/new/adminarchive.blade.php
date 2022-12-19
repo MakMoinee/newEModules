@@ -116,14 +116,14 @@
                                             <path
                                                 d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
                                         </svg> Users</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="/reports" target="_top">
+                                <li class="nav-item"><a class="nav-link" href="/reports" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-graph-down"
                                             viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
                                                 d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z" />
                                         </svg> Reports</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/archive" target="_top">
+                                <li class="nav-item"><a class="nav-link active" href="/archive" target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-file-zip"
                                             viewBox="0 0 16 16">
@@ -228,7 +228,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>Home</span>
+                            <span>Archive</span>
                         </li>
                     </ol>
                 </nav>
@@ -237,105 +237,206 @@
         <div class="body flex-grow-1 px-3">
             <div class="container-lg">
                 <div class="row">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h4 class="card-title mb-0">User Traffic</h4>
-                                    <div class="small text-medium-emphasis">January - December
-                                        {{ date('Y', strtotime(now())) }}</div>
-                                </div>
-                                <div class="btn-toolbar d-none d-md-block" role="toolbar"
-                                    aria-label="Toolbar with buttons">
-                                    <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
-                                        <input class="btn-check" id="option1" type="radio" name="options"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-secondary"> Day</label>
-                                        <input class="btn-check" id="option2" type="radio" name="options"
-                                            autocomplete="off" checked="">
-                                        <label class="btn btn-outline-secondary active"> Month</label>
-                                        <input class="btn-check" id="option3" type="radio" name="options"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-secondary"> Year</label>
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <form action="/adminusers" method="get">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Search Subject"
+                                            aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                            name="search">
+                                        <button type="submit" class="input-group-text"
+                                            id="basic-addon2">Search</button>
                                     </div>
-                                    <button class="btn btn-primary" type="button" data-coreui-toggle="modal"
-                                        data-coreui-target="#showUserModal" onclick="printUserData()">
-                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-arrow-down-square"
-                                            viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
-                                        </svg>
-                                    </button>
-                                </div>
+                                </form>
                             </div>
-                            <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
-                                <canvas class="chart" id="main-chart" height="300" width="1003"
-                                    style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="row row-cols-1 row-cols-md-5 text-center">
-                                <div class="col mb-sm-2 mb-0">
-                                    <div class="text-medium-emphasis">New Users</div>
-                                    <div class="fw-semibold">{{ $totalNewUsers }} Users ({{ $percentage }}%)</div>
-                                    <div class="progress progress-thin mt-2">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <div class="card-body">
+                                <br>
+                                <div class="table-responsive">
+                                    <table class="table border mb-0">
+                                        <thead class="table-light fw-semibold">
+                                            <tr class="align-middle">
+                                                <th>
+                                                    Subject
+                                                </th>
+                                                <th>
+                                                    Strand
+                                                </th>
+                                                <th>
+                                                    Category
+                                                </th>
+                                                <th>
+                                                    Sequence
+                                                </th>
+                                                <th>
+                                                    No. of Hours
+                                                </th>
+                                                <th>
+                                                    Pre-requisite
+                                                </th>
+                                                <th>
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($pageRes as $mod)
+                                                <tr>
+                                                    <td>
+                                                        {{ $mod['SubjectName'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $mod['Strand'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $mod['category'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $mod['sequence'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $mod['hours'] }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $mod['prerequisite'] }}
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-success fs-6"
+                                                            style="font-size: 8px;color:white;"
+                                                            data-coreui-toggle="modal"
+                                                            data-coreui-target="#viewModuleModal{{ $mod['trackID'] }}">Restore
+                                                            Subject</button>
+                                                        <div class="modal fade "
+                                                            id="viewModuleModal{{ $mod['trackID'] }}" tabindex="-1"
+                                                            role="dialog"
+                                                            aria-labelledby="viewModuleModalLabel{{ $mod['trackID'] }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <h5 class="modal-title"
+                                                                                id="deleteModalLabel{{ $mod['trackID'] }}">
+                                                                                Do you want to proceed restoring this
+                                                                                Subject?</h5>
+                                                                            <form action="/archive" method="POST"
+                                                                                enctype="multipart/form-data"
+                                                                                autocomplete="off">
+                                                                                @csrf
+                                                                                <div class="form-group">
+                                                                                    <input type="hidden"
+                                                                                        name="trackID"
+                                                                                        value="{{ $mod['trackID'] }}">
+                                                                                </div>
 
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h4 class="card-title mb-0">Modules</h4>
-                                    <div class="small text-medium-emphasis">January - December
-                                        {{ date('Y', strtotime(now())) }}</div>
-                                </div>
-                                <div class="btn-toolbar d-none d-md-block" role="toolbar"
-                                    aria-label="Toolbar with buttons">
-                                    <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
-                                        <input class="btn-check" id="option1" type="radio" name="options"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-secondary"> Day</label>
-                                        <input class="btn-check" id="option2" type="radio" name="options"
-                                            autocomplete="off" checked="">
-                                        <label class="btn btn-outline-secondary active"> Month</label>
-                                        <input class="btn-check" id="option3" type="radio" name="options"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-secondary"> Year</label>
-                                    </div>
-                                    <button class="btn btn-primary" type="button" data-coreui-toggle="modal"
-                                        data-coreui-target="#showModuleModal" onclick="printModuleData()">
-                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16"
-                                            height="16" fill="currentColor" class="bi bi-arrow-down-square"
-                                            viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
-                                        </svg>
-                                    </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            style="background-color: #ff589e"
+                                                                            name="btnUpdateRestore"
+                                                                            value="true">Yes</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-coreui-dismiss="modal">Close</button>
+
+                                                                    </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-danger fs-6"
+                                                            style="font-size: 12px;color:white"data-coreui-toggle="modal"
+                                                            data-coreui-target="#deleteModal{{ $mod['trackID'] }}">Delete</button>
+                                                        <div class="modal fade" id="deleteModal{{ $mod['trackID'] }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="deleteModalLabel{{ $mod['trackID'] }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <form
+                                                                        action="{{ route('adminstrands.destroy', ['adminstrand' => $mod['trackID']]) }}"
+                                                                        method="POST" enctype="multipart/form-data">
+                                                                        @method('delete')
+                                                                        @csrf
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="trackID"
+                                                                                value="{{ $mod['trackID'] }}">
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <h5 class="modal-title"
+                                                                                id="deleteModalLabel{{ $mod['trackID'] }}">
+                                                                                Do you want to proceed deleting
+                                                                                permanently this Subject?</h5>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary"
+                                                                                name="btnDelete" value="true">Yes,
+                                                                                Proceed</button>
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-coreui-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
-                                <canvas class="chart" id="main-chart2" height="300" width="1003"
-                                    style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="row row-cols-1 row-cols-md-5 text-center">
-                                <div class="col mb-sm-2 mb-0">
-                                    <div class="text-medium-emphasis">New Modules</div>
-                                    <div class="fw-semibold">{{ $totalModules }} Modules ({{ $modulePercentage }}%)
-                                    </div>
-                                    <div class="progress progress-thin mt-2">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
+                            <div class="card-footer">
+                                <nav aria-label="...">
+                                    <ul class="pagination">
+                                        @if ($startIndex > 1)
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                    href="/archive?page={{ $startIndex - 1 }}">Previous</a>
+                                            </li>
+                                        @else
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">Previous</a>
+                                            </li>
+                                        @endif
+
+                                        @for ($i = 0; $i < $pageCount; $i++)
+                                            {{-- @if ($startIndex == 5) --}}
+                                            @if ($startIndex == $i + 1)
+                                                <li class="page-item active"><a class="page-link" href="#"
+                                                        style="background-color: #ff589e !important;">{{ $i + 1 }}</a>
+                                                </li>
+                                            @else
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/archive?page={{ $i + 1 }}">{{ $i + 1 }}</a>
+                                                </li>
+                                            @endif
+
+
+                                            {{-- @endif --}}
+                                        @endfor
+                                        @if (count($modules) == 0)
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#">Next</a>
+                                            </li>
+                                        @else
+                                            @if ($pageCount - $startIndex <= 0)
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">Next</a>
+                                                </li>
+                                            @else
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                        href="/archive?page={{ $startIndex + 1 }}">Next</a>
+                                                </li>
+                                            @endif
+
+                                        @endif
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -355,129 +456,6 @@
     <script src="/Dashboard_files/coreui-utils.js.download"></script>
     <script src="/Dashboard_files/main.js.download"></script>
     <script></script>
-    <div class="modal fade" id="showUserModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signUpModalLabel">Users</h5>
-                    <button type="button" style="border:none;background: white;" class="close"
-                        data-coreui-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="table-responsive">
-                            <table class="table border mb-0" id="userTable">
-                                <thead class="table-light fw-semibold">
-                                    <tr class="align-middle">
-                                        <th>
-                                            LRN
-                                        </th>
-                                        <th>
-                                            Username
-                                        </th>
-                                        <th>
-                                            Full Name
-                                        </th>
-                                        <th>
-                                            Track
-                                        </th>
-                                        <th>
-                                            Email
-                                        </th>
-                                        <th>
-                                            Grade Level
-                                        </th>
-                                        <th>
-                                            User Type
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($listUsers as $lstuser)
-                                        <tr>
-                                            <td>{{ $lstuser['lrn'] }}</td>
-                                            <td>{{ $lstuser['username'] }}</td>
-                                            <td>
-                                                {{ $lstuser['lastname'] }}, {{ $lstuser['firstname'] }}
-                                                {{ $lstuser['middlename'] }}
-                                            </td>
-                                            <td>{{ $lstuser['track'] }}</td>
-                                            <td>{{ $lstuser['email'] }}</td>
-                                            <td>{{ $lstuser['gradelevel'] }}</td>
-                                            <td>
-                                                @if ($lstuser['userType'] == 0)
-                                                    Super Admin
-                                                @endif
-                                                @if ($lstuser['userType'] == 1)
-                                                    Admin
-                                                @endif
-                                                @if ($lstuser['userType'] == 2)
-                                                    User
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="printUserData()">Print</button>
-                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="showModuleModal" tabindex="-1" role="dialog"
-        aria-labelledby="showModuleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="showModuleModalLabel">Users</h5>
-                    <button type="button" style="border:none;background: white;" class="close"
-                        data-coreui-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="table-responsive">
-                            <table class="table border mb-0" id="moduleTable">
-                                <thead class="table-light fw-semibold">
-                                    <tr class="align-middle">
-                                        <th class="text-center">
-                                            Subject
-                                        </th class="text-center">
-                                        <th>
-                                            E Module Description
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($listModules as $lstmod)
-                                        <tr>
-                                            <td class="text-center">{{ $lstuser['SubjectName'] }}</td>
-                                            <td class="text-center">{{ $lstuser['description'] }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="printUserData()">Print</button>
-                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -520,173 +498,33 @@
             toast.show();
         }
     </script>
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script>
-        var month = {!! json_encode($monthArr, true) !!};
-        var moduleMonth = {!! json_encode($modulesArr, true) !!};
-        let monthData = [];
-        let moduleMonthData = [];
-        if (month) {
-            for (let i = 0; i < 12; i++) {
-                let key = i + 1;
-                if (month.hasOwnProperty(key.toString())) {
-                    monthData.push(key);
-                } else {
-                    monthData.push(0);
-                }
-            }
-        }
-        if (moduleMonth) {
-            for (let i = 0; i < 12; i++) {
-                let key = i + 1;
-                if (moduleMonthData.hasOwnProperty(key.toString())) {
-                    moduleMonthData.push(key);
-                } else {
-                    moduleMonthData.push(0);
-                }
-            }
-        }
-        const labels = [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
-        ];
-
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Users',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: monthData,
-            }]
-        };
-
-        const config = {
-            type: 'line',
-            data: data,
-            options: {}
-        };
-        new Chart(
-            document.getElementById('main-chart'),
-            config
-        );
-
-        const data2 = {
-            labels: labels,
-            datasets: [{
-                label: 'Modules',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: moduleMonthData,
-            }]
-        };
-
-        const config2 = {
-            type: 'line',
-            data: data2,
-            options: {}
-        };
-
-        new Chart(
-            document.getElementById('main-chart2'),
-            config2
-        );
-
-        function createModuleFile(e) {
-            var element = document.createElement('a');
-
-            var newUser = {
-                'Jan': moduleMonthData[0],
-                'Feb': moduleMonthData[1],
-                'Mar': moduleMonthData[2],
-                'Apr': moduleMonthData[3],
-                'May': moduleMonthData[4],
-                'Jun': moduleMonthData[5],
-                'Jul': moduleMonthData[6],
-                'Aug': moduleMonthData[7],
-                'Sep': moduleMonthData[8],
-                'Oct': moduleMonthData[9],
-                'Nov': moduleMonthData[10],
-                'Dec': moduleMonthData[11]
-            }
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(newUser)));
-            element.setAttribute('download', 'Total Modules');
-
-            element.style.display = 'none';
-            document.body.appendChild(element);
-
-            element.click();
-
-            document.body.removeChild(element);
-        }
-
-        function createUserFile(e) {
-            var element = document.createElement('a');
-
-            var newUser = {
-                'Jan': monthData[0],
-                'Feb': monthData[1],
-                'Mar': monthData[2],
-                'Apr': monthData[3],
-                'May': monthData[4],
-                'Jun': monthData[5],
-                'Jul': monthData[6],
-                'Aug': monthData[7],
-                'Sep': monthData[8],
-                'Oct': monthData[9],
-                'Nov': monthData[10],
-                'Dec': monthData[11]
-            }
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(newUser)));
-            element.setAttribute('download', 'Total Users');
-
-            element.style.display = 'none';
-            document.body.appendChild(element);
-
-            element.click();
-
-            document.body.removeChild(element);
-        }
-
-        function printUserData() {
-            var divToPrint = document.getElementById("userTable");
-            newWin = window.open("");
-            newWin.document.write(divToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
-        }
-
-        function printModuleData() {
-            var divToPrint = document.getElementById("moduleTable");
-            newWin = window.open("");
-            newWin.document.write(divToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
-        }
-    </script>
-    @if (session()->pull('successLogin'))
+    @if (session()->pull('successRestoreSubject'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Login',
+                    title: 'Successfully Restored Subject',
                     showConfirmButton: false,
                     timer: 500
                 });
-            }, 1500);
+            }, 800);
         </script>
-        {{ session()->forget('successLogin') }}
+        {{ session()->forget('successRestoreSubject') }}
+    @endif
+    @if (session()->pull('errorRestoreSubject'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed To Restore Subject',
+                    showConfirmButton: false,
+                    timer: 500
+                });
+            }, 800);
+        </script>
+        {{ session()->forget('errorRestoreSubject') }}
     @endif
 </body>
 

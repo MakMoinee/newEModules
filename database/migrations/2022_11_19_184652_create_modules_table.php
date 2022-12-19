@@ -18,6 +18,7 @@ class CreateModulesTable extends Migration
             $table->integer('trackID');
             $table->integer('sequence');
             $table->string('description');
+            $table->integer('status')->default(1);
             $table->string('filePath')->nullable(true);
             $table->timestamps();
         });
