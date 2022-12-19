@@ -19,10 +19,26 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
+    <style>
+        @media screen and (max-width: 600px) {
+            #header {
+                padding-top: 70px !important;
+            }
 
+            #logoText {
+                padding-top: 10px !important;
+                line-height: 20px !important;
+            }
+
+            #ribbon {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body style="background: #ff00e1">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -36,7 +52,7 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky background-header">
         <img style="float: left;padding: 10px;margin-left: 10px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
@@ -45,19 +61,18 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
 
-                        <a href="/" class="logo">MERR-C Society Academy</a>
+                        <a href="/" class="logo" id="logoText">MERR-C Society Academy</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/">Home</a></li>
-                            <li class="scroll-to-section"><a href="/about">About</a>
+                            <li class="scroll-to-section"><a href="/">Home</a>
                             </li>
-                            <li class="scroll-to-section "><a href="/strands"
-                                    style="color:#f55858 !important; ">Academic Strands</a></li>
+                            <li class="scroll-to-section"><a href="/strands" style="color: black !important;">Academic
+                                    Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
-                            <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
-                                    data-target="#signUpModal">Signup</a></li>
+                            {{-- <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
+                                    data-target="#signUpModal">Signup</a></li> --}}
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -75,310 +90,86 @@
     <div class="welcome-area" id="welcome">
 
         <!-- ***** Header Text Start ***** -->
-        <div class="header-text" style="margin-top: 180px; height:650px;">
-            <div class="container">
-                <div class="row">
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                            @if ($track == 'ABM')
-                                <center>
-                                    <h4 style="margin-left: 220px;">ACCOUNTANCY, BUSINESS AND MANAGEMENT</h4>
-                                    <br>
-                                    <nav class="navbar navbar-expand-lg navbar-light bg-light"
-                                        style="margin-left: 220px; border-bottom-left-radius: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
-                                        <div class="collapse navbar-collapse" id="navbarNav">
-                                            <ul class="navbar-nav">
-                                                @if ($category == 'CORE')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=ABM"><b>CORE</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link" href="/course?category=CORE&strand=ABM">CORE
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'APPLIED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=ABM"><b>APPLIED</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=ABM">APPLIED
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'SPECIALIZED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=ABM"><b>SPECIALIZED
-                                                                ABM</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=ABM">SPECIALIZED
-                                                            ABM
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-
-
-                                        </div>
-                                        <br>
-
-                                    </nav>
-                                </center>
-                            @endif
-                            @if ($track == 'GAS')
-                                <center>
-                                    <h4 style="margin-left: 220px;">GENERAL ACADEMIC STRAND</h4>
-                                    <br>
-                                    <nav class="navbar navbar-expand-lg navbar-light bg-light"
-                                        style="margin-left: 220px; border-bottom-left-radius: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
-                                        <div class="collapse navbar-collapse" id="navbarNav">
-                                            <ul class="navbar-nav">
-                                                @if ($category == 'CORE')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=GAS"><b>CORE</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=GAS">CORE
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'APPLIED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=GAS"><b>APPLIED</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=GAS">APPLIED
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'SPECIALIZED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=GAS"><b>SPECIALIZED
-                                                                GAS</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=GAS">SPECIALIZED
-                                                            GAS
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-
-
-                                        </div>
-                                        <br>
-
-                                    </nav>
-                                </center>
-                            @endif
-                            @if ($track == 'HUMSS')
-                                <center>
-                                    <h4 style="margin-left: 220px;">GENERAL ACADEMIC STRAND</h4>
-                                    <br>
-                                    <nav class="navbar navbar-expand-lg navbar-light bg-light"
-                                        style="margin-left: 220px; border-bottom-left-radius: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
-                                        <div class="collapse navbar-collapse" id="navbarNav">
-                                            <ul class="navbar-nav">
-                                                @if ($category == 'CORE')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=HUMSS"><b>CORE</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=HUMSS">CORE
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'APPLIED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=HUMSS"><b>APPLIED</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=HUMSS">APPLIED
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'SPECIALIZED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=GAS"><b>SPECIALIZED
-                                                                HUMSS</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=GAS">SPECIALIZED
-                                                            HUMSS
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-
-
-                                        </div>
-                                        <br>
-
-                                    </nav>
-                                </center>
-                            @endif
-                            @if ($track == 'TVL')
-                                <center>
-                                    <h4 style="margin-left: 220px;">TECHNOLOGY, VOCATIONAL, LIVELIHOOD</h4>
-                                    <br>
-                                    <nav class="navbar navbar-expand-lg navbar-light bg-light"
-                                        style="margin-left: 220px; border-bottom-left-radius: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
-                                        <div class="collapse navbar-collapse" id="navbarNav">
-                                            <ul class="navbar-nav">
-                                                @if ($category == 'CORE')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=TVL"><b>CORE</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=TVL">CORE
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'APPLIED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=TVL"><b>APPLIED</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=TVL">APPLIED
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'SPECIALIZED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=TVL"><b>SPECIALIZED
-                                                                TVL</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=TVL">SPECIALIZED
-                                                            TVL
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-
-
-                                        </div>
-                                        <br>
-
-                                    </nav>
-                                </center>
-                            @endif
-                            @if ($track == 'STEM')
-                                <center>
-                                    <h4 style="margin-left: 220px;">SCIENCE, TECHNOLOGY, ENGINEERING AND
-                                        MATHEMATICS</h4>
-                                    <br>
-                                    <nav class="navbar navbar-expand-lg navbar-light bg-light"
-                                        style="margin-left: 220px; border-bottom-left-radius: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
-                                        <div class="collapse navbar-collapse" id="navbarNav">
-                                            <ul class="navbar-nav">
-                                                @if ($category == 'CORE')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=STEM"><b>CORE</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=CORE&strand=STEM">CORE
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'APPLIED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=STEM"><b>APPLIED</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=APPLIED&strand=STEM">APPLIED
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if ($category == 'SPECIALIZED')
-                                                    <li class="nav-item active">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=STEM"><b>SPECIALIZED
-                                                                STEM</b>
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li class="nav-item ">
-                                                        <a class="nav-link"
-                                                            href="/course?category=SPECIALIZED&strand=TVL">SPECIALIZED
-                                                            STEM
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-
-
-                                        </div>
-                                        <br>
-
-                                    </nav>
-                                </center>
-                            @endif
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12" style="color:white;">
+                        @if ($track == 'ABM')
+                            <h4 style="">ACCOUNTANCY, BUSINESS AND MANAGEMENT</h4>
+                        @endif
+                        @if ($track == 'GAS')
+                            <h4 style="">GENERAL ACADEMIC STRAND</h4>
+                        @endif
+                        @if ($track == 'HUMSS')
+                            <h4 style="">HUMANITIES & SOCIAL SCIENCES</h4>
+                        @endif
+                        @if ($track == 'TVL')
+                            <h4 style="">TECHNOLOGY, VOCATIONAL, LIVELIHOOD</h4>
+                        @endif
+                        @if ($track == 'STEM')
+                            <h4 style="">SCIENCE, TECHNOLOGY, ENGINEERING AND
+                                MATHEMATICS</h4>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="background:white;padding:10px;margin-top: 10px;color:white;">
+                            <ul style="list-style-type: none; display: inline-block;background:white;color:white;">
+                                @if ($category == 'CORE')
+                                    <li style="display: inline-block;color:black;">
+                                        <a href="/course?category=CORE&strand={{ $track }}"><b>CORE</b>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li style="display: inline-block;color:black;">
+                                        <a href="/course?category=CORE&strand={{ $track }}">CORE
+                                        </a>
+                                    </li>
+                                @endif
+                                @if ($category == 'APPLIED')
+                                    <li style="display: inline-block;margin-left: 10px;color:black;">
+                                        <a href="/course?category=APPLIED&strand={{ $track }}"><b>APPLIED</b>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li style="display: inline-block;margin-left: 10px;color:black;">
+                                        <a href="/course?category=APPLIED&strand={{ $track }}">APPLIED
+                                        </a>
+                                    </li>
+                                @endif
+                                @if ($category == 'SPECIALIZED')
+                                    <li style="display: inline-block;margin-left: 10px;color:black;">
+                                        <a href="/course?category=SPECIALIZED&strand={{ $track }}"><b>SPECIALIZED
+                                                {{ $track }}</b>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li style="display: inline-block;margin-left: 10px;color:black;">
+                                        <a href="/course?category=SPECIALIZED&strand={{ $track }}">SPECIALIZED
+                                            {{ $track }}
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
                         </div>
-                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-12">
+                    <div class="col-md-12">
                         <div class="row">
-                            <div class="row table-responsive-md" style="background: whitesmoke; width: 100%;">
+                            <div class="table-responsive" style="background: whitesmoke; width: 100%;"">
                                 <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <th>
-                                            Subject
-                                        </th>
+                                    <thead class="table-light fw-semibold">
+                                        <tr class="align-middle">
+                                            <th>
+                                                Subject
+                                            </th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($trackRes as $tr)
@@ -412,15 +203,19 @@
 
 
     <!-- ***** Footer Start ***** -->
-    <footer style="background-color: #bfbfbf;">
+    <footer style="background-color: #bfbfbf;height:60px !important; padding: 0px !important;">
         <div class="container">
             <div class="row">
-                <center>
-                    <p class="copyright" style="color: black;">Copyright &copy; 2022</p>
-                    {{-- <div class="col-lg-7 col-md-12 col-sm-12">
-                        <p class="copyright" style="color: white;">Copyright &copy; 2022
-                    </div> --}}
-                </center>
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <center>
+                            <p class="copyright" style="color: black;margin-top: 20px;">Copyright &copy; 2022</p>
+                            {{-- <div class="col-lg-7 col-md-12 col-sm-12">
+                                <p class="copyright" style="color: white;">Copyright &copy; 2022
+                            </div> --}}
+                        </center>
+                    </div>
+                </div>
                 {{-- <div class="col-lg-5 col-md-12 col-sm-12">
                     <ul class="social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>

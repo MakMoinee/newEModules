@@ -37,7 +37,7 @@
     </style>
 </head>
 
-<body style="background: #ff00e1">
+<body style="background: #ff00e1;height: auto !important;">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -51,7 +51,7 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky background-header">
         <img style="float: left;padding: 10px;margin-left: 10px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
@@ -64,8 +64,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/about">About</a></li>
-                            <li class="scroll-to-section"><a href="/strands">Academic Strands</a></li>
+                            <li class="scroll-to-section"><a href="/" style="color: black !important;">Home</a>
+                            </li>
+                            <li class="scroll-to-section"><a href="/strands">Academic
+                                    Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
                             {{-- <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
@@ -89,11 +91,15 @@
         <!-- ***** Header Text Start ***** -->
         <div class="header-text header-sticky" id="header">
             <div class="container">
+                <br>
+                <br>
                 <div class="row">
                     <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h1>MERR-C Society Academy </h1>
                         <p>High quality education for all Senior High School</p>
+                        <p>Non Stock non profit educational instituition founded in 2007 and offers Pre-elem to Senior
+                            High School</p>
                         {{-- <a href="/about" class="main-button-slider" data-toggle="modal"
                             data-target="#signUpModal">Signup</a> --}}
                     </div>
@@ -108,19 +114,86 @@
         <!-- ***** Header Text End ***** -->
     </div>
     <!-- ***** Welcome Area End ***** -->
+    <section class="section" id="about"
+        style="background: #ff589e;margin-top: 50px; background-image: url('/images/schoolpic.png');background-repeat: no-repeat;background-size: cover;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
+                    style="border-bottom-right-radius: 5px;border-top-right-radius: 5px;">
 
+                </div>
+                <div class="col py-3">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <center>
+                                <h1 style="margin-left: -150px;">About US</h1>
+                            </center>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <div class="card mb-4" style="background: #f9efa8;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5 class="card-title">Mission</h5>
+                                                <p class="card-text" style="color: black">Academy builds a Godly,
+                                                    patriotic,
+                                                    environmental, skillful,
+                                                    and intellectual learner.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-10">
+                                <div class="card mb-4" style="background: #f9efa8;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5 class="card-title">Vision</h5>
+                                                <p class="card-text" style="color: black">MERR- C Society Academy as
+                                                    vessel of
+                                                    the light of Christ through a
+                                                    well-rounded educational program and holistic learning experience.
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- ***** Footer Start ***** -->
-    <footer style="background-color: #bfbfbf;">
+    <footer style="background-color: #bfbfbf;height:60px !important; padding: 0px !important;">
         <div class="container">
             <div class="row">
-                <center>
-                    <p class="copyright" style="color: black;">Copyright &copy; 2022</p>
-                    {{-- <div class="col-lg-7 col-md-12 col-sm-12">
-                        <p class="copyright" style="color: white;">Copyright &copy; 2022
-                    </div> --}}
-                </center>
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <center>
+                            <p class="copyright" style="color: black;margin-top: 20px;">Copyright &copy; 2022</p>
+                            {{-- <div class="col-lg-7 col-md-12 col-sm-12">
+                                <p class="copyright" style="color: white;">Copyright &copy; 2022
+                            </div> --}}
+                        </center>
+                    </div>
+                </div>
                 {{-- <div class="col-lg-5 col-md-12 col-sm-12">
                     <ul class="social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>

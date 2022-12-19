@@ -19,10 +19,26 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/owl-carousel.css">
+    <style>
+        @media screen and (max-width: 600px) {
+            #header {
+                padding-top: 70px !important;
+            }
 
+            #logoText {
+                padding-top: 10px !important;
+                line-height: 20px !important;
+            }
+
+            #ribbon {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body style="background: #ff589e;">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -36,7 +52,7 @@
 
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky background-header">
         <img style="float: left;padding: 10px;margin-left: 10px;" src="/storage/images/favicon.ico" alt=""
             srcset="" width="80px" height="80px" class="img-responsive">
         <div class="container">
@@ -45,16 +61,18 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
 
-                        <a href="/" class="logo">MERR-C Society Academy</a>
+                        <a href="/" class="logo" id="logoText">MERR-C Society Academy</a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/">Home</a></li>
-                            <li class="scroll-to-section"><a href="/about">About</a></li>
-                            <li class="scroll-to-section "><a style="color:black !important; "
-                                    href="#services">Academic Strands</a></li>
+                            <li class="scroll-to-section"><a href="/">Home</a>
+                            </li>
+                            <li class="scroll-to-section"><a href="/strands" style="color: black !important;">Academic
+                                    Strands</a></li>
                             <li class="scroll-to-section"><a href="#login" data-toggle="modal"
                                     data-target="#loginModal">Login</a></li>
+                            {{-- <li class="scroll-to-section"><a href="#signup" data-toggle="modal"
+                                    data-target="#signUpModal">Signup</a></li> --}}
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -69,113 +87,118 @@
 
 
     <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
+    <div class="welcome-area" id="welcome" style="height:auto; padding-bottom: 40px;background: #ff589e;">
 
         <!-- ***** Header Text Start ***** -->
-        <div class="header-text" style="margin-top: 180px; height:650px;">
-            <div class="container">
-                <div class="row">
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;" id="abm">
-                                <a href="/course?category=CORE&strand=ABM">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">ABM</p>
-                                                        <img src="/images/ABM.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
+        <div class="container" style="margin-top: 170px; height:auto;">
+            <div class="row">
+                <div class="col-md-12" style="cursor: pointer;" id="abm">
+                    <div class="col-md-3" style="float: left;margin-bottom: 20px;">
+                        <a href="/course?category=CORE&strand=ABM">
+                            <div class="card">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                    style="color:black;">ABM</p>
+                                                <img src="/images/ABM.png" alt="" srcset="" width="150px"
+                                                    height="150px">
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                             </div>
-                            <div class="col-md-3 col-sm-5 mb-xl-0 mb-4" style="cursor: pointer;">
-                                <a href="/course?category=CORE&strand=GAS">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">GAS</p>
-                                                        <img src="/images/GAS.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3" style="float: left;margin-bottom: 20px;">
+                        <a href="/course?category=CORE&strand=GAS">
+                            <div class="card">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                    style="color:black;">GAS</p>
+                                                <img src="/images/GAS.png" alt="" srcset="" width="150px"
+                                                    height="150px">
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </div>
+                            </div>
+                        </a>
 
-                            </div>
-                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                <a href="/course?category=CORE&strand=HUMSS">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">HUMSS</p>
-                                                        <img src="/images/HUMMS.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
+                    </div>
+                    <div class="col-md-3" style="float:left;margin-bottom: 20px;">
+                        <a href="/course?category=CORE&strand=HUMSS">
+                            <div class="card">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                    style="color:black;">HUMSS</p>
+                                                <img src="/images/HUMMS.png" alt="" srcset=""
+                                                    width="150px" height="150px">
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-
+                                </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;">
-                                <a href="/course?category=CORE&strand=STEM">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">STEM</p>
-                                                        <img src="/images/STEM.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3" style="float: left;margin-bottom: 20px;">
+                        <a href="/course?category=CORE&strand=STEM">
+                            <div class="card">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                    style="color:black;">STEM</p>
+                                                <img src="/images/STEM.png" alt="" srcset=""
+                                                    width="150px" height="150px">
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-
+                                </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 mb-xl-0 mb-4" style="cursor: pointer;margin-top: 20px;">
-                                <a href="/course?category=CORE&strand=TVL">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold"
-                                                            style="color:black;">TVL</p>
-                                                        <img src="/images/TVL.png" alt="" srcset=""
-                                                            width="150px" height="150px">
-                                                    </div>
-                                                </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        <a href="/course?category=CORE&strand=TVL">
+                            <div class="card">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold"
+                                                    style="color:black;">TVL</p>
+                                                <img src="/images/TVL.png" alt="" srcset=""
+                                                    width="150px" height="150px">
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        {{-- <div class="header-text" style="margin-top: 180px; height:650px;">
+            <div class="container">
+                <div class="row">
+                    
+                </div>
+            </div>
+        </div> --}}
         <!-- ***** Header Text End ***** -->
     </div>
     <!-- ***** Welcome Area End ***** -->
@@ -183,15 +206,19 @@
 
 
     <!-- ***** Footer Start ***** -->
-    <footer style="background-color: #bfbfbf;">
+    <footer style="background-color: #bfbfbf;height:60px !important; padding: 0px !important;">
         <div class="container">
             <div class="row">
-                <center>
-                    <p class="copyright" style="color: black;">Copyright &copy; 2022</p>
-                    {{-- <div class="col-lg-7 col-md-12 col-sm-12">
-                        <p class="copyright" style="color: white;">Copyright &copy; 2022
-                    </div> --}}
-                </center>
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <center>
+                            <p class="copyright" style="color: black;margin-top: 20px;">Copyright &copy; 2022</p>
+                            {{-- <div class="col-lg-7 col-md-12 col-sm-12">
+                                <p class="copyright" style="color: white;">Copyright &copy; 2022
+                            </div> --}}
+                        </center>
+                    </div>
+                </div>
                 {{-- <div class="col-lg-5 col-md-12 col-sm-12">
                     <ul class="social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>

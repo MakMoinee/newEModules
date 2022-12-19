@@ -33,6 +33,8 @@
     <script type="text/javascript" async="" src="/Dashboard_files/fbevents.js.download"></script>
     <script type="text/javascript" async="" src="/Dashboard_files/analytics.js.download"></script>
     <script async="" src="/Dashboard_files/gtm.js.download"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -314,7 +316,9 @@
                                                                                     <div class="form-group"
                                                                                         style="margin-left: 40px;margin-top: -20px;margin-bottom: 20px;">
                                                                                         <input type="text"
-                                                                                            maxlength="12" pattern="\d{12}" name="lrn"
+                                                                                            maxlength="12"
+                                                                                            pattern="\d{12}"
+                                                                                            name="lrn"
                                                                                             id=""
                                                                                             style="width:150px;"
                                                                                             value="{{ $item['lrn'] }}">
@@ -393,8 +397,13 @@
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 40px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <input type="password"
-                                                                                        name="password" id="vpassword"
+                                                                                        name="password"
+                                                                                        id="vpassword{{ $item['userID'] }}"
                                                                                         style="width:150px;">
+                                                                                    <i class="far fa-eye"
+                                                                                        id="toggleViewPassword{{ $item['userID'] }}"
+                                                                                        onclick="onToggle('{{ $item['userID'] }}')"
+                                                                                        style="margin-left: -30px; cursor: pointer;"></i>
                                                                                     @if ($item['userType'] == 1)
                                                                                     @else
                                                                                         <input type="email"
@@ -424,8 +433,12 @@
                                                                                     style="margin-left: 40px;margin-top: -20px;margin-bottom: 20px;">
                                                                                     <input type="password"
                                                                                         name="repassword"
-                                                                                        id="vrepassword"
+                                                                                        id="vrepassword{{ $item['userID'] }}"
                                                                                         style="width:150px;">
+                                                                                    <i class="far fa-eye"
+                                                                                        id="toggleViewRePassword{{ $item['userID'] }}"
+                                                                                        onclick="onToggleConfirm('{{ $item['userID'] }}')"
+                                                                                        style="margin-left: -30px; cursor: pointer;"></i>
                                                                                     @if ($item['userType'] == 1)
                                                                                     @else
                                                                                         <select name="gradelevel"
@@ -603,9 +616,7 @@
             </div>
         </div>
         <footer class="footer">
-            <div><a href="https://coreui.io/">CoreUI </a><a href="https://coreui.io/">Bootstrap Admin Template</a> ©
-                2022 creativeLabs.</div>
-            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
+            <div class="ms-auto">Copyright &copy; 2022</a></div>
         </footer>
     </div>
 
@@ -770,7 +781,8 @@
                                 <label for="Track" class="for" style="margin-left: 153px;">Track</label>
                             </div>
                             <div class="form-group" style="margin-left: 40px;margin-bottom: 20px;margin-top: -20px;">
-                                <input type="text" maxlength="12" pattern="\d{12}"  name="lrn" id="" style="width:150px;">
+                                <input type="text" maxlength="12" pattern="\d{12}" name="lrn" id=""
+                                    style="width:150px;">
                                 <select name="track" id="civilstat" style="width:150px;margin-left: 33px;">
                                     <option value="ABM" selected>ABM</option>
                                     <option value="GAS">GAS</option>
@@ -786,6 +798,8 @@
                             </div>
                             <div class="form-group" style="margin-left: 40px;margin-bottom: 20px;margin-top: -20px;">
                                 <input required type="password" name="password" id="apassword" style="width:150px;">
+                                <i class="far fa-eye" id="togglePassword"
+                                    style="margin-left: -30px; cursor: pointer;"></i>
                                 <input type="email" name="email" id=""
                                     style="width:150px;margin-left: 33px;">
                             </div>
@@ -798,6 +812,8 @@
                             <div class="form-group" style="margin-left: 40px;margin-bottom: 20px;margin-top: -20px;">
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;">
+                                <i class="far fa-eye" id="toggleRePassword"
+                                    style="margin-left: -30px; cursor: pointer;"></i>
                                 <select required name="gradelevel" id=""
                                     style="width:150px;margin-left: 33px;">
                                     <option value="11">11</option>
@@ -1010,6 +1026,13 @@
         {{ session()->forget('errorExistingSequence') }}
     @endif
     <script>
+        
+        const togglePassword = document.querySelector('#togglePassword');
+        const toggleRePassword = document.querySelector('#toggleRePassword');
+
+        const toggleViewPassword = document.querySelector('#toggleViewPassword');
+        const toggleViewRePassword = document.querySelector('#toggleViewRePassword');
+
         var password = document.getElementById("apassword"),
             confirm_password = document.getElementById("arepassword");
 
@@ -1024,19 +1047,68 @@
         password.onchange = validatePassword1;
         confirm_password.onkeyup = validatePassword1;
 
-        var password2 = document.getElementById("vpassword"),
-            confirm_password2 = document.getElementById("vrepassword");
+        togglePassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
 
-        function validatePassword2() {
-            if (password2.value != confirm_password2.value) {
-                confirm_password2.setCustomValidity("Passwords Don't Match");
-            } else {
-                confirm_password2.setCustomValidity('');
-            }
+        toggleRePassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = confirm_password.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirm_password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
+
+        // var password2 = document.getElementById("vpassword"),
+        //     confirm_password2 = document.getElementById("vrepassword");
+
+        // function validatePassword2() {
+        //     if (password2.value != confirm_password2.value) {
+        //         confirm_password2.setCustomValidity("Passwords Don't Match");
+        //     } else {
+        //         confirm_password2.setCustomValidity('');
+        //     }
+        // }
+
+        // password2.onchange = validatePassword2;
+        // confirm_password2.onkeyup = validatePassword2;
+
+        function onToggle(e) {
+            var pIDS = `vpassword${e}`;
+            var mPass = document.getElementById(pIDS);
+            // toggle the type attribute
+            const type = mPass.getAttribute('type') === 'password' ? 'text' : 'password';
+            mPass.setAttribute('type', type);
+            // toggle the eye slash icon
+            const toggleViewPass = document.getElementById(`toggleViewPassword${e}`)
+            toggleViewPass.classList.toggle('fa-eye-slash');
         }
 
-        password2.onchange = validatePassword2;
-        confirm_password2.onkeyup = validatePassword2;
+        function onToggleConfirm(e) {
+            var pIDS = `vrepassword${e}`;
+            var mPass = document.getElementById(pIDS);
+            // toggle the type attribute
+            const type = mPass.getAttribute('type') === 'password' ? 'text' : 'password';
+            mPass.setAttribute('type', type);
+            // toggle the eye slash icon
+            const toggleViewPass = document.getElementById(`toggleViewRePassword${e}`)
+            toggleViewPass.classList.toggle('fa-eye-slash');
+        }
+
+
+        toggleViewRePassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = confirm_password2.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirm_password2.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
 
         function chooseRole() {
             let chooserole = document.getElementById('achooserole');

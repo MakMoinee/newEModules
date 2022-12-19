@@ -168,6 +168,7 @@ class ABMController extends Controller
                 $strandID  = $data[0]->strandID;
                 $queryResult = DB::table('academic_tracks')
                     ->where(['strandID' => $strandID, 'category' => $request['category']])
+                    ->orderBy('sequence')
                     ->get();
 
                 $trackRes = json_decode($queryResult, true);

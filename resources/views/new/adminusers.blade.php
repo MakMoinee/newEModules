@@ -33,6 +33,7 @@
     <script type="text/javascript" async="" src="/Dashboard_files/fbevents.js.download"></script>
     <script type="text/javascript" async="" src="/Dashboard_files/analytics.js.download"></script>
     <script async="" src="/Dashboard_files/gtm.js.download"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -398,8 +399,7 @@
                                                                                     <input type="text"
                                                                                         maxlength="12"
                                                                                         pattern="\d{12}"
-                                                                                        name="lrn"
-                                                                                        id=""
+                                                                                        name="lrn" id=""
                                                                                         style="width:150px;"
                                                                                         value="{{ $item['lrn'] }}">
                                                                                     <select name="track"
@@ -469,6 +469,9 @@
                                                                                     <input type="password"
                                                                                         name="password" id="vpassword"
                                                                                         style="width:150px;">
+                                                                                    <i class="far fa-eye"
+                                                                                        id="toggleViewPassword"
+                                                                                        style="margin-left: -30px; cursor: pointer;"></i>
                                                                                     <input type="email"
                                                                                         name="email" id=""
                                                                                         style="width:150px;margin-left: 33px;"
@@ -491,6 +494,9 @@
                                                                                         name="repassword"
                                                                                         id="vrepassword"
                                                                                         style="width:150px;">
+                                                                                    <i class="far fa-eye"
+                                                                                        id="toggleViewRePassword"
+                                                                                        style="margin-left: -30px; cursor: pointer;"></i>
 
                                                                                     <select required name="gradelevel"
                                                                                         style="width:150px;margin-left: 33px;"
@@ -626,9 +632,7 @@
             </div>
         </div>
         <footer class="footer">
-            <div><a href="https://coreui.io/">CoreUI </a><a href="https://coreui.io/">Bootstrap Admin Template</a> ©
-                2022 creativeLabs.</div>
-            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
+            <div class="ms-auto">Copyright &copy; 2022</a></div>
         </footer>
     </div>
 
@@ -717,7 +721,7 @@
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                <input type="text" maxlength="12" pattern="\d{12}" name="lrn" id=""
+                                <input type="text" name="lrn" maxlength="12" pattern="\d{12}" id=""
                                     style="width:150px;">
                                 <select name="track" id="civilstat" style="width:150px;margin-left: 33px;">
                                     <option value="ABM" selected>ABM</option>
@@ -735,8 +739,10 @@
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                 <input required type="password" name="password" id="apassword" style="width:150px;">
+                                <i class="far fa-eye" id="togglePassword"
+                                    style="margin-left: -30px; cursor: pointer;"></i>
                                 <input type="email" name="email" id=""
-                                    style="width:150px;margin-left: 33px;">
+                                    style="width:150px;margin-left: 36px;">
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                 <label for="password" class="for">Retype Password<span
@@ -747,6 +753,8 @@
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
                                 <input required type="password" name="repassword" id="arepassword"
                                     style="width:150px;">
+                                <i class="far fa-eye" id="toggleRePassword"
+                                    style="margin-left: -30px; cursor: pointer;"></i>
                                 <select required name="gradelevel" id=""
                                     style="width:150px;margin-left: 33px;">
                                     <option value="11">11</option>
@@ -807,6 +815,12 @@
             const toast = new coreui.Toast(toastLiveExample);
             toast.show();
         }
+        const togglePassword = document.querySelector('#togglePassword');
+        const toggleRePassword = document.querySelector('#toggleRePassword');
+
+        const toggleViewPassword = document.querySelector('#toggleViewPassword');
+        const toggleViewRePassword = document.querySelector('#toggleViewRePassword');
+
 
         var password = document.getElementById("apassword"),
             confirm_password = document.getElementById("arepassword");
@@ -822,6 +836,23 @@
         password.onchange = validatePassword1;
         confirm_password.onkeyup = validatePassword1;
 
+        togglePassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        toggleRePassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = confirm_password.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirm_password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
+
         var password2 = document.getElementById("vpassword"),
             confirm_password2 = document.getElementById("vrepassword");
 
@@ -835,6 +866,23 @@
 
         password2.onchange = validatePassword2;
         confirm_password2.onkeyup = validatePassword2;
+
+        toggleViewPassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = password2.getAttribute('type') === 'password' ? 'text' : 'password';
+            password2.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        toggleViewRePassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = confirm_password2.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirm_password2.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
     </script>
     @if (session()->pull('successUpdateUser'))
         <script>
