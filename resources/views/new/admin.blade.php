@@ -262,7 +262,7 @@
                                     <div class="col-4">
                                         <div class="border-start border-start-4 border-start-primary px-3 mb-3">
                                             <small class="text-medium-emphasis">Total Modules</small>
-                                            <div class="fs-5 fw-semibold">{{ $totalNewUsers }}</div>
+                                            <div class="fs-5 fw-semibold">{{ count($allModules) }}</div>
                                         </div>
                                     </div>
 

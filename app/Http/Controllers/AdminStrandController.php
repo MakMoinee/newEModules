@@ -169,7 +169,8 @@ class AdminStrandController extends Controller
                 $queryResult = DB::table('vwallstrands')->where(
                     [
                         'strandID' => $request->strand,
-                        'category' => $request->category
+                        'category' => $request->category,
+                        'description' => $request->description
                     ]
                 )->get();
                 $count = count($queryResult);

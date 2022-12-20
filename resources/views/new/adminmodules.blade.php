@@ -784,7 +784,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to add subject, Existing Sequence, Please Try Again!',
+                    title: 'Failed to add subject, Existing Subject Name, Please Try Again!',
                     showConfirmButton: false,
                     timer: 1300
                 });
