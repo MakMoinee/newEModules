@@ -170,7 +170,7 @@ class AdminStrandController extends Controller
                     [
                         'strandID' => $request->strand,
                         'category' => $request->category,
-                        'description' => $request->description
+                        'SubjectName' => $request->description
                     ]
                 )->get();
                 $count = count($queryResult);
