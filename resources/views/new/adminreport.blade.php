@@ -287,8 +287,8 @@
                             </div>
                             <div class="c-chart-wrapper" style="height:auto;margin-top:40px;">
                                 <center>
-                                    <canvas class="chart" id="main-chart" height="300" width="1003"
-                                        style="display: block; box-sizing: border-box; height: auto; width: 1003px;"></canvas>
+                                    <canvas class="chart" id="main-chart" height="300" width="803"
+                                        style="display: block; box-sizing: border-box; height: auto; width: 803px;"></canvas>
                                 </center>
                             </div>
                         </div>
@@ -341,7 +341,7 @@
                             <div class="c-chart-wrapper" style="height:auto;margin-top:40px;">
                                 <center>
                                     <canvas class="chart" id="main-chart2" height="300" width="1003"
-                                        style="display: block; box-sizing: border-box; height: auto; width: 1003px;"></canvas>
+                                        style="display: block; box-sizing: border-box; height: auto; width: 803px;"></canvas>
                                 </center>
                             </div>
                         </div>
