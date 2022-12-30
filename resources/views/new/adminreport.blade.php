@@ -341,7 +341,7 @@
                             <div class="c-chart-wrapper" style="height:auto;margin-top:40px;">
                                 <center>
                                     <canvas class="chart" id="main-chart2" height="403" width="403"
-                                        style="display: block; box-sizing: border-box; height: auto; width: 803px;"></canvas>
+                                        style="display: block; box-sizing: border-box;"></canvas>
                                 </center>
                             </div>
                         </div>
