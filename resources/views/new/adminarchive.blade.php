@@ -51,6 +51,13 @@
     </script>
     <link href="/Dashboard_files/coreui-chartjs.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if ($uType == 0)
+        <style>
+            .sidebar {
+                --cui-sidebar-bg: #8d038d !important;
+            }
+        </style>
+    @endif
 </head>
 
 <body>

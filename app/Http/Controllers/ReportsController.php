@@ -19,10 +19,10 @@ class ReportsController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
-
+            $uType = $user[0]['userType'];
             $uid = $user[0]['userID'];
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
             $pic = "";
@@ -34,12 +34,25 @@ class ReportsController extends Controller
             $nUsers = EUsers::all();
             $total = count($nUsers);
             $newUsers = DB::table('vwtotalnewusers')->first();
-            $queryResultsss = DB::table('vwnewusers')->get();
+            if ($uType == 0) {
+                $queryResultsss = DB::table('vwnewsuperadminusers')->get();
+            } else {
+                $queryResultsss = DB::table('vwnewusers')->get();
+            }
+
             $listUsers = json_decode($queryResultsss, true);
             $totalNewUsers = $newUsers->TotalNewUsers;
             $monthArr = array();
 
             foreach ($nUsers as $u) {
+                if ($u['userType'] == 0) {
+                    continue;
+                }
+                if ($uType == 1) {
+                    if ($u['userType'] != 2) {
+                        continue;
+                    }
+                }
                 $year = date('Y', strtotime($u['created_at']));
                 $currentYear = date('Y', strtotime(now()));
                 if ($year != $currentYear) {
@@ -108,7 +121,8 @@ class ReportsController extends Controller
                 'monthArr' => count($monthArr) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $monthArr,
                 'modulesArr' => count($nMonth) == 0 ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] : $nMonth,
                 'listUsers' => $listUsers,
-                'listModules' => count($listModules) == 0 ? [] : $listModules
+                'listModules' => count($listModules) == 0 ? [] : $listModules,
+                'uType' => $uType
             ]);
         } else {
             return redirect('/');

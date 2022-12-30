@@ -21,11 +21,17 @@ class AdminUsersController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
             $nem = $user[0]['username'];
-            $allUsers = DB::table('e_users')->where(['userType' => 2])->get();
+            $uType = $user[0]['userType'];
+            if ($user[0]['userType'] == 0) {
+                $allUsers = DB::table('e_users')->where('userType', '<>', 0)->get();
+            } else if ($user[0]['userType'] == 1) {
+                $allUsers = DB::table('e_users')->where(['userType' => 2])->get();
+            }
+
             $userss = json_decode($allUsers, true);
             $startIndex = $request->query('page') == null ? 1 : $request->query('page');
             $pageCount = 0;
@@ -102,6 +108,19 @@ class AdminUsersController extends Controller
                 $pic = $profiles[0]['filePath'];
             }
 
+            if ($user[0]['userType'] == 0) {
+                return view('new.supeadminusers', [
+                    'eusers' => $newUsers,
+                    'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+                    'nem' => $nem,
+                    'pic' => $pic,
+                    'startIndex' => $startIndex,
+                    'pageCount' => round($pageCount),
+                    'uType' => $uType,
+                    'searchKey' => $searchKey
+                ]);
+            }
+
             return view('new.adminusers', [
                 'eusers' => $newUsers,
                 'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
@@ -173,6 +192,9 @@ class AdminUsersController extends Controller
                             foreach ($usersss as $u) {
 
                                 if (count($u) >= 7) {
+                                    if ($u[5] == "") {
+                                        continue;
+                                    }
                                     $queryResult = DB::table('e_users')->where([
                                         'firstname' => $u[2],
                                         'middlename' => $u[3],

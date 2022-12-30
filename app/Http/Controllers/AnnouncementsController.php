@@ -22,10 +22,11 @@ class AnnouncementsController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
             $nem = $user[0]['username'];
+            $uType = $user[0]['userType'];
             $strandsAvailable = AcademicStrands::all();
             $announce = Announcements::all();
             $announce = count($announce) == 0 ? [] : $announce;
@@ -111,7 +112,8 @@ class AnnouncementsController extends Controller
                     'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
                     'pic' => $pic,
                     'startIndex' => $startIndex,
-                    'pageCount' => round($pageCount)
+                    'pageCount' => round($pageCount),
+                    'uType' =>  $uType
                 ]
             );
         } else {
@@ -140,7 +142,7 @@ class AnnouncementsController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
 
@@ -163,6 +165,7 @@ class AnnouncementsController extends Controller
                         $announce->description = $request->description;
                         $announce->activated = 0;
                         $announce->card = $fileName;
+                        $announce->name = $nem;
                         $isSave = $announce->save();
                         if ($isSave) {
                             session()->put('successAddingAnnounce', true);
@@ -217,7 +220,7 @@ class AnnouncementsController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
 
@@ -236,6 +239,7 @@ class AnnouncementsController extends Controller
                     // PostAnnouncement::dispatch($announce[0]);
                     $notif = new Notif();
                     $notif->description = $announce[0]->description;
+                    $notif->updated_at = date('Y-m-d h:m', strtotime(now()));
                     $notif->save();
 
                     event(new PostAnnouncement($announce[0]));
@@ -274,7 +278,7 @@ class AnnouncementsController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
 

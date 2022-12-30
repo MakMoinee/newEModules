@@ -148,7 +148,7 @@
                         <path fill-rule="evenodd"
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
-               </button><a class="header-brand d-md-none" href="/">
+                </button><a class="header-brand d-md-none" href="/">
 
                     <img src="/storage/images/favicon.ico"width="46" height="46" alt=""
                         srcset=""></a>
@@ -258,6 +258,12 @@
                                         class="card-img-top img-responsive" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $an['description'] }}</h5>
+                                        <p class="card-text" style="font-size: 11px"> Posted By:
+                                            <b>{{ $an['name'] }}</b>
+                                        </p>
+                                        <p class="card-text" style="font-size:11px;margin-top: -15px;"> Date Posted:
+                                            <b>{{ date('m/d/Y', strtotime($an['updated_at'])) }}</b>
+                                        </p>
                                         <p class="card-text">{{ $an['subtext'] }}</p>
                                     </div>
                                 </div>
@@ -269,7 +275,7 @@
 
             </div>
         </div>
-        <footer class="footer"> 
+        <footer class="footer">
             <div class="ms-auto">Copyright &copy; 2022</a></div>
         </footer>
     </div>

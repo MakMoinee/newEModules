@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\EUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Session\Session;
 
-class HomeController extends Controller
+class ForViewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,26 +15,32 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        $has = $request->session()->has('users');
-        if ($has) {
+        if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 1 || $user[0]['userType'] == 0) {
-                return redirect('/admin');
+            if ($user[0]['userType'] == 2) {
+                return redirect('/');
             }
-            return redirect('/course?category=CORE');
+            $uType = $user[0]['userType'];
+            if ($request->query('category') == "2") {
+                $query = DB::table('vwlistmodules')->get();
+                $listModules = json_decode($query, true);
+
+                return view('new.forviewmod', ['listModules' => $listModules]);
+            } else if ($request->query('category') == "1") {
+                if ($uType == 0) {
+                    $queryResultsss = DB::table('vwnewsuperadminusers')->get();
+                } else {
+                    $queryResultsss = DB::table('vwnewusers')->get();
+                }
+                $listUsers = json_decode($queryResultsss, true);
+
+                return view('new.forviewusers', ['listUsers' => $listUsers]);
+            } else {
+                return redirect('/');
+            }
         } else {
-            $queryResult = DB::table('e_users')->where(['userType' => 0])->get();
-            $userCount = count($queryResult);
-            if ($userCount == 0) {
-                $newUser = new EUsers();
-                $newUser->username = env('SUPER_USER', 'superadmin');
-                $newUser->password = Hash::make(env('SUPER_PASS', 'superadmin'));
-                $newUser->userType = 0;
-                $newUser->save();
-            }
-            return view('welcome');
+            return redirect('/');
         }
     }
 

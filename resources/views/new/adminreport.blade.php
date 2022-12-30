@@ -51,6 +51,13 @@
     </script>
     <link href="/Dashboard_files/coreui-chartjs.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if ($uType == 0)
+        <style>
+            .sidebar {
+                --cui-sidebar-bg: #8d038d !important;
+            }
+        </style>
+    @endif
 </head>
 
 <body>
@@ -530,14 +537,14 @@
             for (let i = 0; i < 12; i++) {
                 let key = i + 1;
                 if (month.hasOwnProperty(key.toString())) {
-                    monthData.push(key);
+                    monthData.push(month[key]);
                 } else {
                     monthData.push(0);
                 }
             }
         }
         if (moduleMonth) {
-            
+
             for (let i = 0; i < 12; i++) {
                 let key = i + 1;
                 if (moduleMonth.hasOwnProperty(key.toString())) {
@@ -546,8 +553,6 @@
                     moduleMonthData.push(0);
                 }
             }
-
-            console.log(moduleMonthData)
         }
         const labels = [
             'Jan',
@@ -568,14 +573,41 @@
             labels: labels,
             datasets: [{
                 label: 'Users',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: [
+                    'rgb(252, 186, 3)',
+                    'rgb(0, 186, 242)',
+                    'rgb(0, 209, 59)',
+                    'rgb(199, 0, 56)',
+                    'rgb(240, 0, 20)',
+                    'rgb(123, 255, 0)',
+                    'rgb(144, 0, 255)',
+                    'rgb(252, 102, 3)',
+                    'rgb(145, 175, 184)',
+                    'rgb(205, 255, 143)',
+                    'rgb(158, 0, 137)',
+                    'rgb(255, 99, 132)',
+                ],
+                borderColor: [
+                    'rgb(252, 186, 3)',
+                    'rgb(0, 186, 242)',
+                    'rgb(0, 209, 59)',
+                    'rgb(199, 0, 56)',
+                    'rgb(240, 0, 20)',
+                    'rgb(123, 255, 0)',
+                    'rgb(144, 0, 255)',
+                    'rgb(252, 102, 3)',
+                    'rgb(145, 175, 184)',
+                    'rgb(205, 255, 143)',
+                    'rgb(158, 0, 137)',
+                    'rgb(255, 99, 132)',
+                ],
                 data: monthData,
+                hoverOffset: 4
             }]
         };
 
         const config = {
-            type: 'line',
+            type: 'pie',
             data: data,
             options: {}
         };
@@ -588,14 +620,40 @@
             labels: labels,
             datasets: [{
                 label: 'Modules',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: [
+                    'rgb(252, 186, 3)',
+                    'rgb(0, 186, 242)',
+                    'rgb(0, 209, 59)',
+                    'rgb(199, 0, 56)',
+                    'rgb(240, 0, 20)',
+                    'rgb(123, 255, 0)',
+                    'rgb(144, 0, 255)',
+                    'rgb(252, 102, 3)',
+                    'rgb(145, 175, 184)',
+                    'rgb(205, 255, 143)',
+                    'rgb(158, 0, 137)',
+                    'rgb(255, 99, 132)',
+                ],
+                borderColor: [
+                    'rgb(252, 186, 3)',
+                    'rgb(0, 186, 242)',
+                    'rgb(0, 209, 59)',
+                    'rgb(199, 0, 56)',
+                    'rgb(240, 0, 20)',
+                    'rgb(123, 255, 0)',
+                    'rgb(144, 0, 255)',
+                    'rgb(252, 102, 3)',
+                    'rgb(145, 175, 184)',
+                    'rgb(205, 255, 143)',
+                    'rgb(158, 0, 137)',
+                    'rgb(255, 99, 132)',
+                ],
                 data: moduleMonthData,
             }]
         };
 
         const config2 = {
-            type: 'line',
+            type: 'pie',
             data: data2,
             options: {}
         };
@@ -662,19 +720,14 @@
         }
 
         function printUserData() {
-            var divToPrint = document.getElementById("userTable");
-            newWin = window.open("");
-            newWin.document.write(divToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
+            newWin = window.open(window.location.origin + "/forview?category=1");
+            // newWin.document.write(divToPrint.outerHTML);
+            // newWin.print();
+            // newWin.close();
         }
 
         function printModuleData() {
-            var divToPrint = document.getElementById("moduleTable");
-            newWin = window.open("");
-            newWin.document.write(divToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
+            newWin = window.open(window.location.origin + "/forview?category=2");
         }
     </script>
     @if (session()->pull('successLogin'))

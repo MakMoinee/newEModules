@@ -20,6 +20,7 @@ class Announcements extends Model
         'description',
         'card',
         'subtext',
+        'name',
         'activated'
     ];
 }

@@ -21,7 +21,7 @@ class AdminStrandController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
             $nem = $user[0]['username'];
@@ -29,7 +29,7 @@ class AdminStrandController extends Controller
             $total = count($nUsers);
             $newUsers = DB::table('vwtotalnewusers')->first();
             $totalNewUsers = $newUsers->TotalNewUsers;
-
+            $uType = $user[0]['userType'];
             $queryResult = DB::table('vwallstrands')->where([['status', '<>', 2]])->get();
             $result = json_decode($queryResult, true);
             $modules = [];
@@ -129,7 +129,8 @@ class AdminStrandController extends Controller
                     'availableStrands' => $strandsAvailable,
                     'pic' => $pic,
                     'startIndex' => $startIndex,
-                    'pageCount' => round($pageCount)
+                    'pageCount' => round($pageCount),
+                    'uType'=>$uType
                 ]
             );
         } else {
@@ -160,7 +161,7 @@ class AdminStrandController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
 
@@ -225,7 +226,7 @@ class AdminStrandController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 1) {
+             if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
             return redirect('/adminstrands');
@@ -245,7 +246,7 @@ class AdminStrandController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
             return redirect('/adminstrands');
@@ -266,7 +267,7 @@ class AdminStrandController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
             return redirect('/adminstrands');
@@ -286,7 +287,7 @@ class AdminStrandController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
 

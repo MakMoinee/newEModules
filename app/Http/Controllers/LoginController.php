@@ -82,13 +82,10 @@ class LoginController extends Controller
                 session()->put('users', $user);
                 session()->put('successLogin', true);
                 // Auth::login($user, false);
-                if ($user[0]['userType'] == 1) {
+                if ($user[0]['userType'] == 1 || $user[0]['userType'] == 0) {
                     return redirect("/admin");
                 }
-
-                if ($user[0]['userType'] == 0) {
-                    return redirect("/superadmin");
-                }
+                
                 return redirect('/course?category=CORE');
             }
         } else {

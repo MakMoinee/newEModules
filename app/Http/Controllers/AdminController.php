@@ -20,7 +20,7 @@ class AdminController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
             $nem = $user[0]['username'];
@@ -28,7 +28,7 @@ class AdminController extends Controller
             $total = count($nUsers);
             $newUsers = DB::table('vwtotalnewusers')->first();
             $totalNewUsers = $newUsers->TotalNewUsers;
-
+            $uType = $user[0]['userType'];
             $uid = $user[0]['userID'];
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
             $pic = "";
@@ -38,7 +38,13 @@ class AdminController extends Controller
             }
             $allPics = UserPicProfile::all();
             $allPics = json_decode($allPics, true);
-            $allUsers = DB::table('e_users')->where(['userType' => 2])->get();
+            if ($user[0]['userType'] == 0) {
+
+                $allUsers = DB::table('e_users')->where('userType', '<>', 0)->get();
+            } else {
+
+                $allUsers = DB::table('e_users')->where(['userType' => 2])->get();
+            }
             $allUsers = json_decode($allUsers, true);
 
             $startIndex = $request->query('page') == null ? 1 : $request->query('page');
@@ -85,7 +91,8 @@ class AdminController extends Controller
                 'pic' => $pic,
                 'startIndex' => $startIndex,
                 'pageCount' => $pageCount,
-                'allModules' => $allModules
+                'allModules' => $allModules,
+                'uType' => $uType
             ]);
         } else {
             return redirect("/");

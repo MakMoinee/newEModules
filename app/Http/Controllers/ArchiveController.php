@@ -18,10 +18,10 @@ class ArchiveController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
-
+            $uType = $user[0]['userType'];
             $uid = $user[0]['userID'];
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
             $pic = "";
@@ -102,7 +102,8 @@ class ArchiveController extends Controller
                 'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
                 'availableStrands' => $strandsAvailable,
                 'startIndex' => $startIndex,
-                'pageCount' => round($pageCount)
+                'pageCount' => round($pageCount),
+                'uType' => $uType
             ]);
         } else {
             return redirect('/');
@@ -130,7 +131,7 @@ class ArchiveController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
 

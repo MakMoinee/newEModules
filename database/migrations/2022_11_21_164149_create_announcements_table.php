@@ -18,6 +18,7 @@ class CreateAnnouncementsTable extends Migration
             $table->string('description');
             $table->string('card');
             $table->string('subtext');
+            $table->string('name');
             $table->integer('activated');
             $table->timestamps();
         });

@@ -25,14 +25,15 @@ class ProfileController extends Controller
             session()->put('users', $user);
             $uid = $user[0]['userID'];
 
+            $uType = $user[0]['userType'];
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
             $pic = "";
             if (count($queryResult) > 0) {
                 $profiles = json_decode($queryResult, true);
                 $pic = $profiles[0]['filePath'];
             }
-            if ($user[0]['userType'] == 1) {
-                return view('new.adminprofile', ['user' => $user[0], 'pic' => $pic]);
+            if ($user[0]['userType'] == 1 || $user[0]['userType'] == 0) {
+                return view('new.adminprofile', ['user' => $user[0], 'pic' => $pic, 'uType' => $uType]);
             }
             if ($user[0]['userType'] != 2) {
                 return redirect('/');
@@ -42,7 +43,7 @@ class ProfileController extends Controller
 
             // dd(['query' => $queryResult, 'pic' => $pic]);
 
-            return view('new.studentprofile', ['user' => $user[0], 'pic' => $pic]);
+            return view('new.studentprofile', ['user' => $user[0], 'pic' => $pic, 'uType' => $uType]);
         } else {
             return redirect("/");
         }

@@ -51,6 +51,13 @@
     </script>
     <link href="/Dashboard_files/coreui-chartjs.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if ($uType == 0)
+        <style>
+            .sidebar {
+                --cui-sidebar-bg: #8d038d !important;
+            }
+        </style>
+    @endif
 </head>
 
 <body>
@@ -159,7 +166,7 @@
                         <path fill-rule="evenodd"
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                     </svg>
-               </button><a class="header-brand d-md-none" href="/">
+                </button><a class="header-brand d-md-none" href="/">
 
                     <img src="/storage/images/favicon.ico"width="46" height="46" alt=""
                         srcset=""></a>
@@ -560,7 +567,7 @@
                 </div>
             </div>
         </div>
-        <footer class="footer"> 
+        <footer class="footer">
             <div class="ms-auto">Copyright &copy; 2022</a></div>
         </footer>
     </div>
