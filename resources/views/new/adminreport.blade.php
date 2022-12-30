@@ -285,10 +285,10 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
+                            <div class="c-chart-wrapper" style="height:auto;margin-top:40px;">
                                 <center>
                                     <canvas class="chart" id="main-chart" height="300" width="1003"
-                                        style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
+                                        style="display: block; box-sizing: border-box; height: auto; width: 1003px;"></canvas>
                                 </center>
                             </div>
                         </div>
@@ -338,10 +338,10 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
+                            <div class="c-chart-wrapper" style="height:auto;margin-top:40px;">
                                 <center>
                                     <canvas class="chart" id="main-chart2" height="300" width="1003"
-                                        style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
+                                        style="display: block; box-sizing: border-box; height: auto; width: 1003px;"></canvas>
                                 </center>
                             </div>
                         </div>
