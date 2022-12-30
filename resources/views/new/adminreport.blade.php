@@ -287,8 +287,8 @@
                             </div>
                             <div class="c-chart-wrapper" style="height:auto;margin-top:40px;">
                                 <center>
-                                    <canvas class="chart" id="main-chart" height="300" width="803"
-                                        style="display: block; box-sizing: border-box; height: auto; width: 803px;"></canvas>
+                                    <canvas class="chart" id="main-chart" height="403" width="403"
+                                        style="display: block; box-sizing: border-box;"></canvas>
                                 </center>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                             </div>
                             <div class="c-chart-wrapper" style="height:auto;margin-top:40px;">
                                 <center>
-                                    <canvas class="chart" id="main-chart2" height="300" width="1003"
+                                    <canvas class="chart" id="main-chart2" height="403" width="403"
                                         style="display: block; box-sizing: border-box; height: auto; width: 803px;"></canvas>
                                 </center>
                             </div>
@@ -622,7 +622,10 @@
         const config = {
             type: 'pie',
             data: data,
-            options: {}
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
         };
         new Chart(
             document.getElementById('main-chart'),
@@ -668,7 +671,10 @@
         const config2 = {
             type: 'pie',
             data: data2,
-            options: {}
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
         };
 
         new Chart(
