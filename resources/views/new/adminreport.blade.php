@@ -141,12 +141,11 @@
                                                 d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm5.5-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9v1H8v1h1v1H8v1h1v1H7.5V5h-1V4h1V3h-1V2h1V1z" />
                                         </svg> Archive</a>
                                     <ul class="nav-group-items">
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="/archive?category=users"><span
+                                        <li class="nav-item"><a class="nav-link" href="/archive?category=users"><span
                                                     class="nav-icon"></span> Users</a></li>
                                         <li class="nav-item"><a class="nav-link"
-                                                href="/archive?category=subjects"><span
-                                                    class="nav-icon"></span> Subjects</a></li>
+                                                href="/archive?category=subjects"><span class="nav-icon"></span>
+                                                Subjects</a></li>
                                     </ul>
                                 </li>
                             </div>
@@ -287,8 +286,10 @@
                                 </div>
                             </div>
                             <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
-                                <canvas class="chart" id="main-chart" height="300" width="1003"
-                                    style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
+                                <center>
+                                    <canvas class="chart" id="main-chart" height="300" width="1003"
+                                        style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
+                                </center>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -338,8 +339,10 @@
                                 </div>
                             </div>
                             <div class="c-chart-wrapper" style="height:300px;margin-top:40px;">
-                                <canvas class="chart" id="main-chart2" height="300" width="1003"
-                                    style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
+                                <center>
+                                    <canvas class="chart" id="main-chart2" height="300" width="1003"
+                                        style="display: block; box-sizing: border-box; height: 300px; width: 1003px;"></canvas>
+                                </center>
                             </div>
                         </div>
                         <div class="card-footer">
