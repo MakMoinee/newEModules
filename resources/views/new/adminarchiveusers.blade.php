@@ -97,7 +97,7 @@
                                     {{-- <span class="badge badge-sm bg-info ms-auto">NEW</span> --}}
                                 </li>
                                 <li class="nav-title">Strand Mgt.</li>
-                                <li class="nav-item"><a class="nav-link active" href="/adminstrands">
+                                <li class="nav-item"><a class="nav-link" href="/adminstrands">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-journal-text"
                                             viewBox="0 0 16 16">
@@ -141,12 +141,12 @@
                                                 d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm5.5-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9v1H8v1h1v1H8v1h1v1H7.5V5h-1V4h1V3h-1V2h1V1z" />
                                         </svg> Archive</a>
                                     <ul class="nav-group-items">
+                                        <li class="nav-item"><a class="nav-link active"
+                                                href="/archive?category=users"><span class="nav-icon"></span>
+                                                Users</a></li>
                                         <li class="nav-item"><a class="nav-link"
-                                                href="/archive?category=users"><span
-                                                    class="nav-icon"></span> Users</a></li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="/archive?category=subjects"><span
-                                                    class="nav-icon"></span> Subjects</a></li>
+                                                href="/archive?category=subjects"><span class="nav-icon"></span>
+                                                Subjects</a></li>
                                     </ul>
                                 </li>
                             </div>
@@ -183,13 +183,6 @@
                     <li class="nav-item"><a class="nav-link" href="/" style="font-size: 12px;">Merr-C Society
                             Academy</a></li>
                 </ul>
-                {{-- <ul class="header-nav d-none d-md-flex">
-                    <li class="nav-item"><a class="nav-link" href="/strands">Home</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                            href="https://coreui.io/demos/bootstrap/4.2/free/#">Users</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                            href="https://coreui.io/demos/bootstrap/4.2/free/#">Settings</a></li>
-                </ul> --}}
                 <ul class="header-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="https://coreui.io/demos/bootstrap/4.2/free/#">
                             <svg class="icon icon-lg">
@@ -252,7 +245,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item active">
-                            <span>Subjects</span>
+                            <span>Archive Users</span>
                         </li>
                     </ol>
                 </nav>
@@ -264,14 +257,9 @@
                     <div class="col-md-12">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <button class="btn btn-primary" data-coreui-toggle="modal"
-                                    data-coreui-target="#addModuleModal" style="background-color: #ff589e">Add
-                                    Subject</button>
-                            </div>
-                            <div class="card-header">
-                                <form action="/adminstrands" method="get">
+                                <form action="/adminusers" method="get">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Search Subject"
+                                        <input type="text" class="form-control" placeholder="Search User"
                                             aria-label="Recipient's username" aria-describedby="basic-addon2"
                                             name="search">
                                         <button type="submit" class="input-group-text"
@@ -286,25 +274,25 @@
                                         <thead class="table-light fw-semibold">
                                             <tr class="align-middle">
                                                 <th>
-                                                    Subject
+                                                    LRN
                                                 </th>
                                                 <th>
-                                                    Strand
+                                                    Username
                                                 </th>
                                                 <th>
-                                                    Category
-                                                </th>
-                                                {{-- <th>
-                                                    Sequence
-                                                </th> --}}
-                                                <th>
-                                                    No. of Hours
+                                                    Full Name
                                                 </th>
                                                 <th>
-                                                    Pre-requisite
+                                                    Track
                                                 </th>
                                                 <th>
-                                                    E-Modules
+                                                    Email
+                                                </th>
+                                                <th>
+                                                    Grade Level
+                                                </th>
+                                                <th>
+                                                    User Type
                                                 </th>
                                                 <th>
                                                     Action
@@ -312,219 +300,108 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($pageRes as $mod)
+                                            @foreach ($pageRes as $item)
                                                 <tr>
+
+                                                    <td>{{ $item['lrn'] }}</td>
+                                                    <td>{{ $item['username'] }}</td>
                                                     <td>
-                                                        {{ $mod['SubjectName'] }}
+                                                        {{ $item['lastname'] }}, {{ $item['firstname'] }}
+                                                        {{ $item['middlename'] }}
+                                                    </td>
+                                                    <td>{{ $item['track'] }}</td>
+                                                    <td>{{ $item['email'] }}</td>
+                                                    <td>{{ $item['gradelevel'] }}</td>
+                                                    <td>
+                                                        @if ($item['userType'] == 0)
+                                                            Super Admin
+                                                        @endif
+                                                        @if ($item['userType'] == 1)
+                                                            Admin
+                                                        @endif
+                                                        @if ($item['userType'] == 2)
+                                                            User
+                                                        @endif
+                                                        @if ($item['userType'] == 3)
+                                                            Archived
+                                                        @endif
                                                     </td>
                                                     <td>
-                                                        {{ $mod['Strand'] }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $mod['category'] }}
-                                                    </td>
-                                                    {{-- <td>
-                                                        {{ $mod['sequence'] }}
-                                                    </td> --}}
-                                                    <td>
-                                                        {{ $mod['hours'] }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $mod['prerequisite'] }}
-                                                    </td>
-                                                    <td>
-                                                        <form
-                                                            action="{{ route('modules.show', ['module' => $mod['trackID']]) }}"
-                                                            method="POST">
-                                                            @method('get')
-                                                            @csrf
-                                                            <div class="form-group">
-                                                                <input type="hidden" name="title"
-                                                                    value="{{ $mod['SubjectName'] }}">
-                                                                <button type="submit" class="btn btn-success fs-6"
-                                                                    style="font-size: 8px;color:white">View
-                                                                    Modules</button>
-                                                            </div>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-success fs-6"
-                                                            style="font-size: 8px;color:white;"
+                                                        <button class="btn btn-success" style="color: white;"
                                                             data-coreui-toggle="modal"
-                                                            data-coreui-target="#viewModuleModal{{ $mod['trackID'] }}">View/Edit</button>
-                                                        <div class="modal fade "
-                                                            id="viewModuleModal{{ $mod['trackID'] }}" tabindex="-1"
+                                                            data-coreui-target="#restoreUserModal{{ $item['userID'] }}">Restore
+                                                            User</button>
+                                                        <div class="modal fade"
+                                                            id="restoreUserModal{{ $item['userID'] }}" tabindex="-1"
                                                             role="dialog"
-                                                            aria-labelledby="viewModuleModalLabel{{ $mod['trackID'] }}"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="viewModuleModalLabel{{ $mod['trackID'] }}">
-                                                                            View/Edit
-                                                                            Subject</h5>
-                                                                        <button type="button" class="close"
-                                                                            data-coreui-dismiss="modal"
-                                                                            aria-label="Close" style="border: none;">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="row">
-                                                                            <form action="/adminstrands"
-                                                                                method="POST"
-                                                                                enctype="multipart/form-data"
-                                                                                autocomplete="off">
-                                                                                @csrf
-                                                                                <div class="form-group">
-                                                                                    <input required type="text"
-                                                                                        style="width:350px;margin-left: 35px;"
-                                                                                        name="description"
-                                                                                        id="un"
-                                                                                        placeholder="Subject Description"
-                                                                                        value="{{ $mod['SubjectName'] }}">
-                                                                                </div>
-                                                                                <br>
-                                                                                <div class="form-group">
-                                                                                    <select readonly name="strand"
-                                                                                        id="strand"
-                                                                                        style="width:150px;margin-left: 35px;">
-                                                                                        @foreach ($availableStrands as $as)
-                                                                                            @if ($as['description'] == $mod['Strand'])
-                                                                                                <option
-                                                                                                    value={{ $as['strandID'] }}
-                                                                                                    selected>
-                                                                                                    {{ $as['description'] }}
-                                                                                                </option>
-                                                                                            @else
-                                                                                                <option
-                                                                                                    value={{ $as['strandID'] }}
-                                                                                                    disabled>
-                                                                                                    {{ $as['description'] }}
-                                                                                                </option>
-                                                                                            @endif
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                                </div>
-                                                                                <br>
-                                                                                <div class="form-group">
-                                                                                    <select name="category"
-                                                                                        id="category"
-                                                                                        style="width:150px;margin-left: 35px;">
-                                                                                        @if ($mod['category'] == 'CORE')
-                                                                                            <option value="CORE"
-                                                                                                selected>
-                                                                                                CORE
-                                                                                            </option>
-                                                                                            <option value="APPLIED"
-                                                                                                disabled>
-                                                                                                APPLIED
-                                                                                            </option>
-                                                                                            <option value="SPECIALIZED"
-                                                                                                disabled>
-                                                                                                SPECIALIZED
-                                                                                            </option>
-                                                                                        @endif
-
-                                                                                        @if ($mod['category'] == 'APPLIED')
-                                                                                            <option value="CORE"
-                                                                                                disabled>
-                                                                                                CORE
-                                                                                            </option>
-                                                                                            <option value="APPLIED"
-                                                                                                selected>
-                                                                                                APPLIED
-                                                                                            </option>
-                                                                                            <option value="SPECIALIZED"
-                                                                                                disabled>
-                                                                                                SPECIALIZED
-                                                                                            </option>
-                                                                                        @endif
-
-                                                                                        @if ($mod['category'] == 'SPECIALIZED')
-                                                                                            <option value="CORE"
-                                                                                                disabled>
-                                                                                                CORE
-                                                                                            </option>
-                                                                                            <option value="APPLIED"
-                                                                                                disabled>
-                                                                                                APPLIED
-                                                                                            </option>
-                                                                                            <option value="SPECIALIZED"
-                                                                                                selected>
-                                                                                                SPECIALIZED
-                                                                                            </option>
-                                                                                        @endif
-
-                                                                                    </select>
-                                                                                </div>
-                                                                                {{-- <br> --}}
-                                                                                {{-- <div class="form-group"
-                                                                                    style="margin-left: 35px;">
-                                                                                    <input readonly type="number"
-                                                                                        style="cursor: not-allowed;"
-                                                                                        name="sequence" id=""
-                                                                                        placeholder="Sequence Number"
-                                                                                        value="{{ $mod['sequence'] }}">
-                                                                                </div> --}}
-                                                                                <br>
-                                                                                <div class="form-group"
-                                                                                    style="margin-left: 35px;">
-                                                                                    <input type="number"
-                                                                                        name="hours" id=""
-                                                                                        placeholder="No. Of Hours"
-                                                                                        value="{{ $mod['hours'] }}">
-                                                                                    <input type="text"
-                                                                                        name="prerequisite"
-                                                                                        id=""
-                                                                                        placeholder="Pre-requisite"
-                                                                                        value="{{ $mod['prerequisite'] }}">
-                                                                                </div>
-                                                                                <br>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
-                                                                            data-coreui-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary"
-                                                                            style="background-color: #ff589e"
-                                                                            name="btnUpdate" value="true">Update
-                                                                            Module</button>
-                                                                    </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <button class="btn btn-danger fs-6"
-                                                            style="font-size: 12px;color:white"data-coreui-toggle="modal"
-                                                            data-coreui-target="#deleteModal{{ $mod['trackID'] }}">Archive</button>
-                                                        <div class="modal fade" id="deleteModal{{ $mod['trackID'] }}"
-                                                            tabindex="-1" role="dialog"
-                                                            aria-labelledby="deleteModalLabel{{ $mod['trackID'] }}"
+                                                            aria-labelledby="restoreUserModalLabel{{ $item['userID'] }}"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <form
-                                                                        action="{{ route('adminstrands.destroy', ['adminstrand' => $mod['trackID']]) }}"
-                                                                        method="POST" enctype="multipart/form-data">
-                                                                        @method('delete')
+                                                                        action="{{ route('archive.update', ['archive' => $item['userID']]) }}"
+                                                                        method="POST">
+                                                                        @method('put')
                                                                         @csrf
-                                                                        <div class="form-group">
-                                                                            <input type="hidden" name="trackID"
-                                                                                value="{{ $mod['trackID'] }}">
-                                                                        </div>
                                                                         <div class="modal-body">
                                                                             <h5 class="modal-title"
-                                                                                id="deleteModalLabel{{ $mod['trackID'] }}">
-                                                                                This Subject will be moved to archived,
-                                                                                Do you still want to proceed?</h5>
+                                                                                id="restoreUserModalLabel{{ $item['userID'] }}">
+                                                                                Do
+                                                                                you want to proceed restoring user ?
+                                                                            </h5>
+                                                                            <button type="submit"
+                                                                                style="margin-top: 20px;"
+                                                                                class="btn btn-primary"
+                                                                                name="btnRestoreUserAsUser"
+                                                                                onclick="this.value='Yes'">Yes,
+                                                                                Proceed Restoring As User</button>
+                                                                            @if ($uType == 0)
+                                                                                <button type="submit"
+                                                                                    style="margin-top: 10px;"
+                                                                                    class="btn btn-primary"
+                                                                                    name="btnRestoreUserAsAdmin"
+                                                                                    onclick="this.value='Yes'"">Yes,
+                                                                                    Proceed Restoring As Admin</button>
+                                                                            @endif
+
+                                                                        </div>
+                                                                        <div class="modal-footer"
+                                                                            style="border:none;">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-coreui-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-danger" style="color: white;"
+                                                            data-coreui-toggle="modal"
+                                                            data-coreui-target="#deleteUserModal{{ $item['userID'] }}">Delete</button>
+                                                        <div class="modal fade"
+                                                            id="deleteUserModal{{ $item['userID'] }}" tabindex="-1"
+                                                            role="dialog"
+                                                            aria-labelledby="deleteUserModalLabel{{ $item['userID'] }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <form
+                                                                        action="{{ route('adminusers.destroy', ['adminuser' => $item['userID']]) }}"
+                                                                        method="POST">
+                                                                        @method('delete')
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <h5 class="modal-title"
+                                                                                id="deleteUserModalLabel{{ $item['userID'] }}">
+                                                                                Do
+                                                                                you want to proceed deleting user ?
+                                                                            </h5>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="submit"
-                                                                                class="btn btn-primary" name="btnArchive" value="true">Yes,
+                                                                                class="btn btn-primary"
+                                                                                name="btnDeleteUser"
+                                                                                value="yes">Yes,
                                                                                 Proceed</button>
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
@@ -547,7 +424,7 @@
                                         @if ($startIndex > 1)
                                             <li class="page-item">
                                                 <a class="page-link"
-                                                    href="/adminstrands?page={{ $startIndex - 1 }}">Previous</a>
+                                                    href="/archive?category=users&page={{ $startIndex - 1 }}">Previous</a>
                                             </li>
                                         @else
                                             <li class="page-item disabled">
@@ -563,14 +440,14 @@
                                                 </li>
                                             @else
                                                 <li class="page-item"><a class="page-link"
-                                                        href="/adminstrands?page={{ $i + 1 }}">{{ $i + 1 }}</a>
+                                                        href="/archive?category=users&page={{ $i + 1 }}">{{ $i + 1 }}</a>
                                                 </li>
                                             @endif
 
 
                                             {{-- @endif --}}
                                         @endfor
-                                        @if (count($modules) == 0)
+                                        @if (count($eusers) == 0)
                                             <li class="page-item disabled">
                                                 <a class="page-link" href="#">Next</a>
                                             </li>
@@ -582,7 +459,7 @@
                                             @else
                                                 <li class="page-item">
                                                     <a class="page-link"
-                                                        href="/adminstrands?page={{ $startIndex + 1 }}">Next</a>
+                                                        href="/archive?category=users&page={{ $startIndex + 1 }}">Next</a>
                                                 </li>
                                             @endif
 
@@ -592,7 +469,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -609,66 +485,6 @@
     <script src="/Dashboard_files/coreui-utils.js.download"></script>
     <script src="/Dashboard_files/main.js.download"></script>
     <script></script>
-    <div class="modal fade " id="addModuleModal" tabindex="-1" role="dialog"
-        aria-labelledby="addModuleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addModuleModalLabel">Add Subject</h5>
-                    <button type="button" class="close" data-coreui-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <form action="/adminstrands" method="POST" enctype="multipart/form-data"
-                            autocomplete="off">
-                            @csrf
-                            <div class="form-group">
-                                <input required type="text" style="width:350px;margin-left: 35px;"
-                                    name="description" id="un" placeholder="Subject Description">
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <select name="strand" id="strand" style="width:150px;margin-left: 35px;">
-                                    @foreach ($availableStrands as $as)
-                                        <option value={{ $as['strandID'] }}>{{ $as['description'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <select name="category" id="category" style="width:150px;margin-left: 35px;">
-                                    <option value="CORE" selected>CORE</option>
-                                    <option value="APPLIED">APPLIED</option>
-                                    <option value="SPECIALIZED">SPECIALIZED</option>
-                                    </option>
-                                </select>
-                            </div>
-                            {{-- <br> --}}
-                            {{-- <div class="form-group" style="margin-left: 35px;">
-                                <input required type="number" name="sequence" id=""
-                                    placeholder="Sequence Number">
-                            </div> --}}
-                            <br>
-                            <div class="form-group" style="margin-left: 35px;">
-                                <input type="number" name="hours" id="" placeholder="No. Of Hours">
-                                <input type="text" name="prerequisite" id=""
-                                    placeholder="Pre-requisite">
-                            </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" style="background-color: #ff589e" name="btnAdd"
-                        value="true">Add
-                        Module</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="logOutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -711,103 +527,61 @@
             toast.show();
         }
     </script>
-    @if (session()->pull('successUpdatingModule'))
+    @if (session()->pull('successDeletingArchivedUser'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Updated Subject',
+                    title: 'Successfully Deleted Archived User',
                     showConfirmButton: false,
-                    timer: 1300
+                    timer: 500
                 });
-            }, 1500);
-        </script>;
-        {{ session()->forget('successUpdatingModule') }}
+            }, 800);
+        </script>
+        {{ session()->forget('successDeletingArchivedUser') }}
     @endif
-    @if (session()->pull('successDeletingModule'))
+    @if (session()->pull('errorDeletingArchivedUser'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'Failed To Delete Archived User',
+                    showConfirmButton: false,
+                    timer: 500
+                });
+            }, 800);
+        </script>
+        {{ session()->forget('errorDeletingArchivedUser') }}
+    @endif
+    @if (session()->pull('successRestoreUser'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Archived Subject',
+                    title: 'Successfully Restored User',
                     showConfirmButton: false,
-                    timer: 1300
+                    timer: 500
                 });
-            }, 1500);
-        </script>;
-        {{ session()->forget('successDeletingModule') }}
+            }, 800);
+        </script>
+        {{ session()->forget('successRestoreUser') }}
     @endif
-    @if (session()->pull('successAddingModule'))
-        <script>
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Successfully Added Subject',
-                    showConfirmButton: false,
-                    timer: 1300
-                });
-            }, 1500);
-        </script>;
-        {{ session()->forget('successAddingModule') }}
-    @endif
-    @if (session()->pull('errorDeletingModule'))
+    @if (session()->pull('errorRestoreUser'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to delete subject, Please Try Again!',
+                    title: 'Failed To Restore User',
                     showConfirmButton: false,
-                    timer: 1300
+                    timer: 500
                 });
-            }, 1500);
-        </script>;
-        {{ session()->forget('errorDeletingModule') }}
-    @endif
-    @if (session()->pull('errorUpdatingModule'))
-        <script>
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'warning',
-                    title: 'Failed to update subject, Please Try Again!',
-                    showConfirmButton: false,
-                    timer: 1300
-                });
-            }, 1500);
-        </script>;
-        {{ session()->forget('errorUpdatingModule') }}
-    @endif
-    @if (session()->pull('errorAddingModule'))
-        <script>
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'warning',
-                    title: 'Failed to add subject, Please Try Again!',
-                    showConfirmButton: false,
-                    timer: 1300
-                });
-            }, 1500);
-        </script>;
-        {{ session()->forget('errorAddingModule') }}
-    @endif
-    @if (session()->pull('errorExistingSequence'))
-        <script>
-            setTimeout(() => {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'warning',
-                    title: 'Failed to add subject, Existing Subject Name, Please Try Again!',
-                    showConfirmButton: false,
-                    timer: 1300
-                });
-            }, 1500);
-        </script>;
-        {{ session()->forget('errorExistingSequence') }}
+            }, 800);
+        </script>
+        {{ session()->forget('errorRestoreUser') }}
     @endif
 </body>
 

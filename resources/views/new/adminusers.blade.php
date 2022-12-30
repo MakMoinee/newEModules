@@ -124,7 +124,8 @@
                                             <path fill-rule="evenodd"
                                                 d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z" />
                                         </svg> Reports</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/archive" target="_top">
+                                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#"
+                                        target="_top">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" class="bi bi-file-zip"
                                             viewBox="0 0 16 16">
@@ -132,7 +133,17 @@
                                                 d="M6.5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.109 0l-.93-.62a1 1 0 0 1-.415-1.074l.4-1.599V7.5zm2 0h-1v.938a1 1 0 0 1-.03.243l-.4 1.598.93.62.93-.62-.4-1.598a1 1 0 0 1-.03-.243V7.5z" />
                                             <path
                                                 d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm5.5-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9v1H8v1h1v1H8v1h1v1H7.5V5h-1V4h1V3h-1V2h1V1z" />
-                                        </svg> Archive</a></li>
+                                        </svg> Archive</a>
+                                    <ul class="nav-group-items">
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="/archive?category=users"><span
+                                                    class="nav-icon"></span> Users</a></li>
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="/archive?category=subjects"><span
+                                                    class="nav-icon"></span> Subjects</a></li>
+                                    </ul>
+                                </li>
+
                             </div>
                         </div>
                     </div>
@@ -209,12 +220,12 @@
                                 <div class="fw-semibold">Settings</div>
                             </div>
                             <a class="dropdown-item" href="/profile">
-                                    <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" class="bi bi-person-fill"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                                    </svg> Profile</a>
+                                <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-person-fill"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                </svg> Profile</a>
                             <div class="dropdown-divider"></div><a class="dropdown-item"
                                 href="https://coreui.io/demos/bootstrap/4.2/free/#">
                                 <a class="dropdown-item" data-coreui-toggle="modal" data-coreui-target="#logOutModal"
@@ -374,7 +385,8 @@
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                                                                     <label for="Middlename"
-                                                                                        class="for">Middle Name</label>
+                                                                                        class="for">Middle
+                                                                                        Name</label>
                                                                                     <label for="Lastname"
                                                                                         class="for"
                                                                                         style="margin-left: 89px;">Last
@@ -396,7 +408,8 @@
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
                                                                                     <label for="lrn"
-                                                                                        class="for">LRN</label>
+                                                                                        class="for">LRN<span
+                                                                                            style="color:red">*</span></label>
                                                                                     <label for="Track"
                                                                                         class="for"
                                                                                         style="margin-left: 153px;">Track<span
@@ -474,7 +487,8 @@
                                                                                 </div>
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                                                                    <input type="password" pattern="[a-zA-Z0-9\s]"
+                                                                                    <input type="password"
+                                                                                        pattern="[a-zA-Z0-9]+"
                                                                                         name="password" id="vpassword"
                                                                                         style="width:150px;">
                                                                                     <i class="far fa-eye"
@@ -498,7 +512,8 @@
                                                                                 </div>
                                                                                 <div class="form-group"
                                                                                     style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                                                                    <input type="password" pattern="[a-zA-Z0-9\s]"
+                                                                                    <input type="password"
+                                                                                        pattern="[a-zA-Z0-9]+"
                                                                                         name="repassword"
                                                                                         id="vrepassword"
                                                                                         style="width:150px;">
@@ -546,7 +561,7 @@
                                                         </div>
                                                         <button class="btn btn-danger" style="color: white;"
                                                             data-coreui-toggle="modal"
-                                                            data-coreui-target="#deleteUserModal{{ $item['userID'] }}">Delete</button>
+                                                            data-coreui-target="#deleteUserModal{{ $item['userID'] }}">Archive</button>
                                                         <div class="modal fade"
                                                             id="deleteUserModal{{ $item['userID'] }}" tabindex="-1"
                                                             role="dialog"
@@ -563,11 +578,13 @@
                                                                             <h5 class="modal-title"
                                                                                 id="deleteUserModalLabel{{ $item['userID'] }}">
                                                                                 Do
-                                                                                you want to proceed deleting user ?</h5>
+                                                                                you want to proceed archiving user ?
+                                                                            </h5>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="submit"
-                                                                                class="btn btn-primary">Yes,
+                                                                                class="btn btn-primary"
+                                                                                name="btnArchive" value="yes">Yes,
                                                                                 Proceed</button>
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
@@ -717,19 +734,18 @@
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                <input type="text" name="middlename" id=""
-                                    style="width:150px;">
+                                <input type="text" name="middlename" id="" style="width:150px;">
                                 <input required type="text" name="lastname" id=""
                                     style="width:150px;margin-left: 33px;">
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -12px;margin-bottom: 20px;">
-                                <label for="lrn" class="for">LRN</label>
+                                <label for="lrn" class="for">LRN<span style="color:red">*</span></label>
                                 <label for="Track" class="for" style="margin-left: 153px;">Track<span
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                <input required type="text" name="lrn" maxlength="12" pattern="\d{12}" id=""
-                                    style="width:150px;">
+                                <input required type="text" name="lrn" maxlength="12" pattern="\d{12}"
+                                    id="" style="width:150px;">
                                 <select name="track" id="civilstat" style="width:150px;margin-left: 33px;">
                                     <option value="ABM" selected>ABM</option>
                                     <option value="GAS">GAS</option>
@@ -745,7 +761,8 @@
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                <input required type="password" pattern="[a-zA-Z0-9\s]" name="password" id="apassword" style="width:150px;">
+                                <input required type="password" pattern="[a-zA-Z0-9]+" name="password"
+                                    id="apassword" style="width:150px;">
                                 <i class="far fa-eye" id="togglePassword"
                                     style="margin-left: -30px; cursor: pointer;"></i>
                                 <input type="email" name="email" id=""
@@ -758,8 +775,8 @@
                                         style="color:red">*</span></label>
                             </div>
                             <div class="form-group" style="margin-left: 60px;margin-top: -20px;margin-bottom: 20px;">
-                                <input required type="password" pattern="[a-zA-Z0-9\s]" name="repassword" id="arepassword"
-                                    style="width:150px;">
+                                <input required type="password" pattern="[a-zA-Z0-9]+" name="repassword"
+                                    id="arepassword" style="width:150px;">
                                 <i class="far fa-eye" id="toggleRePassword"
                                     style="margin-left: -30px; cursor: pointer;"></i>
                                 <select required name="gradelevel" id=""
@@ -889,7 +906,6 @@
             // toggle the eye slash icon
             this.classList.toggle('fa-eye-slash');
         });
-
     </script>
     @if (session()->pull('successUpdateUser'))
         <script>
@@ -905,19 +921,19 @@
         </script>;
         {{ session()->forget('successUpdateUser') }}
     @endif
-    @if (session()->pull('successDeleteUser'))
+    @if (session()->pull('successArchiveUser'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Deleted User',
+                    title: 'Successfully Archived User',
                     showConfirmButton: false,
                     timer: 800
                 });
             }, 500);
         </script>;
-        {{ session()->forget('successDeleteUser') }}
+        {{ session()->forget('successArchiveUser') }}
     @endif
     @if (session()->pull('successCreateUsersFromFile'))
         <script>
@@ -963,19 +979,19 @@
         {{ session()->forget('errorCreateUsersFromFile') }}
     @endif
 
-    @if (session()->pull('errorDeleteUser'))
+    @if (session()->pull('errorArchiveUser'))
         <script>
             setTimeout(() => {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Failed to delete user, Please Try Again!',
+                    title: 'Failed to archive user, Please Try Again!',
                     showConfirmButton: false,
                     timer: 800
                 });
             }, 500);
         </script>;
-        {{ session()->forget('errorDeleteUser') }}
+        {{ session()->forget('errorArchiveUser') }}
     @endif
     @if (session()->pull('errorExistingUser'))
         <script>

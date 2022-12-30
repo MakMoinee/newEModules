@@ -21,7 +21,7 @@ class AdminStrandController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 2) {
+            if ($user[0]['userType'] == 3 || $user[0]['userType'] == 2) {
                 return redirect('/');
             }
             $nem = $user[0]['username'];

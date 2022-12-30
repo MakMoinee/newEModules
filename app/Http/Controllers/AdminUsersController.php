@@ -21,13 +21,13 @@ class AdminUsersController extends Controller
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] == 2) {
+            if ($user[0]['userType'] == 3 || $user[0]['userType'] == 2) {
                 return redirect('/');
             }
             $nem = $user[0]['username'];
             $uType = $user[0]['userType'];
             if ($user[0]['userType'] == 0) {
-                $allUsers = DB::table('e_users')->where('userType', '<>', 0)->get();
+                $allUsers = DB::table('e_users')->where([['userType', '<>', 0], ['userType', '<>', 3]])->get();
             } else if ($user[0]['userType'] == 1) {
                 $allUsers = DB::table('e_users')->where(['userType' => 2])->get();
             }
@@ -329,23 +329,35 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
 
-            if ($user[0]['userType'] != 1) {
+            if ($user[0]['userType'] == 2) {
                 return redirect('/');
             }
 
-            $isDeleted = DB::table('e_users')->where(['userID' => $id])->delete();
-            if ($isDeleted > 0) {
-                session()->put('successDeleteUser', true);
+            if ($request->btnArchive) {
+                $affectedRow = DB::table('e_users')->where(['userID' => $id])->update([
+                    'userType' => 3,
+                ]);
+                if ($affectedRow > 0) {
+                    session()->put('successArchiveUser', true);
+                } else {
+                    session()->put('errorArchiveUser', true);
+                }
+                return redirect('/adminusers');
             } else {
-                session()->put('errorDeleteUser', true);
+                $isDeleted = DB::table('e_users')->where(['userID' => $id])->delete();
+                if ($isDeleted > 0) {
+                    session()->put('successDeletingArchivedUser', true);
+                } else {
+                    session()->put('errorDeletingArchivedUser', true);
+                }
+                return redirect('/archive');
             }
-            return redirect('/adminusers');
         } else {
             return redirect('/');
         }

@@ -33,10 +33,11 @@ class ReportsController extends Controller
 
             $nUsers = EUsers::all();
             $total = count($nUsers);
-            $newUsers = DB::table('vwtotalnewusers')->first();
             if ($uType == 0) {
+                $newUsers = DB::table('vwtotalnewuserssuperadmin')->first();
                 $queryResultsss = DB::table('vwnewsuperadminusers')->get();
             } else {
+                $newUsers = DB::table('vwtotalnewusers')->first();
                 $queryResultsss = DB::table('vwnewusers')->get();
             }
 
@@ -45,7 +46,7 @@ class ReportsController extends Controller
             $monthArr = array();
 
             foreach ($nUsers as $u) {
-                if ($u['userType'] == 0) {
+                if ($u['userType'] == 0 || $u['userType'] == 3) {
                     continue;
                 }
                 if ($uType == 1) {

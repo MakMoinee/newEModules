@@ -20,15 +20,21 @@ class AdminController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 2) {
+            if ($user[0]['userType'] == 3 || $user[0]['userType'] == 2) {
                 return redirect('/');
             }
-            $nem = $user[0]['username'];
-            $nUsers = EUsers::all();
-            $total = count($nUsers);
-            $newUsers = DB::table('vwtotalnewusers')->first();
-            $totalNewUsers = $newUsers->TotalNewUsers;
             $uType = $user[0]['userType'];
+            $nem = $user[0]['username'];
+            $nUsers = EUsers::where([['userID', '<>', 0]])->get();
+            $total = count($nUsers);
+            if ($uType == 0) {
+                $newUsers = DB::table('vwtotalnewuserssuperadmin')->first();
+            } else {
+                $newUsers = DB::table('vwtotalnewusers')->first();
+            }
+
+            $totalNewUsers = $newUsers->TotalNewUsers;
+
             $uid = $user[0]['userID'];
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
             $pic = "";
@@ -40,10 +46,10 @@ class AdminController extends Controller
             $allPics = json_decode($allPics, true);
             if ($user[0]['userType'] == 0) {
 
-                $allUsers = DB::table('e_users')->where('userType', '<>', 0)->get();
+                $allUsers = DB::table('e_users')->where([['userType', '<>', 0]])->orderByDesc('created_at')->get();
             } else {
 
-                $allUsers = DB::table('e_users')->where(['userType' => 2])->get();
+                $allUsers = DB::table('e_users')->where([['userType', '<>', 0], ['userType', '<>', 1]])->orderByDesc('created_at')->get();
             }
             $allUsers = json_decode($allUsers, true);
 

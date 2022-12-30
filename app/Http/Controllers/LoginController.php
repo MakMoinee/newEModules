@@ -28,7 +28,7 @@ class LoginController extends Controller
             if ($user[0]['userType'] == 0) {
                 return redirect("/superadmin");
             }
-            
+
             return redirect('/strands');
         } else {
             return redirect("/");
@@ -79,13 +79,18 @@ class LoginController extends Controller
                 session()->put('errorLogin', true);
                 return view('welcome');
             } else {
-                session()->put('users', $user);
-                session()->put('successLogin', true);
+
                 // Auth::login($user, false);
                 if ($user[0]['userType'] == 1 || $user[0]['userType'] == 0) {
+                    session()->put('users', $user);
+                    session()->put('successLogin', true);
                     return redirect("/admin");
+                } else if ($user[0]['userType'] == 3) {
+                    session()->put('errorUserDisabled', true);
+                    return view('welcome');
                 }
-                
+                session()->put('users', $user);
+                session()->put('successLogin', true);
                 return redirect('/course?category=CORE');
             }
         } else {

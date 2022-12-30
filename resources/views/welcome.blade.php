@@ -220,6 +220,20 @@
         </script>;
         {{ session()->forget('errorExistingUser') }}
     @endif
+    @if (session()->pull('errorUserDisabled'))
+        <script>
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'warning',
+                    title: 'User disabled, Please reach out your System Administrator!',
+                    showConfirmButton: false,
+                    timer: 1300
+                });
+            }, 1500);
+        </script>;
+        {{ session()->forget('errorUserDisabled') }}
+    @endif
     @if (session()->pull('errorLogin'))
         <script>
             setTimeout(() => {

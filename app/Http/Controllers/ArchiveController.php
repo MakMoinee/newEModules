@@ -18,9 +18,10 @@ class ArchiveController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 2) {
+            if ($user[0]['userType'] == 3 || $user[0]['userType'] == 2) {
                 return redirect('/');
             }
+            // dd($request);
             $uType = $user[0]['userType'];
             $uid = $user[0]['userID'];
             $queryResult = DB::table('user_pic_profiles')->where(['userID' => $uid])->get();
@@ -30,81 +31,165 @@ class ArchiveController extends Controller
                 $pic = $profiles[0]['filePath'];
             }
 
-            $queryResult = DB::table('vwallstrands')->where([['status', '=', 2]])->get();
-            $result = json_decode($queryResult, true);
-            $modules = [];
-            $startIndex = $request->query('page') == null ? 1 : $request->query('page');
-            $pageCount = 0;
-            $pageRes = array();
-            $eachRes = array();
-            $loopCount = 0;
+            if (strtolower($request->query('category')) == "subjects") {
+                $queryResult = DB::table('vwallstrands')->where([['status', '=', 2]])->get();
+                $result = json_decode($queryResult, true);
+                $modules = [];
+                $startIndex = $request->query('page') == null ? 1 : $request->query('page');
+                $pageCount = 0;
+                $pageRes = array();
+                $eachRes = array();
+                $loopCount = 0;
 
-            $searchKey = $request->query('search');
-            $searchArr = array();
+                $searchKey = $request->query('search');
+                $searchArr = array();
 
-            $tCount = 0;
-            foreach ($result as $r) {
-                if ($searchKey) {
-                    if (!str_contains(strtolower($r['SubjectName']), $searchKey)) {
-                        continue;
+                $tCount = 0;
+                foreach ($result as $r) {
+                    if ($searchKey) {
+                        if (!str_contains(strtolower($r['SubjectName']), $searchKey)) {
+                            continue;
+                        } else {
+                            array_push($searchArr, $r);
+                        }
                     } else {
-                        array_push($searchArr, $r);
-                    }
-                } else {
-                    $tCount++;
-                    array_push($modules, $r);
-                    if ($tCount == 5) {
-                        array_push($eachRes, $r);
-                        array_push($pageRes, $eachRes);
-                        $eachRes = [];
-                        $tCount = 0;
-                        $pageCount++;
-                    } else if ($loopCount + 1 == count($result)) {
-                        if ($tCount < 5) {
+                        $tCount++;
+                        array_push($modules, $r);
+                        if ($tCount == 5) {
                             array_push($eachRes, $r);
                             array_push($pageRes, $eachRes);
+                            $eachRes = [];
+                            $tCount = 0;
                             $pageCount++;
+                        } else if ($loopCount + 1 == count($result)) {
+                            if ($tCount < 5) {
+                                array_push($eachRes, $r);
+                                array_push($pageRes, $eachRes);
+                                $pageCount++;
+                            }
+                        } else {
+                            array_push($eachRes, $r);
                         }
-                    } else {
-                        array_push($eachRes, $r);
+                        $loopCount++;
                     }
-                    $loopCount++;
                 }
-            }
 
-            if ($searchKey) {
+                if ($searchKey) {
 
-                foreach ($searchArr as $r2) {
-                    $tCount++;
-                    array_push($modules, $r2);
-                    if ($tCount == 5) {
-                        array_push($eachRes, $r2);
-                        array_push($pageRes, $eachRes);
-                        $eachRes = [];
-                        $tCount = 0;
-                        $pageCount++;
-                    } else if ($loopCount + 1 == count($searchArr)) {
-                        if ($tCount < 5) {
+                    foreach ($searchArr as $r2) {
+                        $tCount++;
+                        array_push($modules, $r2);
+                        if ($tCount == 5) {
                             array_push($eachRes, $r2);
                             array_push($pageRes, $eachRes);
+                            $eachRes = [];
+                            $tCount = 0;
                             $pageCount++;
+                        } else if ($loopCount + 1 == count($searchArr)) {
+                            if ($tCount < 5) {
+                                array_push($eachRes, $r2);
+                                array_push($pageRes, $eachRes);
+                                $pageCount++;
+                            }
+                        } else {
+                            array_push($eachRes, $r2);
+                        }
+                        $loopCount++;
+                    }
+                }
+                $strandsAvailable = AcademicStrands::all();
+                return view('new.adminarchive', [
+                    'pic' => $pic,
+                    'modules' => $modules,
+                    'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+                    'availableStrands' => $strandsAvailable,
+                    'startIndex' => $startIndex,
+                    'pageCount' => round($pageCount),
+                    'uType' => $uType
+                ]);
+            } else if (strtolower($request->query('category')) == "users") {
+
+                $uType = $user[0]['userType'];
+                $allUsers = DB::table('e_users')->where(['userType' => 3])->orderByDesc('created_at')->get();
+
+                $userss = json_decode($allUsers, true);
+                $startIndex = $request->query('page') == null ? 1 : $request->query('page');
+                $pageCount = 0;
+                $pageRes = array();
+                $eachRes = array();
+                $loopCount = 0;
+
+                $searchKey = $request->query('search');
+                $searchArr = array();
+
+                $tCount = 0;
+                $newUsers = array();
+
+                foreach ($userss as $u) {
+                    if ($searchKey) {
+                        if (!str_contains(strtolower($u['firstname']), strtolower($searchKey))) {
+                            continue;
+                        } else {
+                            array_push($searchArr, $u);
                         }
                     } else {
-                        array_push($eachRes, $r2);
+                        $tCount++;
+                        array_push($newUsers, $u);
+                        if ($tCount == 5) {
+                            array_push($eachRes, $u);
+                            array_push($pageRes, $eachRes);
+                            $eachRes = [];
+                            $tCount = 0;
+                            $pageCount++;
+                        } else if ($loopCount + 1 == count($userss)) {
+                            if ($tCount < 5) {
+                                array_push($eachRes, $u);
+                                array_push($pageRes, $eachRes);
+                                $pageCount++;
+                            }
+                        } else {
+                            array_push($eachRes, $u);
+                        }
+                        $loopCount++;
                     }
-                    $loopCount++;
                 }
+
+                if ($searchKey) {
+
+                    foreach ($searchArr as $r2) {
+                        $tCount++;
+                        array_push($newUsers, $r2);
+                        if ($tCount == 5) {
+                            array_push($eachRes, $r2);
+                            array_push($pageRes, $eachRes);
+                            $eachRes = [];
+                            $tCount = 0;
+                            $pageCount++;
+                        } else if ($loopCount + 1 == count($searchArr)) {
+                            if ($tCount < 5) {
+                                array_push($eachRes, $r2);
+                                array_push($pageRes, $eachRes);
+                                $pageCount++;
+                            }
+                        } else {
+                            array_push($eachRes, $r2);
+                        }
+                        $loopCount++;
+                    }
+                }
+
+                return view('new.adminarchiveusers', [
+                    'eusers' => $newUsers,
+                    'pic' => $pic,
+                    'uType' => $uType,
+                    'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
+                    'pic' => $pic,
+                    'startIndex' => $startIndex,
+                    'pageCount' => round($pageCount)
+                ]);
+            } else {
+                return redirect('/');
             }
-            $strandsAvailable = AcademicStrands::all();
-            return view('new.adminarchive', [
-                'pic' => $pic,
-                'modules' => $modules,
-                'pageRes' => count($pageRes) == 0 ? [] : $pageRes[$startIndex - 1],
-                'availableStrands' => $strandsAvailable,
-                'startIndex' => $startIndex,
-                'pageCount' => round($pageCount),
-                'uType' => $uType
-            ]);
         } else {
             return redirect('/');
         }
@@ -131,7 +216,7 @@ class ArchiveController extends Controller
         if (session()->exists("users")) {
             $user = session()->pull("users");
             session()->put('users', $user);
-            if ($user[0]['userType'] == 2) {
+            if ($user[0]['userType'] == 3 || $user[0]['userType'] == 2) {
                 return redirect('/');
             }
 
@@ -141,7 +226,7 @@ class ArchiveController extends Controller
                     ->update(['status' => 1]);
                 if ($affectedRows > 0) {
                     session()->put('successRestoreSubject', true);
-                }else{
+                } else {
                     session()->put('errorRestoreSubject', true);
                 }
             }
@@ -182,7 +267,39 @@ class ArchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (session()->exists("users")) {
+            $user = session()->pull("users");
+            session()->put('users', $user);
+            if ($user[0]['userType'] == 3 || $user[0]['userType'] == 2) {
+                return redirect('/');
+            }
+
+
+            if ($request->btnRestoreUserAsUser) {
+                $affectedRow = DB::table('e_users')->where(['userID' => $id])->update([
+                    'userType' => 2,
+                ]);
+                if ($affectedRow > 0) {
+                    session()->put('successRestoreUser', true);
+                } else {
+                    session()->put('errorRestoreUser', true);
+                }
+                return redirect('/archive?category=users');
+            } else if ($request->btnRestoreUserAsAdmin) {
+                $affectedRow = DB::table('e_users')->where(['userID' => $id])->update([
+                    'userType' => 1,
+                ]);
+                if ($affectedRow > 0) {
+                    session()->put('successRestoreUser', true);
+                } else {
+                    session()->put('errorRestoreUser', true);
+                }
+                return redirect('/archive?category=users');
+            }
+            return redirect('/');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
